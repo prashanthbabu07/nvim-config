@@ -5,7 +5,6 @@ ripgrep is a very fast and efficient command-line tool for searching directories
 brew install ripgrep
 ```
 
-
 fd is a simple, fast, and user-friendly alternative to the traditional find command. Telescope can use it for faster and more convenient file finding
 ```
 brew install fd
