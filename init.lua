@@ -71,6 +71,12 @@ require("lazy").setup({
 				})
 			end,
 		},
+		{
+			"folke/which-key.nvim",
+			config = function()
+				require("which-key").setup()
+			end,
+		},
 	},
 
 	-- Configure any other settings here. See the documentation for more details.
@@ -84,8 +90,10 @@ local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<C-p>", builtin.find_files, {})
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
 
-vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {})
-vim.keymap.set("n", "<C-m>", ":Neotree close<CR>", {})
+-- vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {})
+-- vim.keymap.set("n", "<C-m>", ":Neotree close<CR>", {})
+
+vim.keymap.set("n", "<C-n>", ":Neotree toggle reveal=true position=left<CR>", {})
 
 vim.keymap.set("n", "<leader>f", function()
 	vim.lsp.buf.format()
@@ -97,6 +105,19 @@ config.setup({
 	highlight = { enable = true },
 	indent = { enable = true },
 })
+
+local wk = require("which-key")
+
+wk.setup({
+  triggers = {"<leader>", "<C-s>", "<C-p>", "<C-n>"},  -- Customize trigger keys here
+})
+
+wk.register({
+  ["<C-s>"] = { ":w<CR>", "Save File" },  -- Save File mapped to Ctrl+s
+  ["<C-p>"] = { ":Telescope find_files<CR>", "Find Files" }, -- Ctrl+p to find files
+  ["<C-n>"] = { ":Neotree toggle<CR>", "Toggle NeoTree" }, -- Ctrl+n to toggle NeoTree
+}, { mode = "n", prefix = "<C>" })
+
 
 require("catppuccin").setup()
 vim.cmd.colorscheme = "catppuccin"

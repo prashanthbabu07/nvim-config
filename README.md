@@ -14,3 +14,16 @@ Install the Lua formatter:
 ```
 brew install stylua
 ```
+
+LuaRocks is used to install and manage Lua libraries, and it’s required for certain configurations.
+```
+brew install luarocks
+```
+
+Key bindings 
+
+Ctrl + w h	Move to the left window (Neo-tree)
+Ctrl + w l	Move to the right window (file)
+Ctrl + w w	Cycle between all open windows
+
+
