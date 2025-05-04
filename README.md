@@ -26,4 +26,7 @@ Ctrl + w h	Move to the left window (Neo-tree)
 Ctrl + w l	Move to the right window (file)
 Ctrl + w w	Cycle between all open windows
 
-
+Copy to clipboard
+": This tells Neovim you want to use a specific register.
++: This specifies the system clipboard register.
+y: This is the yank command.
