@@ -29,4 +29,4 @@ Ctrl + w w	Cycle between all open windows
 Copy to clipboard
 ": This tells Neovim you want to use a specific register.
 +: This specifies the system clipboard register.
-y: This is the yank command.
+y: This ie yank command.
