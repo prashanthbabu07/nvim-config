@@ -12,6 +12,7 @@ return {
         -- vim.g.catppuccin_flavour = "latte"
         -- vim.g.catppuccin_flavour = "latte"
         -- vim.cmd.colorscheme = "catppuccin"
+        -- vim.cmd.colorscheme "catppuccin-mocha"
 
 end,
 }

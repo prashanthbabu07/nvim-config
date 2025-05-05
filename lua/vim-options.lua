@@ -7,7 +7,11 @@ vim.opt.numberwidth = 1
 vim.opt.statuscolumn = "%s%1l   "
 -- vim.opt.relativenumber = true
 vim.g.mapleader = " "
+vim.g.background = "light"
 -- vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:block,r-cr-o:block"
 
 -- vim.o.background = "light"
 -- vim.cmd("colorscheme PaperColor")
+--
+
+vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
