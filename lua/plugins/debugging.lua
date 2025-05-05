@@ -27,5 +27,7 @@ return {
 
 		vim.keymap.set("n", "<Leader>b", dap.toggle_breakpoint, {})
 		vim.keymap.set("n", "<F5>", dap.continue, {})
+        vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
+        vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
 	end,
 }
