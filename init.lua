@@ -37,7 +37,7 @@ require("lazy").setup({
 	checker = { enabled = true },
 })
 
-vim.keymap.set("n", "<leader>f", function()
+--[[ vim.keymap.set("n", "<leader>f", function()
 	vim.lsp.buf.format()
 end, { desc = "Format current buffer" })
-
+]]
