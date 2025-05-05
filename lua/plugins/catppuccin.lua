@@ -1,5 +1,6 @@
 -- https://github.com/catppuccin/nvim
 
+
 return {
 	"catppuccin/nvim",
 	name = "catppuccin",
@@ -9,8 +10,8 @@ return {
             flavour = "latte"
         }) ]] 
         -- vim.g.catppuccin_flavour = "latte"
-        vim.g.catppuccin_flavour = "latte"
-        vim.cmd.colorscheme = "catppuccin"
+        -- vim.g.catppuccin_flavour = "latte"
+        -- vim.cmd.colorscheme = "catppuccin"
 
 end,
 }
