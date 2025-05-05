@@ -1,3 +1,5 @@
+-- https://github.com/nvim-neo-tree/neo-tree.nvim
+
 return {
 	"nvim-neo-tree/neo-tree.nvim",
 	branch = "v3.x",
@@ -7,7 +9,16 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 	lazy = false, -- neo-tree will lazily load itself
-	opts = {},
+	opts = {
+        default_component_configs = {
+            icon = {
+                folder_closed = "[+]",
+                folder_open = "[-]",
+                folder_empty = "[ ]",
+                default = "•",
+            },
+        }
+    },
 	config = function()
 		vim.keymap.set("n", "<C-n>", ":Neotree toggle reveal=true position=left<CR>", {})
 	end,
