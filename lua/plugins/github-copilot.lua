@@ -14,7 +14,7 @@ return {
 		vim.api.nvim_set_keymap("i", "<C-H>", "copilot#Previous()", { expr = true, silent = true })
 
 		-- OPTIONAL: Turn Copilot on/off
-		-- vim.api.nvim_set_keymap("n", "<leader>cp", ":Copilot disable<CR>", { silent = true })
+		vim.api.nvim_set_keymap("n", "<leader>cp", ":CopilotToggle<CR>", { silent = true })
 
         -- OPTIONAL: Set up a custom command to toggle Copilot
         vim.api.nvim_create_user_command("CopilotToggle", function()

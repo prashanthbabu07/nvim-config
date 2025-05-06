@@ -16,3 +16,5 @@ vim.g.background = "light"
 vim.opt.cursorline = true
 
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
+
+

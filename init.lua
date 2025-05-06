@@ -24,6 +24,7 @@ vim.g.maplocalleader = "\\"
 
 
 require("vim-options")
+require("autosave")
 
 -- Setup lazy.nvim
 require("lazy").setup({
