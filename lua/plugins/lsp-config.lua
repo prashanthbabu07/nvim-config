@@ -20,11 +20,12 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
-        -- "Hoffs/omnisharp-extended-lsp.nvim",
+		-- "Hoffs/omnisharp-extended-lsp.nvim",
 
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local lspconfig = require("lspconfig")
+			-- local telescope = require("telescopes.builtin")
 
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,

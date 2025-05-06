@@ -33,6 +33,7 @@ return {
 			end, {})
 
 			vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+            -- vim.keymap.set("n", "<leader>gd", builtin.lsp_definitions, {})
 		end,
 	},
 	{
