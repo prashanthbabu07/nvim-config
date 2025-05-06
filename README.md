@@ -10,6 +10,13 @@ fd is a simple, fast, and user-friendly alternative to the traditional find comm
 brew install fd
 ```
 
+
+for linux install fd-find and create symbolic link for fd
+```
+sudo apt install fd-find 
+sudo ln -s /usr/bin/fdfind /usr/local/bin/fd
+```
+
 Install the Lua formatter:
 ```
 brew install stylua
@@ -37,4 +44,11 @@ y: This ie yank command.
 <C-w>l : Move to window right
 <C-w>k : Move to window above
 <C-w>j : Move to windows below 
+
+# font's
+
+Download fonts from website
+https://www.nerdfonts.com/font-downloads
+
+copy to ~/.fonts --copy the font's directory
 
