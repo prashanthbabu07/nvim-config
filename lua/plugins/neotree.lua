@@ -20,6 +20,7 @@ return {
         }
     },
 	config = function()
+        -- vim.api.nvim_set_hl(0, 'NeoTreeLine', { bg = 'none' })
 		vim.keymap.set("n", "<C-n>", ":Neotree toggle reveal=true position=left<CR>", {})
 	end,
 }
