@@ -30,3 +30,11 @@ Copy to clipboard
 ": This tells Neovim you want to use a specific register.
 +: This specifies the system clipboard register.
 y: This ie yank command.
+
+# Neovim Navigations
+
+<C-w>h : Move to window left
+<C-w>l : Move to window right
+<C-w>k : Move to window above
+<C-w>j : Move to windows below 
+
