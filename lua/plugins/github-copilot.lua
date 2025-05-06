@@ -1,0 +1,26 @@
+return {
+	"github/copilot.vim",
+	lazy = false,
+
+	config = function()
+		-- Disable default <Tab> mapping
+		vim.g.copilot_no_tab_map = true
+
+		-- Custom key mapping for accepting suggestion
+		vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { expr = true, silent = true })
+
+		-- OPTIONAL: Map for navigating suggestions
+		vim.api.nvim_set_keymap("i", "<C-K>", "copilot#Next()", { expr = true, silent = true })
+		vim.api.nvim_set_keymap("i", "<C-H>", "copilot#Previous()", { expr = true, silent = true })
+
+		-- OPTIONAL: Turn Copilot on/off
+		vim.api.nvim_set_keymap("n", "<leader>cp", ":Copilot disable<CR>", { silent = true })
+
+		-- You can also set global settings if needed
+		vim.g.copilot_filetypes = {
+			["*"] = true, -- Enable for all filetypes
+			markdown = false, -- Disable for markdown
+			yaml = false, -- Disable for yaml
+		}
+	end,
+}

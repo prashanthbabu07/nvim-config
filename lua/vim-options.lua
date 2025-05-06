@@ -12,6 +12,7 @@ vim.g.background = "light"
 
 -- vim.o.background = "light"
 -- vim.cmd("colorscheme PaperColor")
---
+
+vim.opt.cursorline = true
 
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
