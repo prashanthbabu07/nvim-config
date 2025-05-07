@@ -20,6 +20,20 @@ return {
         }
     },
 	config = function()
+
+        local neotree = require("neo-tree")
+        neotree.setup({
+            filesystem = {
+                filtered_items = {
+                    hide_dotfiles = false,
+                    hide_gitignored = false,
+                    never_show = { ".DS_Store", "thumbs.db" },
+                },
+                follow_current_file = true,
+                use_libuv_file_watcher = true,
+            },
+        })
+
         -- vim.api.nvim_set_hl(0, 'NeoTreeLine', { bg = 'none' })
 		vim.keymap.set("n", "<C-n>", ":Neotree toggle reveal=true position=left<CR>", {})
 	end,
