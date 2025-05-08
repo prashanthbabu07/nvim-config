@@ -69,7 +69,10 @@ return {
         --         end,
         --     },
         -- }
+        --
 
+        
+        -- C# and F# debugging
         for _, value in ipairs({ "cs", "fsharp" }) do
             dap.configurations[value] = {
                 {
@@ -107,6 +110,7 @@ return {
                 args = { "--interpreter=vscode" },
             }
         end
+        -- C# and F# debugging end  
 
         dap.listeners.before.attach.dapui_config = function()
             dapui.open()
