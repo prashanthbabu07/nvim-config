@@ -33,7 +33,7 @@ return {
 		vim.g.copilot_filetypes = {
 			["*"] = true, -- Enable for all filetypes
 			markdown = true, -- Disable for markdown
-			yaml = false, -- Disable for yaml
+			yaml = true, -- Disable for yaml
 		}
 	end,
 }
