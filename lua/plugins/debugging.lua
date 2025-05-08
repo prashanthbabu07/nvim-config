@@ -41,12 +41,6 @@ return {
             print("Unsupported OS")
         end
 
-        dap.adapters.coreclr = {
-            type = "executable",
-            -- command = "/usr/local/share/dotnet/netcoredbg/netcoredbg",
-            command = debugger_command,
-            args = { "--interpreter=vscode" },
-        }
 
         local function file_exists(path)
             local stat = vim.loop.fs_stat(path)
@@ -64,6 +58,7 @@ return {
             return dll
         end
 
+        -- This is used where we had to manually set the path to the dll
         -- dap.configurations.cs = {
         --     {
         --         type = "coreclr",
