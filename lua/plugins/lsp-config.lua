@@ -14,6 +14,8 @@ return {
                 ensure_installed = {
                     "lua_ls",
                     "ts_ls",
+                    "rust_analyzer",
+                    "csharp_ls",
                 },
             })
         end,
@@ -33,6 +35,9 @@ return {
             lspconfig.ts_ls.setup({
                 capabilities = capabilities,
             })
+            -- lspconfig.rust_analyzer.setup({
+            --     -- capabilities = capabilities,
+            -- })
 
             lspconfig.csharp_ls.setup({
                 cmd = { "csharp-ls" }, -- Ensure csharp-ls is in your PATH
