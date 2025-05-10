@@ -17,7 +17,7 @@ return {
                     "rust_analyzer",
                     "csharp_ls",
                     "pyright",
-                    "ruff_lsp",
+                    "ruff",
                 },
             })
         end,
