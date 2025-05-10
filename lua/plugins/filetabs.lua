@@ -1,27 +1,28 @@
 return {
-    'akinsho/bufferline.nvim',
-    dependencies = 'nvim-tree/nvim-web-devicons',
-    config = function()
-        local bufferline = require("bufferline")
-        bufferline.setup({
-            optons = {
-                mode = "buffers",          -- Show buffer tabs
-                diagnostics = "nvim_lsp",  -- Show LSP errors/warnings
-                separator_style = "slant", -- Cool separator style
-                always_show_bufferline = true,
-                offsets = {
-                    {
-                        filetype = "neo-tree",
-                        text = "File Explorer",
-                        highlight = "Directory",
-                        separator = true
-                    }
-                }
-            }
-        })
+	"akinsho/bufferline.nvim",
+	dependencies = "nvim-tree/nvim-web-devicons",
+	config = function()
+        vim.opt.termguicolors = true
+		local bufferline = require("bufferline")
+		bufferline.setup({
+			options = {
+				mode = "buffers", -- Display tab pages instead of buffers
+				offsets = {
+					{
+						filetype = "neo-tree",
+						text = "File Explorer",
+						text_align = "left",
+						separator = true,
+					},
+				},
+				diagnostics = "nvim_lsp", -- Optional: show LSP diagnostics in the tabline
+				separator_style = "slant", -- Optional: choose your preferred separator style
+				show_close_icon = false, -- Optional: hide the close icon
+				show_tab_indicators = true,
+			},
+		})
 
-        vim.keymap.set("n", "<S-l>", ":BufferLineCycleNext<CR>", {})
-        vim.keymap.set("n", "<S-h>", ":BufferLineCyclePrev<CR>", {})
-        vim.keymap.set("n", "<leader>c", ":BufferClose<CR>", {})
-    end
+		vim.keymap.set("n", "<S-l>", ":BufferLineCycleNext<CR>", {})
+		vim.keymap.set("n", "<S-h>", ":BufferLineCyclePrev<CR>", {})
+	end,
 }

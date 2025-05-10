@@ -52,3 +52,11 @@ https://www.nerdfonts.com/font-downloads
 
 copy to ~/.fonts --copy the font's directory
 
+
+# Github Copilot 
+```
+```
+``` 
+```
+``` 
+#buffer:1 Generate documentation for selection 
