@@ -1,4 +1,4 @@
--- Global default indentation
+
 vim.opt.expandtab = true -- Tabs become spaces
 vim.opt.shiftwidth = 4 -- Auto-indent uses 4 spaces
 vim.opt.tabstop = 4 -- A tab is 4 spaces
@@ -36,3 +36,5 @@ vim.opt.cursorline = true
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 
 vim.opt.splitright = true
+-- vim.o.winborder = "bold"  -- Options: "single", "double", "rounded", "shadow", etc.
+

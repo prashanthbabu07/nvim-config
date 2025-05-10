@@ -38,12 +38,12 @@ return {
         -- normal, insert, visual, visual block
         vim.keymap.set(
             { "n", "i", "v", "x" },
-            "<C-n>",
+            "<leader>e",
             "<Esc>:Neotree toggle position=left<CR>",
             { noremap = true, silent = true }
         )
 
         -- terminal mode
-        vim.keymap.set("t", "<C-n>", "<C-\\><C-n>:Neotree toggle position=left<CR>", { noremap = true, silent = true })
+        vim.keymap.set("t", "<leader>e", "<C-\\><C-n>:Neotree toggle position=left<CR>", { noremap = true, silent = true })
     end,
 }

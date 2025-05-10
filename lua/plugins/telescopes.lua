@@ -20,7 +20,7 @@ return {
 				},
 			})
 
-			vim.keymap.set("n", "<C-p>", function()
+			vim.keymap.set("n", "<leader>ff", function()
 				builtin.find_files({
 					prompt_title = "Find Files (glob supported)",
 					find_command = {
