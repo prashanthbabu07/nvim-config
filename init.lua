@@ -37,6 +37,9 @@ require("lazy").setup({
 	change_detection = {
 		notify = false, -- disables the "# Config Change Detected" message
 	},
+	ui = {
+		border = "rounded", -- Or "single", "shadow", or a custom border
+	},
 })
 
 --[[ vim.keymap.set("n", "<leader>f", function()

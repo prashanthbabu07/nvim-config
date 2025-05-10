@@ -38,5 +38,5 @@ vim.opt.cursorline = true
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 
 vim.opt.splitright = true
-vim.o.winborder = "rounded"  -- Options: "single", "double", "rounded", "shadow", etc.
+-- vim.o.winborder = "rounded"  -- Options: "single", "double", "rounded", "shadow", etc.
 
