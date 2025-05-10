@@ -38,7 +38,7 @@ return {
 	},
 	{
 		{
-            "CopilotC-Nvim/CopilotChat.nvim",
+			"CopilotC-Nvim/CopilotChat.nvim",
 			dependencies = {
 				{ "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
 				{ "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
@@ -70,6 +70,9 @@ return {
 				{ "<leader>zm", ":CopilotChatCommit<CR>", mode = "n", desc = "Generate Commit Message" },
 				{ "<leader>zs", ":CopilotChatCommit<CR>", mode = "v", desc = "Generate Commit for Selection" },
 			},
+			config = function()
+				require("CopilotChat").setup({})
+			end,
 		},
 	},
 }

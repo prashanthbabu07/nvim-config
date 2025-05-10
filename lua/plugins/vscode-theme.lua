@@ -22,11 +22,11 @@ return {
 		})
 
 		-- apply the light theme
-		-- vscode.load("light")
+		vscode.load("light")
 		vim.cmd.colorscheme("vscode")
 		--
 		vim.api.nvim_set_hl(0, "NeoTreeIndentMarker", { fg = "#D0D0D0" })
-		vim.api.nvim_set_hl(0, "Normal", { bg = "#FAFAFA" })
+		-- vim.api.nvim_set_hl(0, "Normal", { bg = "#FAFAFA" })
 
 		local bg_color = "#FAFAFA"
 		local hl_groups = {
@@ -51,8 +51,8 @@ return {
 			vim.api.nvim_set_hl(0, hl, { bg = bg_color  })
 		end
 
-		-- vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = bg_color, bg = bg_color })
-		-- vim.api.nvim_set_hl(0, "NeoTreeEndOfBuffer", { fg = bg_color, bg = bg_color })
+		vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = bg_color, bg = bg_color })
+		vim.api.nvim_set_hl(0, "NeoTreeEndOfBuffer", { fg = bg_color, bg = bg_color })
 
 		--
 		-- Light grey background fix for neo-tree

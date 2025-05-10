@@ -173,14 +173,14 @@ return {
             dapui.close()
         end
 
-        vim.keymap.set("n", "<Leader>b", dap.toggle_breakpoint, {})
-        vim.keymap.set("n", "<F5>", dap.continue, {})
+        vim.keymap.set("n", "<Leader>B", dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
+        vim.keymap.set("n", "<F5>", dap.continue, { desc = "Continue" })
         vim.keymap.set("n", "<F10>", function()
             require("dap").step_over()
-        end)
+        end, { desc = "Step Over" })
         vim.keymap.set("n", "<F11>", function()
             require("dap").step_into()
-        end)
+        end, { desc = "Step Into" })
 
         -- breakpoint character for visual queue
         vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "red", linehl = "", numhl = "" })
