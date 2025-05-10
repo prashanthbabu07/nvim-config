@@ -26,35 +26,35 @@ return {
 		vim.cmd.colorscheme("vscode")
 
 		vim.api.nvim_set_hl(0, "NeoTreeIndentMarker", { fg = "#D0D0D0" })
-		-- vim.api.nvim_set_hl(0, "Normal", { bg = "#FAFAFA" })
+		vim.api.nvim_set_hl(0, "Normal", { bg = "#FAFAFA" })
 
-		vim.api.nvim_create_autocmd("ColorScheme", {
-			callback = function()
-				local bg_color = "#FAFAFA"
-				local hl_groups = {
-					"Normal",
-					"NormalNC",
-					"SignColumn",
-					"StatusLine",
-					"StatusLineNC",
-					"VertSplit",
-					"EndOfBuffer",
-					"LineNr",
-					"CursorLineNr",
-					"WinSeparator",
-					"FoldColumn",
-					"NeoTreeNormal",
-					"NeoTreeNormalNC",
-					"NeoTreeEndOfBuffer",
-					"NeoTreeStatusLine",
-					"NeoTreeVertSplit",
-				}
-				for _, hl in ipairs(hl_groups) do
-					vim.api.nvim_set_hl(0, hl, { bg = bg_color })
-				end
-			end,
-		})
+		local bg_color = "#FAFAFA"
+		local hl_groups = {
+			"Normal",
+			"NormalNC",
+			"SignColumn",
+			"StatusLine",
+			"StatusLineNC",
+			"VertSplit",
+			"EndOfBuffer",
+			"LineNr",
+			"CursorLineNr",
+			"WinSeparator",
+			"FoldColumn",
+			"NeoTreeNormal",
+			"NeoTreeNormalNC",
+			"NeoTreeEndOfBuffer",
+			"NeoTreeStatusLine",
+			"NeoTreeVertSplit",
+		}
+		for _, hl in ipairs(hl_groups) do
+			vim.api.nvim_set_hl(0, hl, { bg = bg_color  })
+		end
 
+		vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = bg_color, bg = bg_color })
+		vim.api.nvim_set_hl(0, "NeoTreeEndOfBuffer", { fg = bg_color, bg = bg_color })
+
+		--
 		-- Light grey background fix for neo-tree
 		-- local light_grey = "#E5E5E5"
 		--       local cursor_line = "#D0D0D0"
