@@ -1,4 +1,3 @@
-
 vim.opt.expandtab = true -- Tabs become spaces
 vim.opt.shiftwidth = 4 -- Auto-indent uses 4 spaces
 vim.opt.tabstop = 4 -- A tab is 4 spaces
@@ -21,7 +20,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.opt.number = true
- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 vim.opt.numberwidth = 1
 vim.opt.statuscolumn = "%s%1l   "
 
@@ -39,4 +38,9 @@ vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 
 vim.opt.splitright = true
 -- vim.o.winborder = "rounded"  -- Options: "single", "double", "rounded", "shadow", etc.
-
+--
+-- local custom_blue = "#0067c8"
+-- vim.api.nvim_set_hl(0, "Directory", { fg = custom_blue })
+-- -- For Neo-tree or other plugins that use custom groups
+-- vim.api.nvim_set_hl(0, "NeoTreeDirectoryName", { fg = custom_blue })
+-- vim.api.nvim_set_hl(0, "NeoTreeDirectoryIcon", { fg = custom_blue })
