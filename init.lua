@@ -21,9 +21,6 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-require("vim-options")
-require("autosave")
-
 -- Setup lazy.nvim
 require("lazy").setup({
 	spec = { import = "plugins" },
@@ -46,3 +43,6 @@ require("lazy").setup({
 	vim.lsp.buf.format()
 end, { desc = "Format current buffer" })
 ]]
+
+require("autosave")
+require("vim-options")
