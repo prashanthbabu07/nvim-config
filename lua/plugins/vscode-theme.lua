@@ -4,6 +4,7 @@ return {
 		-- Lua:
 		-- For dark theme (neovim's default)
 		-- vim.o.background = "dark"
+		--
 		-- For light theme
 		-- vim.o.background = "light"
 
@@ -48,11 +49,16 @@ return {
 			"NeoTreeVertSplit",
 		}
 		for _, hl in ipairs(hl_groups) do
-			vim.api.nvim_set_hl(0, hl, { bg = bg_color  })
+			vim.api.nvim_set_hl(0, hl, { bg = bg_color })
 		end
 
 		vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = bg_color, bg = bg_color })
 		vim.api.nvim_set_hl(0, "NeoTreeEndOfBuffer", { fg = bg_color, bg = bg_color })
+
+		vim.api.nvim_set_hl(0, "LineNr", { fg = "#6a93b9", bg = "NONE" })
+		vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#6a93b9", bold = true, bg = "NONE" })
+		-- vim.api.nvim_set_hl(0, "NeoTreeDirectoryName", { fg = "#6a93b9" })
+		vim.api.nvim_set_hl(0, "NeoTreeDirectoryIcon", { fg = "#6a93b9" })
 
 		--
 		-- Light grey background fix for neo-tree
