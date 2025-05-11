@@ -17,6 +17,6 @@ return {
             filetypes = { "lua", "javascript", "typescript", "html", "css", "csharp" },
 		})
 
-		vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, {})
+		vim.keymap.set("n", "<leader>lsf", vim.lsp.buf.format, {})
 	end,
 }
