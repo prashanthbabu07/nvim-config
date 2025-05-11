@@ -24,6 +24,8 @@ vim.g.mapleader = " "
 vim.opt.cursorline = true
 
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
+vim.keymap.set("n", "K", "<Nop>")
+
 
 vim.opt.splitright = true
 -- vim.o.winborder = "rounded"  -- Options: "single", "double", "rounded", "shadow", etc.
