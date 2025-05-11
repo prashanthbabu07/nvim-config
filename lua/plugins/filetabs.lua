@@ -23,7 +23,7 @@ return {
         })
 
         --  Key mappings for bufferline
-        vim.keymap.set("n", "<S-p>", ":BufferLineCycleNext<CR>", {})
-        vim.keymap.set("n", "<S-n>", ":BufferLineCyclePrev<CR>", {})
+        vim.keymap.set("n", "<S-n>", ":BufferLineCycleNext<CR>", {})
+        vim.keymap.set("n", "<S-p>", ":BufferLineCyclePrev<CR>", {})
     end,
 }
