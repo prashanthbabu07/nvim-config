@@ -44,6 +44,6 @@ return {
         )
 
         -- terminal mode
-        vim.keymap.set("t", "<leader>e", "<C-\\><C-n>:Neotree toggle position=left<CR>", { noremap = true, silent = true })
+        vim.keymap.set("t", "<leader>fe", "<C-\\><C-n>:Neotree toggle position=left<CR>", { noremap = true, silent = true })
     end,
 }
