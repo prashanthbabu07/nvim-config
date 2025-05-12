@@ -72,6 +72,31 @@ local function dotnet_debugging_config(dap)
 	end
 end
 
+local function rust_debugging_config(dap)
+	dap.adapters.codelldb = {
+		type = "server",
+		port = "${port}",
+		executable = {
+			command = vim.fn.stdpath("data") .. "/mason/bin/codelldb",
+			args = { "--port", "${port}" },
+		},
+	}
+
+	dap.configurations.rust = {
+		{
+			name = "Launch",
+			type = "codelldb",
+			request = "launch",
+			program = function()
+				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
+			end,
+			cwd = "${workspaceFolder}",
+			stopOnEntry = false,
+			-- runInTerminal = false,
+		},
+	}
+end
+
 return {
 	"mfussenegger/nvim-dap",
 	dependencies = {
@@ -86,6 +111,7 @@ return {
 		require("dapui").setup()
 		require("dap-go").setup()
 		dotnet_debugging_config(dap)
+		rust_debugging_config(dap)
 
 		dap.listeners.before.attach.dapui_config = function()
 			dapui.open()
