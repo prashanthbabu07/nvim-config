@@ -97,6 +97,29 @@ local function rust_debugging_config(dap)
 	}
 end
 
+local function python_debugging_config(dap)
+	require("mason-nvim-dap").setup({
+		ensure_installed = { "python" }, -- auto-installs debugpy
+	})
+
+	dap.adapters.python = {
+		type = "executable",
+		command = vim.fn.exepath("python3"),
+		args = { "-m", "debugpy.adapter" },
+	}
+	dap.configurations.python = {
+		{
+			type = "python",
+			request = "launch",
+			name = "Launch file",
+			program = "${file}",
+			pythonPath = function()
+				return vim.fn.exepath("python3")
+			end,
+		},
+	}
+end
+
 return {
 	"mfussenegger/nvim-dap",
 	dependencies = {
@@ -107,11 +130,10 @@ return {
 	config = function()
 		local dap = require("dap")
 		local dapui = require("dapui")
+		dap.set_log_level("TRACE")
 
 		require("dapui").setup()
 		require("dap-go").setup()
-		dotnet_debugging_config(dap)
-		rust_debugging_config(dap)
 
 		dap.listeners.before.attach.dapui_config = function()
 			dapui.open()
@@ -125,6 +147,10 @@ return {
 		dap.listeners.before.event_exited.dapui_config = function()
 			dapui.close()
 		end
+
+		dotnet_debugging_config(dap)
+		rust_debugging_config(dap)
+		python_debugging_config(dap)
 
 		vim.keymap.set("n", "<Leader>B", dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
 		vim.keymap.set("n", "<F5>", dap.continue, { desc = "Continue" })
