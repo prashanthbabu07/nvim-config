@@ -11,14 +11,14 @@ return {
 				-- null_ls.builtins.diagnostics.eslint,
 				-- require("none-ls.diagnostics.eslint"), -- requires none-ls-extras.nvim
 				null_ls.builtins.formatting.csharpier, -- requires csharpier installed
-                -- null_ls.builtins.diagnostics.csharp_ls,
+				-- null_ls.builtins.diagnostics.csharp_ls,
 				-- null_ls.builtins.diagnostics.omnisharp, -- for linting if available
 			},
-            filetypes = { "lua", "javascript", "typescript", "html", "css", "csharp" },
+			filetypes = { "lua", "javascript", "typescript", "html", "css", "csharp" },
 		})
 
 		vim.keymap.set("n", "<leader>lsf", vim.lsp.buf.format, {
-            desc = "Format curent buffer",
-        })
+			desc = "Format curent buffer",
+		})
 	end,
 }

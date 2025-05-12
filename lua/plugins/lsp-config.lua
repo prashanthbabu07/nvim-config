@@ -1,42 +1,41 @@
--- https://github.com/neovim/nvim-lspconfig
-
 return {
     {
         "williamboman/mason.nvim",
+        lazy = false,
         config = function()
             require("mason").setup()
         end,
     },
     {
         "williamboman/mason-lspconfig.nvim",
-        config = function()
-            require("mason-lspconfig").setup({
-                ensure_installed = {
-                    "lua_ls",
-                    "ts_ls",
-                    "rust_analyzer",
-                    "csharp_ls",
-                    "pyright",
-                    "ruff",
-                },
-            })
-        end,
+        lazy = false,
+        opts = {
+            auto_install = true,
+        },
     },
     {
         "neovim/nvim-lspconfig",
-        -- "Hoffs/omnisharp-extended-lsp.nvim",
-
+        lazy = false,
         config = function()
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            local lspconfig = require("lspconfig")
-            -- local telescope = require("telescopes.builtin")
 
+            local lspconfig = require("lspconfig")
+            lspconfig.ts_ls.setup({
+                capabilities = capabilities,
+            })
+            lspconfig.html.setup({
+                capabilities = capabilities,
+            })
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
             })
-
-            lspconfig.ts_ls.setup({
-                capabilities = capabilities,
+            lspconfig.csharp_ls.setup({
+                cmd = { "csharp-ls" }, -- Ensure csharp-ls is in your PATH
+                on_attach = function(client, bufnr)
+                    local opts = { buffer = bufnr }
+                    vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
+                end,
+                root_dir = lspconfig.util.root_pattern("*.sln", ".git", "*.csproj"),
             })
 
             lspconfig.rust_analyzer.setup({
@@ -65,26 +64,6 @@ return {
                     },
                 },
             })
-
-            lspconfig.csharp_ls.setup({
-                cmd = { "csharp-ls" }, -- Ensure csharp-ls is in your PATH
-                on_attach = function(client, bufnr)
-                    local opts = { buffer = bufnr }
-                    vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
-                end,
-                root_dir = lspconfig.util.root_pattern("*.sln", ".git", "*.csproj"),
-            })
-
-            -- lspconfig.omnisharp.setup({
-            -- 	cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
-            -- 	enable_editorconfig_support = true,
-            -- 	enable_roslyn_analyzers = true,
-            -- 	organize_imports_on_format = true,
-            -- 	--[[enable_import_completion = true,
-            -- 	handlers = {
-            -- 		["textDocument/definition"] = require("omnisharp_extended").handler,
-            -- 	},]]
-            -- })
 
             vim.diagnostic.config({
                 virtual_text = {
