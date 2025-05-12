@@ -15,9 +15,9 @@ return {
                         separator = true,
                     },
                 },
-                diagnostics = "nvim_lsp", -- Optional: show LSP diagnostics in the tabline
+                diagnostics = "nvim_lsp",  -- Optional: show LSP diagnostics in the tabline
                 separator_style = "slant", -- Optional: choose your preferred separator style
-                show_close_icon = false, -- Optional: hide the close icon
+                show_close_icon = false,   -- Optional: hide the close icon
                 show_tab_indicators = true,
             },
         })

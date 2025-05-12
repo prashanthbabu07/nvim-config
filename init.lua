@@ -34,9 +34,9 @@ require("lazy").setup({
 	change_detection = {
 		notify = false, -- disables the "# Config Change Detected" message
 	},
-	ui = {
-		border = "rounded", -- Or "single", "shadow", or a custom border
-	},
+	-- ui = {
+	-- 	border = "rounded", -- Or "single", "shadow", or a custom border
+	-- },
 })
 
 --[[ vim.keymap.set("n", "<leader>f", function()
@@ -45,4 +45,5 @@ end, { desc = "Format current buffer" })
 ]]
 
 require("autosave")
-require("vim-options")
+require("vim-config")
+
