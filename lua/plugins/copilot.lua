@@ -1,9 +1,9 @@
 return {
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
-        lazy  = false,
+		lazy = false,
 		dependencies = {
-			{ "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+			{ "github/copilot.vim" },
 			{ "nvim-lua/plenary.nvim" }, -- for curl, log and async functions
 		},
 		build = "make tiktoken", -- Only on MacOS or Linux
@@ -21,12 +21,12 @@ return {
 			},
 		},
 		keys = {
-			{ "<leader>ccn", ":CopilotChat Rename<CR>", mode = "v", desc = "Rename the variable" },
-			{ "<leader>ccc", ":CopilotChat<CR>", mode = "n", desc = "Chat with Copilot" },
-			{ "<leader>cce", ":CopilotChatExplain<CR>", mode = "v", desc = "Explain Code" },
-			{ "<leader>ccr", ":CopilotChatReview<CR>", mode = "v", desc = "Review Code" },
-			{ "<leader>ccf", ":CopilotChatFix<CR>", mode = "v", desc = "Fix Code Issues" },
-			{ "<leader>cco", ":CopilotChatOptimize<CR>", mode = "v", desc = "Optimize Code" },
+			{ "<leader>cpn", ":CopilotChat Rename<CR>", mode = "v", desc = "Rename the variable" },
+			{ "<leader>cpc", ":CopilotChat<CR>", mode = "n", desc = "Chat with Copilot" },
+			{ "<leader>cpe", ":CopilotChatExplain<CR>", mode = "v", desc = "Explain Code" },
+			{ "<leader>cpr", ":CopilotChatReview<CR>", mode = "v", desc = "Review Code" },
+			{ "<leader>cpf", ":CopilotChatFix<CR>", mode = "v", desc = "Fix Code Issues" },
+			{ "<leader>cpo", ":CopilotChatOptimize<CR>", mode = "v", desc = "Optimize Code" },
 			{ "<leader>cpd", ":CopilotChatDocs<CR>", mode = "v", desc = "Generate Docs" },
 			{ "<leader>cpt", ":CopilotChatTests<CR>", mode = "v", desc = "Generate Tests" },
 			{ "<leader>cpm", ":CopilotChatCommit<CR>", mode = "n", desc = "Generate Commit Message" },
@@ -35,20 +35,15 @@ return {
 		config = function()
 			require("CopilotChat").setup({})
 
-			-- Disable default <Tab> mapping
 			vim.g.copilot_no_tab_map = true
 
-			-- Custom key mapping for accepting suggestion
 			vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { expr = true, silent = true })
 
-			-- OPTIONAL: Map for navigating suggestions
 			vim.api.nvim_set_keymap("i", "<C-K>", "copilot#Next()", { expr = true, silent = true })
 			vim.api.nvim_set_keymap("i", "<C-H>", "copilot#Previous()", { expr = true, silent = true })
 
-			-- OPTIONAL: Turn Copilot on/off
 			vim.api.nvim_set_keymap("n", "<leader>cpt", ":CopilotToggle<CR>", { silent = true })
 
-			-- OPTIONAL: Set up a custom command to toggle Copilot
 			vim.api.nvim_create_user_command("CopilotToggle", function()
 				if vim.g.copilot_enabled then
 					vim.g.copilot_enabled = false
@@ -61,9 +56,9 @@ return {
 
 			-- You can also set global settings if needed
 			vim.g.copilot_filetypes = {
-				["*"] = true, -- Enable for all filetypes
-				markdown = true, -- Disable for markdown
-				yaml = true, -- Disable for yaml
+				["*"] = true,
+				markdown = true,
+				yaml = true,
 			}
 		end,
 	},
