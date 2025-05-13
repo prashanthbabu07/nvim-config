@@ -10,11 +10,11 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
 			if autosave_timer then
 				autosave_timer:stop()
 			end
-			-- Set a short delay (e.g., 500ms) before saving test 
+			-- Set a short delay (e.g., 500ms) before saving test
 			autosave_timer = vim.defer_fn(function()
 				vim.cmd("silent! write")
 				vim.api.nvim_echo({ { "Auto-saved!", "None" } }, false, {})
-                -- vim.notify("Auto-saved!", vim.log.levels.INFO, { title = "Neovim" })
+				-- vim.notify("Auto-saved!", vim.log.levels.INFO, { title = "Neovim" })
 			end, 500)
 		end
 	end,
