@@ -10,6 +10,7 @@ return {
 
 		catppuccin.setup({
 			flavour = "latte", -- latte, frappe, macchiato, mocha
+            no_italic = true,
 			color_overrides = {
 				all = {
 					-- text = "#1c1c1c",
