@@ -19,7 +19,7 @@ return {
 					"ts_ls",
 					"rust_analyzer",
 					"csharp_ls",
-					"pyright",
+					-- "pyright",
 					"ruff",
 				},
 			})
@@ -52,16 +52,23 @@ return {
 
 			lspconfig.rust_analyzer.setup({
 				capabilities = capabilities,
+				settings = {
+					["rust-analyzer"] = {
+						checkOnSave = {
+							enable = false, -- 🔧 Disable to avoid duplicate rustc diagnostics
+						},
+					},
+				},
 			})
 
 			-- PYRIGHT: type-check, code nav
-			lspconfig.pyright.setup({
-				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					-- disable pyright formatting
-					client.server_capabilities.documentFormattingProvider = false
-				end,
-			})
+			-- lspconfig.pyright.setup({
+			-- 	capabilities = capabilities,
+			-- 	on_attach = function(client, bufnr)
+			-- 		-- disable pyright formatting
+			-- 		client.server_capabilities.documentFormattingProvider = false
+			-- 	end,
+			-- })
 
 			-- RUFF (the new LSP)
 			lspconfig.ruff.setup({
@@ -79,7 +86,14 @@ return {
 
 			vim.diagnostic.config({
 				virtual_text = {
+					source = "always",
 					severity = { min = vim.diagnostic.severity.HINT },
+					format = function(diagnostic)
+						return string.format("%s [%s]", diagnostic.message, diagnostic.source)
+					end,
+				},
+				float = {
+					source = "always",
 				},
 				signs = true,
 				underline = true,

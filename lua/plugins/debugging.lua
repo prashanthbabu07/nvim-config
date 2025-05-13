@@ -163,9 +163,9 @@ return {
 		end, { desc = "Step Into" })
 
 		-- breakpoint character for visual queue
-		vim.fn.sign_define("DapBreakpoint", { text = "🔴", texthl = "red", linehl = "", numhl = "" })
-		vim.fn.sign_define("DapBreakpointCondition", { text = "🔴", texthl = "red", linehl = "", numhl = "" })
-		vim.fn.sign_define("DapBreakpointRejected", { text = "❌", texthl = "red", linehl = "", numhl = "" })
+		-- vim.fn.sign_define("DapBreakpoint", { text = "🔴", texthl = "red", linehl = "", numhl = "" })
+		-- vim.fn.sign_define("DapBreakpointCondition", { text = "🔴", texthl = "red", linehl = "", numhl = "" })
+		-- vim.fn.sign_define("DapBreakpointRejected", { text = "❌", texthl = "red", linehl = "", numhl = "" })
 		-- vim.fn.sign_define("DapLogPoint", { text = "💬", texthl = "", linehl = "", numhl = "" })
 	end,
 }
