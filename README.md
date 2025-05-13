@@ -56,3 +56,6 @@ copy to ~/.fonts --copy the font's directory
 # Github Copilot 
 C-y : Accept suggestion from copilot chat 
 #buffer:1 Generate documentation for selection 
+
+# format all file in a project
+stylua .
