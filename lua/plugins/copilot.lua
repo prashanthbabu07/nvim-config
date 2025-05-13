@@ -1,7 +1,7 @@
 return {
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
-		lazy = false,
+		lazy = true,
 		dependencies = {
 			{ "github/copilot.vim" },
 			{ "nvim-lua/plenary.nvim" }, -- for curl, log and async functions
