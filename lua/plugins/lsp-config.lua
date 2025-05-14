@@ -40,6 +40,10 @@ return {
             })
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
+                on_attach = function(client, bufnr)
+                    local opts = { buffer = bufnr }
+                    vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
+                end,
             })
             lspconfig.csharp_ls.setup({
                 cmd = { "csharp-ls" }, -- Ensure csharp-ls is in your PATH

@@ -27,3 +27,8 @@ vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 vim.keymap.set("n", "K", "<Nop>")
 
 vim.opt.splitright = true
+
+-- Show menu for command line
+vim.cmd("set wildmenu")
+vim.cmd("set wildmode=list:longest")
+
