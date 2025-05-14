@@ -30,14 +30,16 @@ return {
         lazy = false,
         config = function()
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
             local lspconfig = require("lspconfig")
+
             lspconfig.ts_ls.setup({
                 capabilities = capabilities,
             })
+
             lspconfig.html.setup({
                 capabilities = capabilities,
             })
+
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
                 on_attach = function(client, bufnr)
@@ -45,6 +47,7 @@ return {
                     vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
                 end,
             })
+
             lspconfig.csharp_ls.setup({
                 cmd = { "csharp-ls" }, -- Ensure csharp-ls is in your PATH
                 on_attach = function(client, bufnr)
