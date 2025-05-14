@@ -19,7 +19,7 @@ return {
 					"ts_ls",
 					"rust_analyzer",
 					"csharp_ls",
-					-- "pyright",
+					"pyright",
 					"ruff",
 				},
 			})
@@ -62,13 +62,13 @@ return {
 			})
 
 			-- PYRIGHT: type-check, code nav
-			-- lspconfig.pyright.setup({
-			-- 	capabilities = capabilities,
-			-- 	on_attach = function(client, bufnr)
-			-- 		-- disable pyright formatting
-			-- 		client.server_capabilities.documentFormattingProvider = false
-			-- 	end,
-			-- })
+			lspconfig.pyright.setup({
+				capabilities = capabilities,
+				on_attach = function(client, bufnr)
+					-- disable pyright formatting
+					client.server_capabilities.documentFormattingProvider = false
+				end,
+			})
 
 			-- RUFF (the new LSP)
 			lspconfig.ruff.setup({
