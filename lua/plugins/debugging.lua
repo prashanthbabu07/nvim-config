@@ -124,6 +124,38 @@ local function js_debugging_config(dap)
     require("mason-nvim-dap").setup({
         ensure_installed = { "js-debug-adapter" }, -- auto-installs js-debug-adapter
     })
+
+    dap.adapters["pwa-node"] = {
+        type = "server",
+        host = "localhost",
+        port = "${port}",
+        executable = {
+            command = "node",
+            args = {
+                vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
+                "${port}",
+            },
+        },
+    }
+
+    for _, language in ipairs({ "typescript", "javascript" }) do
+        dap.configurations[language] = {
+            {
+                type = "pwa-node",
+                request = "launch",
+                name = "Launch file",
+                program = "${file}",
+                cwd = "${workspaceFolder}",
+            },
+            {
+                type = "pwa-node",
+                request = "attach",
+                name = "Attach",
+                processId = require("dap.utils").pick_process,
+                cwd = "${workspaceFolder}",
+            },
+        }
+    end
 end
 
 return {
@@ -133,6 +165,12 @@ return {
         "rcarriga/nvim-dap-ui",
         "leoluz/nvim-dap-go",
         "jay-babu/mason-nvim-dap.nvim",
+        "mxsdev/nvim-dap-vscode-js",
+        {
+            "microsoft/vscode-js-debug",
+            version = "1.x",
+            build = "npm i && npm run compile vsDebugServerBundle && mv dist out",
+        },
     },
     config = function()
         local dap = require("dap")
@@ -158,6 +196,7 @@ return {
         dotnet_debugging_config(dap)
         rust_debugging_config(dap)
         python_debugging_config(dap)
+        js_debugging_config(dap)
 
         vim.keymap.set("n", "<Leader>B", dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
         vim.keymap.set("n", "<F5>", dap.continue, { desc = "Continue" })
