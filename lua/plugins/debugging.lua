@@ -133,7 +133,7 @@ local function js_debugging_config(dap)
             command = "node",
             args = {
                 vim.fs.normalize(vim.fn.stdpath("data"))
-                .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
+                    .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
                 "${port}",
             },
         },
@@ -154,6 +154,14 @@ local function js_debugging_config(dap)
                 name = "Attach",
                 processId = require("dap.utils").pick_process,
                 cwd = vim.fn.getcwd(),
+            },
+            {
+                type = "pwa-chrome",
+                request = "launch",
+                name = "Debug Angular (Chrome)",
+                url = "http://localhost:4200",
+                webRoot = "${workspaceFolder}/src",
+                runtimeExecutable = "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser",
             },
         }
     end
