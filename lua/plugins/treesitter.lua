@@ -6,7 +6,16 @@ return {
     config = function()
         local config = require("nvim-treesitter.configs")
         config.setup({
-            ensure_installed = { "lua", "javascript", "c_sharp" },
+            ensure_installed = {
+                "lua",
+                "javascript",
+                "c_sharp",
+                "typescript",
+                "rust",
+                "go",
+                "html",
+                "razor",  -- asp.net
+            },
             highlight = { enable = true },
             indent = { enable = true },
         })

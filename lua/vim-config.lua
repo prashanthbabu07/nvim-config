@@ -30,5 +30,6 @@ vim.opt.splitright = true
 
 -- Show menu for command line
 vim.cmd("set wildmenu")
+-- vim.cmd("set wildoptions=pum")
 vim.cmd("set wildmode=list:longest")
 

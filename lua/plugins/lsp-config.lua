@@ -21,6 +21,7 @@ return {
                     "csharp_ls",
                     "pyright",
                     "ruff",
+                    "html",
                 },
             })
         end,
