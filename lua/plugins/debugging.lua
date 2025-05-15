@@ -158,7 +158,7 @@ local function js_debugging_config(dap)
             {
                 type = "pwa-chrome",
                 request = "launch",
-                name = "Debug Angular (Chrome)",
+                name = "Debug Angular (Brave)",
                 url = "http://localhost:4200",
                 webRoot = "${workspaceFolder}/src",
                 runtimeExecutable = "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser",
