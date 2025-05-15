@@ -139,6 +139,19 @@ local function js_debugging_config(dap)
         },
     }
 
+    dap.adapters["pwa-chrome"] = {
+        type = "server",
+        host = "localhost",
+        port = "${port}", -- ✅ works when passed to both
+        executable = {
+            command = "node",
+            args = {
+                vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
+                "${port}", -- ✅ will be replaced
+            },
+        },
+    }
+
     for _, language in ipairs({ "typescript", "javascript" }) do
         dap.configurations[language] = {
             {
@@ -160,7 +173,7 @@ local function js_debugging_config(dap)
                 request = "launch",
                 name = "Debug Angular (Brave)",
                 url = "http://localhost:4200",
-                webRoot = "${workspaceFolder}/src",
+                webRoot = "${workspaceFolder}",
                 runtimeExecutable = "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser",
             },
         }
