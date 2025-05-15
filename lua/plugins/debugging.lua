@@ -132,7 +132,8 @@ local function js_debugging_config(dap)
         executable = {
             command = "node",
             args = {
-                vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
+                vim.fs.normalize(vim.fn.stdpath("data"))
+                .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
                 "${port}",
             },
         },
@@ -145,14 +146,14 @@ local function js_debugging_config(dap)
                 request = "launch",
                 name = "Launch file",
                 program = "${file}",
-                cwd = "${workspaceFolder}",
+                cwd = vim.fn.getcwd(),
             },
             {
                 type = "pwa-node",
                 request = "attach",
                 name = "Attach",
                 processId = require("dap.utils").pick_process,
-                cwd = "${workspaceFolder}",
+                cwd = vim.fn.getcwd(),
             },
         }
     end
@@ -165,12 +166,6 @@ return {
         "rcarriga/nvim-dap-ui",
         "leoluz/nvim-dap-go",
         "jay-babu/mason-nvim-dap.nvim",
-        "mxsdev/nvim-dap-vscode-js",
-        {
-            "microsoft/vscode-js-debug",
-            version = "1.x",
-            build = "npm i && npm run compile vsDebugServerBundle && mv dist out",
-        },
     },
     config = function()
         local dap = require("dap")
