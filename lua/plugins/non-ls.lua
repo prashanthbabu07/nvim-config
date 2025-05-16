@@ -18,7 +18,7 @@ return {
 				-- null_ls.builtins.diagnostics.csharp_ls,
 				-- null_ls.builtins.diagnostics.omnisharp, -- for linting if available
 			},
-			filetypes = { "lua", "javascript", "typescript", "html", "css", "csharp" },
+			filetypes = { "lua", "javascript", "typescript", "html", "css", "csharp", "rust" },
 		})
 
 		vim.keymap.set("n", "<leader>lsf", vim.lsp.buf.format, {
