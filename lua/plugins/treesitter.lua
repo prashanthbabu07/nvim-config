@@ -14,9 +14,9 @@ return {
                 "rust",
                 "go",
                 "html",
-                "razor",  -- asp.net
+                "razor", -- asp.net
             },
-            highlight = { enable = true },
+            highlight = { enable = true, additional_vim_regex_highlighting = false },
             indent = { enable = true },
         })
     end,
