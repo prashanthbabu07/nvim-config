@@ -1,7 +1,13 @@
 return {
     {
         "tpope/vim-fugitive",
+        dependencies = {
+            "nvim-telescope/telescope.nvim",
+            "isak102/telescope-git-file-history.nvim",
+            "nvim-lua/plenary.nvim",
+        },
         config = function()
+            require("telescope").load_extension("git_file_history")
             vim.keymap.set("n", "<leader>gs", ":Git<CR>", { desc = "Git status" })
             vim.keymap.set("n", "<leader>gc", ":Git commit<CR>", { desc = "Git commit" })
             vim.keymap.set("n", "<leader>gP", ":Git push<CR>", { desc = "Git push" })
