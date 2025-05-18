@@ -54,4 +54,10 @@ return {
             vim.cmd("colorscheme github_light")
         end,
     },
+    {
+        "Mofiqul/vscode.nvim",
+        config = function()
+            require("vscode").setup({})
+        end,
+    },
 }

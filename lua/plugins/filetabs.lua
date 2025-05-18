@@ -13,7 +13,7 @@ return {
             options = {
                 mode = "buffers", -- Display tab pages instead of buffers
                 close_command = "bdelete! %d",
-                style_preset = bufferline.style_preset.no_italic,
+                -- style_preset = bufferline.style_preset.no_italic,
                 offsets = {
                     {
                         filetype = "neo-tree",
@@ -30,7 +30,7 @@ return {
         })
 
         --  Key mappings for bufferline
-        vim.keymap.set("n", "<S-n>", ":BufferLineCycleNext<CR>", {})
-        vim.keymap.set("n", "<S-p>", ":BufferLineCyclePrev<CR>", {})
+        vim.keymap.set("n", "<leader>bn", ":BufferLineCycleNext<CR>", {})
+        vim.keymap.set("n", "<leader>bp", ":BufferLineCyclePrev<CR>", {})
     end,
 }
