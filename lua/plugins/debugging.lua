@@ -22,18 +22,17 @@ local function dotnet_debugging_config(dap)
         return stat and stat.type == "file"
     end
 
-    local debug_dll = nil
-
-    local function ensure_dll()
-        if debug_dll ~= nil then
-            return debug_dll
-        end
-        local dll = dotnet.get_debug_dll()
-        debug_dll = dll
-        return dll
-    end
-
     for _, value in ipairs({ "cs", "fsharp" }) do
+        local debug_dll = nil
+
+        local function ensure_dll()
+            if debug_dll ~= nil then
+                return debug_dll
+            end
+            local dll = dotnet.get_debug_dll()
+            debug_dll = dll
+            return dll
+        end
         dap.configurations[value] = {
             {
                 type = "coreclr",
