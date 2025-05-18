@@ -118,11 +118,11 @@ return {
             vim.keymap.set("n", "<leader>lsd", vim.lsp.buf.definition, { desc = "Go to definition" })
             vim.keymap.set("n", "<leader>lsD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
             vim.keymap.set({ "n", "v" }, "<leader>lsc", vim.lsp.buf.code_action, { desc = "Code action" })
-            vim.keymap.set({ "n", "v" }, "<leader>ld", function()
-                vim.diagnostic.open_float({
-                    border = "rounded",
-                })
-            end, {}, { desc = "Show diagnostics" })
+            -- vim.keymap.set({ "n", "v" }, "<leader>ld", function()
+            --     vim.diagnostic.open_float({
+            --         border = "rounded",
+            --     })
+            -- end, { desc = "Show diagnostics" })
             vim.keymap.set("n", "<leader>lsh", function()
                 vim.lsp.buf.signature_help({
                     border = "rounded",
