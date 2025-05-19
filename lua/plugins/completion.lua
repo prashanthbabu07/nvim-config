@@ -76,6 +76,21 @@ return {
                             end
                         end,
 
+                        -- 👇 Deduplicate identical labels by preferring certain sources
+                        function(entry1, entry2)
+                            if entry1.completion_item.label == entry2.completion_item.label then
+                                local priority = {
+                                    nvim_lsp = 1,
+                                    luasnip = 2,
+                                    buffer = 3,
+                                    path = 4,
+                                }
+                                local p1 = priority[entry1.source.name] or 100
+                                local p2 = priority[entry2.source.name] or 100
+                                return p1 < p2
+                            end
+                        end,
+
                         cmp.config.compare.kind,
                         cmp.config.compare.sort_text,
                         cmp.config.compare.length,
