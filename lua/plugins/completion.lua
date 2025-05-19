@@ -32,27 +32,56 @@ return {
                     documentation = cmp.config.window.bordered(),
                 },
                 mapping = cmp.mapping.preset.insert({
-                    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-                    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                    -- ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+                    -- ["<C-f>"] = cmp.mapping.scroll_docs(4),
                     ["<C-Space>"] = cmp.mapping.complete(),
                     ["<C-e>"] = cmp.mapping.abort(),
-                    -- ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+                    ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
                     ["<Tab>"] = cmp.mapping.select_next_item(),
                     ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-                    ["<CR>"] = cmp.mapping(function(fallback)
-                        if cmp.visible() then
-                            cmp.confirm({ select = true })
-                        else
-                            fallback()
-                        end
-                    end, { "i", "s" }),
+                    -- ["<CR>"] = cmp.mapping(function(fallback)
+                    --     if cmp.visible() then
+                    --         cmp.confirm({ select = true })
+                    --     else
+                    --         fallback()
+                    --     end
+                    -- end, { "i", "s" }),
                 }),
                 sources = cmp.config.sources({
-                    { name = "nvim_lsp" },
-                    { name = "luasnip" }, -- For luasnip users.
-                }, {
-                    { name = "buffer" },
+                    { name = "nvim_lsp", priority = 1000 },
+                    { name = "luasnip",  priority = 750 }, -- For luasnip users.
+                    { name = "buffer",   priority = 500 },
+                    { name = "path",     priority = 250 },
                 }),
+                sorting = {
+                    priority_weight = 2,
+                    comparators = {
+                        cmp.config.compare.offset,
+                        cmp.config.compare.exact,
+                        cmp.config.compare.score,
+                        -- Puts LSP and snippets first
+                        function(entry1, entry2)
+                            local kind_order = {
+                                ["nvim_lsp"] = 1,
+                                ["luasnip"] = 2,
+                                ["buffer"] = 3,
+                                ["path"] = 4,
+                            }
+
+                            local kind1 = kind_order[entry1.source.name] or 100
+                            local kind2 = kind_order[entry2.source.name] or 100
+
+                            if kind1 ~= kind2 then
+                                return kind1 < kind2
+                            end
+                        end,
+
+                        cmp.config.compare.kind,
+                        cmp.config.compare.sort_text,
+                        cmp.config.compare.length,
+                        cmp.config.compare.order,
+                    },
+                },
             })
 
             vim.keymap.set({ "i", "s" }, "<Tab>", function()
