@@ -13,7 +13,7 @@ local save_with_delay = function()
             vim.cmd("silent! write")
             vim.api.nvim_echo({ { "Auto-saved!", "None" } }, false, {})
             -- vim.notify("Auto-saved!", vim.log.levels.INFO, { title = "Neovim" })
-        end, 2000)
+        end, 500)
     end
 end
 
