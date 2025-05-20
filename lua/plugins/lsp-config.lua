@@ -162,20 +162,6 @@ return {
                 end,
             })
 
-            -- vim.api.nvim_create_autocmd("LspAttach", {
-            --     pattern = "*.rs",
-            --     callback = function()
-            --         local clients = vim.lsp.buf_get_clients(0)
-            --         vim.notify("LSP " .. " attached to buffer ")
-            --
-            --         for _, client in pairs(clients) do
-            --             if client.name == "rust_analyzer" and client.server_capabilities.inlayHintProvider then
-            --                 vim.lsp.inlay_hint.enable(true, { bufnr = 0 })
-            --             end
-            --         end
-            --     end,
-            -- })
-
             vim.keymap.set("n", "<leader>lsih", function()
                 local bufnr = vim.api.nvim_get_current_buf()
                 -- vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
