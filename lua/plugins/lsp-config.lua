@@ -3,7 +3,7 @@ local function on_attach(client, bufnr)
     vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
     -- print("LSP attached to buffer", bufnr, client.name)
-    vim.notify("LSP " .. client.name .. " attached to buffer " .. bufnr)
+    -- vim.notify("LSP " .. client.name .. " attached to buffer " .. bufnr)
 end
 
 return {
