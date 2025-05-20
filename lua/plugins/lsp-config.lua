@@ -1,3 +1,8 @@
+local on_attach = function(client, bufnr)
+    local opts = { buffer = bufnr }
+    vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
+end
+
 return {
     {
         "williamboman/mason.nvim",
@@ -35,31 +40,36 @@ return {
 
             lspconfig.ts_ls.setup({
                 capabilities = capabilities,
+                on_attach = on_attach,
             })
 
             lspconfig.html.setup({
                 capabilities = capabilities,
+                on_attach = on_attach,
             })
 
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
-                on_attach = function(client, bufnr)
-                    local opts = { buffer = bufnr }
-                    vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
-                end,
+                on_attach = on_attach,
+                -- on_attach = function(client, bufnr)
+                --     local opts = { buffer = bufnr }
+                --     vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
+                -- end,
             })
 
             lspconfig.csharp_ls.setup({
                 cmd = { "csharp-ls" }, -- Ensure csharp-ls is in your PATH
-                on_attach = function(client, bufnr)
-                    local opts = { buffer = bufnr }
-                    vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
-                end,
+                on_attach = on_attach,
+                -- on_attach = function(client, bufnr)
+                --     local opts = { buffer = bufnr }
+                --     vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
+                -- end,
                 root_dir = lspconfig.util.root_pattern("*.sln", ".git", "*.csproj"),
             })
 
             lspconfig.rust_analyzer.setup({
                 capabilities = capabilities,
+                on_attach = on_attach,
                 settings = {
                     ["rust-analyzer"] = {
                         checkOnSave = {
