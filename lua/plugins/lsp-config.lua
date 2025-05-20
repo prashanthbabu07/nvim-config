@@ -3,7 +3,7 @@ local function on_attach(client, bufnr)
     vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
     -- print("LSP attached to buffer", bufnr, client.name)
-    -- vim.notify("LSP " .. client.name .. " attached to buffer " .. bufnr)
+    vim.notify("LSP " .. client.name .. " attached to buffer " .. bufnr)
 end
 
 return {
@@ -156,11 +156,25 @@ return {
             vim.api.nvim_create_autocmd("LspAttach", {
                 group = vim.api.nvim_create_augroup("UserLspConfig", {}),
                 callback = function(args)
-                    local client = vim.lsp.get_client_by_id(0)
+                    local client = vim.lsp.get_client_by_id(args.data.client_id)
                     local bufnr = args.buf
                     on_attach(client, bufnr)
                 end,
             })
+
+            -- vim.api.nvim_create_autocmd("LspAttach", {
+            --     pattern = "*.rs",
+            --     callback = function()
+            --         local clients = vim.lsp.buf_get_clients(0)
+            --         vim.notify("LSP " .. " attached to buffer ")
+            --
+            --         for _, client in pairs(clients) do
+            --             if client.name == "rust_analyzer" and client.server_capabilities.inlayHintProvider then
+            --                 vim.lsp.inlay_hint.enable(true, { bufnr = 0 })
+            --             end
+            --         end
+            --     end,
+            -- })
 
             vim.keymap.set("n", "<leader>lsih", function()
                 local bufnr = vim.api.nvim_get_current_buf()
