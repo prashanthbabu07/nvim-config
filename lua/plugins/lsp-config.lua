@@ -1,6 +1,9 @@
-local on_attach = function(client, bufnr)
+local function on_attach(client, bufnr)
     local opts = { buffer = bufnr }
     vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    -- print("LSP attached to buffer", bufnr, client.name)
+    -- vim.notify("LSP " .. client.name .. " attached to buffer " .. bufnr)
 end
 
 return {
@@ -75,6 +78,10 @@ return {
                         checkOnSave = {
                             enable = false, -- 🔧 Disable to avoid duplicate rustc diagnostics
                         },
+                        inlayHints = {
+                            typeHints = { enable = true },
+                            parameterHints = { enable = true },
+                        },
                     },
                 },
             })
@@ -145,6 +152,23 @@ return {
                 require("telescope.builtin").lsp_references,
                 { desc = "Find references (Telescope)" }
             )
+
+            vim.api.nvim_create_autocmd("LspAttach", {
+                group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+                callback = function(args)
+                    local client = vim.lsp.get_client_by_id(0)
+                    local bufnr = args.buf
+                    on_attach(client, bufnr)
+                end,
+            })
+
+            vim.keymap.set("n", "<leader>lsih", function()
+                local bufnr = vim.api.nvim_get_current_buf()
+                -- vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+                local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
+                vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
+                -- vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(bufnr), { bufnr = bufnr })
+            end, { desc = "Toggle Inlay Hints" })
         end,
     },
 }
