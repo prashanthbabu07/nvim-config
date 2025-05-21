@@ -97,7 +97,7 @@ return {
                 settings = {
                     ["rust-analyzer"] = {
                         checkOnSave = {
-                            enable = false  ,
+                            enable = true,
                         },
                         inlayHints = {
                             typeHints = { enable = true },
