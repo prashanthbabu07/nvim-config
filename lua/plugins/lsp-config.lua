@@ -14,26 +14,47 @@ return {
             require("mason").setup()
         end,
     },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        lazy = false,
-        opts = {
-            auto_install = true,
-        },
-        config = function()
-            require("mason-lspconfig").setup({
-                ensure_installed = {
-                    "lua_ls",
-                    "ts_ls",
-                    "rust_analyzer",
-                    "csharp_ls",
-                    "pyright",
-                    "ruff",
-                    "html",
-                },
-            })
-        end,
-    },
+    -- {
+    --     "williamboman/mason-lspconfig.nvim",
+    --     lazy = false,
+    --     opts = {
+    --         auto_install = true,
+    --     },
+    --     config = function()
+    --         local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    --         local lspconfig = require("lspconfig")
+    --         require("mason-lspconfig").setup({
+    --             ensure_installed = {
+    --                 "lua_ls",
+    --                 "ts_ls",
+    --                 "rust_analyzer",
+    --                 "csharp_ls",
+    --                 "pyright",
+    --                 "ruff",
+    --                 "html",
+    --             },
+    --             handlers = {
+    --                 rust_analyzer = function()
+    --                     lspconfig.rust_analyzer.setup({
+    --                         capabilities = capabilities,
+    --                         on_attach = on_attach,
+    --                         settings = {
+    --                             ["rust-analyzer"] = {
+    --                                 checkOnSave = {
+    --                                     enable = true, -- 🔧 Disable to avoid duplicate rustc diagnostics
+    --                                 },
+    --                                 inlayHints = {
+    --                                     typeHints = { enable = true },
+    --                                     parameterHints = { enable = true },
+    --                                 },
+    --                             },
+    --                         },
+    --                     })
+    --                 end,
+    --             },
+    --         })
+    --     end,
+    -- },
     {
         "neovim/nvim-lspconfig",
         lazy = false,
@@ -76,11 +97,14 @@ return {
                 settings = {
                     ["rust-analyzer"] = {
                         checkOnSave = {
-                            enable = false, -- 🔧 Disable to avoid duplicate rustc diagnostics
+                            enable = false  ,
                         },
                         inlayHints = {
                             typeHints = { enable = true },
                             parameterHints = { enable = true },
+                        },
+                        diagnostics = {
+                            enable = true,
                         },
                     },
                 },
@@ -153,14 +177,14 @@ return {
                 { desc = "Find references (Telescope)" }
             )
 
-            vim.api.nvim_create_autocmd("LspAttach", {
-                group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-                callback = function(args)
-                    local client = vim.lsp.get_client_by_id(args.data.client_id)
-                    local bufnr = args.buf
-                    on_attach(client, bufnr)
-                end,
-            })
+            -- vim.api.nvim_create_autocmd("LspAttach", {
+            --     group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
+            --     callback = function(args)
+            --         local client = vim.lsp.get_client_by_id(args.data.client_id)
+            --         local bufnr = args.buf
+            --         on_attach(client, bufnr)
+            --     end,
+            -- })
 
             vim.keymap.set("n", "<leader>lsih", function()
                 local bufnr = vim.api.nvim_get_current_buf()
