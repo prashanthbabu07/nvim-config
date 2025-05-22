@@ -69,11 +69,36 @@ return {
                     -- end, { "i", "s" }),
                 }),
                 sources = cmp.config.sources({
-                    { name = "nvim_lsp", priority = 1000 },
-                    { name = "luasnip",  priority = 750 }, -- For luasnip users.
-                    { name = "buffer",   priority = 500 },
-                    { name = "path",     priority = 250 },
+                    {
+                        name = "nvim_lsp",
+                        priority = 1000,
+                        entry_filter = function(entry, ctx)
+                            -- Filter out 'Text' kinds — often irrelevant
+                            return entry:get_kind() ~= cmp.lsp.CompletionItemKind.Text
+                        end,
+                    },
+                    { name = "luasnip", priority = 750 }, -- For luasnip users.
+                    {
+                        name = "buffer",
+                        priority = 250,
+                        entry_filter = function(entry, _)
+                            -- Only allow alphanumeric buffer words (no weird `ta i` or similar)
+                            return entry:get_insert_text():match("^%w+$")
+                        end,
+                    },
+                    { name = "path", priority = 500 },
                 }),
+                formatting = {
+                    format = function(entry, vim_item)
+                        vim_item.menu = ({
+                            nvim_lsp = "[LSP]",
+                            luasnip = "[Snip]",
+                            buffer = "[Buf]",
+                            path = "[Path]",
+                        })[entry.source.name]
+                        return vim_item
+                    end,
+                },
                 sorting = {
                     priority_weight = 2,
                     comparators = {
@@ -85,8 +110,8 @@ return {
                             local kind_order = {
                                 ["nvim_lsp"] = 1,
                                 ["luasnip"] = 2,
-                                ["buffer"] = 3,
-                                ["path"] = 4,
+                                ["buffer"] = 4,
+                                ["path"] = 3,
                             }
 
                             local kind1 = kind_order[entry1.source.name] or 100
