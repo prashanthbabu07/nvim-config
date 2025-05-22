@@ -14,47 +14,32 @@ return {
             require("mason").setup()
         end,
     },
-    -- {
-    --     "williamboman/mason-lspconfig.nvim",
-    --     lazy = false,
-    --     opts = {
-    --         auto_install = true,
-    --     },
-    --     config = function()
-    --         local capabilities = require("cmp_nvim_lsp").default_capabilities()
-    --         local lspconfig = require("lspconfig")
-    --         require("mason-lspconfig").setup({
-    --             ensure_installed = {
-    --                 "lua_ls",
-    --                 "ts_ls",
-    --                 "rust_analyzer",
-    --                 "csharp_ls",
-    --                 "pyright",
-    --                 "ruff",
-    --                 "html",
-    --             },
-    --             handlers = {
-    --                 rust_analyzer = function()
-    --                     lspconfig.rust_analyzer.setup({
-    --                         capabilities = capabilities,
-    --                         on_attach = on_attach,
-    --                         settings = {
-    --                             ["rust-analyzer"] = {
-    --                                 checkOnSave = {
-    --                                     enable = true, -- 🔧 Disable to avoid duplicate rustc diagnostics
-    --                                 },
-    --                                 inlayHints = {
-    --                                     typeHints = { enable = true },
-    --                                     parameterHints = { enable = true },
-    --                                 },
-    --                             },
-    --                         },
-    --                     })
-    --                 end,
-    --             },
-    --         })
-    --     end,
-    -- },
+    {
+        "williamboman/mason-lspconfig.nvim",
+        lazy = false,
+        opts = {
+            auto_install = true,
+        },
+        config = function()
+            -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+            -- local lspconfig = require("lspconfig")
+            require("mason-lspconfig").setup({
+                ensure_installed = {
+                    "lua_ls",
+                    "ts_ls",
+                    "rust_analyzer",
+                    "csharp_ls",
+                    "pyright",
+                    "ruff",
+                    "html",
+                },
+                handlers = {
+                    -- fix from https://www.reddit.com/r/neovim/comments/1c4zu2n/unwanted_rust_analyzer_setup_by_masonlspconfig/
+                    rust_analyzer = function() end,
+                },
+            })
+        end,
+    },
     {
         "neovim/nvim-lspconfig",
         lazy = false,
