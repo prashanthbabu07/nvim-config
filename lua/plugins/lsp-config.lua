@@ -27,6 +27,7 @@ return {
                     "ts_ls",
                     "rust_analyzer",
                     "csharp_ls",
+                    "omnisharp", -- this is for razor sharp only
                     "pyright",
                     "ruff",
                     "html",
@@ -50,6 +51,7 @@ return {
             lspconfig.html.setup({
                 capabilities = capabilities,
                 on_attach = on_attach,
+                filetypes = { "cshtml", "html" },
             })
 
             lspconfig.lua_ls.setup({
@@ -69,6 +71,17 @@ return {
                 --     vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
                 -- end,
                 root_dir = lspconfig.util.root_pattern("*.sln", ".git", "*.csproj"),
+            })
+
+            lspconfig.omnisharp.setup({
+                capabilities = capabilities,
+                on_attach = on_attach,
+                cmd = {
+                    vim.fn.stdpath("data") .. "/mason/bin/omnisharp",
+                    "--languageserver",
+                },
+                filetypes = { "cshtml" },
+                root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", ".git"),
             })
 
             lspconfig.rust_analyzer.setup({
