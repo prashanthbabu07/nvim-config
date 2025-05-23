@@ -1,7 +1,7 @@
 return {
     "GustavEikaas/easy-dotnet.nvim",
     -- commit = "50e3d11c16ef80df475e0c92248cdc066bc9fc0a",
-    commit = "8efdb59bf2c30be31d2ebf03d501494fe2d019f4",
+    -- commit = "8efdb59bf2c30be31d2ebf03d501494fe2d019f4",
     dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
     config = function()
         local dotnet = require("easy-dotnet") -- .setup()
