@@ -21,8 +21,6 @@ return {
             auto_install = true,
         },
         config = function()
-            -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            -- local lspconfig = require("lspconfig")
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "lua_ls",
@@ -35,7 +33,18 @@ return {
                 },
                 handlers = {
                     -- fix from https://www.reddit.com/r/neovim/comments/1c4zu2n/unwanted_rust_analyzer_setup_by_masonlspconfig/
-                    rust_analyzer = function() end,
+                    function(server_name)
+                        -- Do nothing, as we're manually setting up all LSPs
+                        -- require("lspconfig")[server_name].setup({}) -- This would be the default behavior
+                    end,
+                    -- Explicitly disable auto-setup for all servers you're configuring manually
+                    -- ["lua_ls"] = function() end,
+                    -- ["ts_ls"] = function() end,
+                    ["rust_analyzer"] = function() end,
+                    -- ["csharp_ls"] = function() end,
+                    -- ["pyright"] = function() end,
+                    -- ["ruff"] = function() end,
+                    -- ["html"] = function() end,
                 },
             })
         end,
