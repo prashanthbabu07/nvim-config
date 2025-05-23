@@ -21,6 +21,8 @@ return {
             auto_install = true,
         },
         config = function()
+            local noop = function() end -- Define noop function here
+
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "lua_ls",
@@ -40,7 +42,8 @@ return {
                     -- Explicitly disable auto-setup for all servers you're configuring manually
                     -- ["lua_ls"] = function() end,
                     -- ["ts_ls"] = function() end,
-                    ["rust_analyzer"] = function() end,
+                    -- ["rust_analyzer"] = function() end,
+                    ["rust_analyzer"] = noop,
                     -- ["csharp_ls"] = function() end,
                     -- ["pyright"] = function() end,
                     -- ["ruff"] = function() end,
