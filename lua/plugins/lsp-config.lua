@@ -31,8 +31,11 @@ return {
                     "pyright",
                     "ruff",
                     "html",
+                    "vimls",
                 },
-                automatic_enable = false,
+                automatic_enable = {
+                    "vimls",
+                },
             })
         end,
     },
@@ -73,16 +76,16 @@ return {
                 root_dir = lspconfig.util.root_pattern("*.sln", ".git", "*.csproj"),
             })
 
-            lspconfig.omnisharp.setup({
-                capabilities = capabilities,
-                on_attach = on_attach,
-                cmd = {
-                    vim.fn.stdpath("data") .. "/mason/bin/omnisharp",
-                    "--languageserver",
-                },
-                filetypes = { "cshtml" },
-                root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", ".git"),
-            })
+            -- lspconfig.omnisharp.setup({
+            --     capabilities = capabilities,
+            --     on_attach = on_attach,
+            --     cmd = {
+            --         vim.fn.stdpath("data") .. "/mason/bin/omnisharp",
+            --         "--languageserver",
+            --     },
+            --     filetypes = { "cshtml" },
+            --     root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", ".git"),
+            -- })
 
             lspconfig.rust_analyzer.setup({
                 capabilities = capabilities,
