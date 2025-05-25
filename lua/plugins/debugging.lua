@@ -175,8 +175,46 @@ local function js_debugging_config(dap)
                 webRoot = "${workspaceFolder}",
                 runtimeExecutable = "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser",
             },
+            {
+                type = "pwa-node",
+                request = "launch",
+                name = "Debug TypeScript with ts-node (local node_modeules/.bin/ts-node)",
+                program = "${file}",
+                cwd = "${workspaceFolder}",
+                runtimeExecutable = "${workspaceFolder}/node_modules/.bin/ts-node",
+                sourceMaps = true,
+                protocol = "inspector",
+                console = "integratedTerminal",
+                resolveSourceMapLocations = {
+                    "${workspaceFolder}/**",
+                    "!**/node_modules/**",
+                },
+                skipFiles = { "<node_internals>/**" },
+            },
         }
     end
+
+    -- dap.configurations.typescript = {
+    --     {
+    --         type = "pwa-node",
+    --         request = "launch",
+    --         name = "Launch with ts-node",
+    --         program = "${file}",
+    --         cwd = "${workspaceFolder}",
+    --         runtimeExecutable = "node",
+    --         runtimeArgs = {
+    --             "--loader",
+    --             "ts-node/esm", -- For ESM projects
+    --             -- "--loader",
+    --             -- "tsconfig-paths/register",
+    --             "-r", "ts-node/register", -- For CommonJS projects
+    --         },
+    --         args = { "${file}" },
+    --         sourceMaps = true,
+    --         protocol = "inspector",
+    --         console = "integratedTerminal",
+    --     },
+    -- }
 end
 
 return {
