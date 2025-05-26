@@ -18,7 +18,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.numberwidth = 1
 vim.o.signcolumn = "yes:2"
-vim.opt.statuscolumn = "%s%1l  "
+vim.opt.statuscolumn = "%s%1l   "
 
 vim.g.mapleader = " "
 
