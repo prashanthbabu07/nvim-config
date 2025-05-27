@@ -1,9 +1,25 @@
 local function on_attach(client, bufnr)
-    local opts = { buffer = bufnr }
+    local opts = { buffer = bufnr, silent = true, noremap = true }
+
+    -- Example keymap: rename with <F2>
     vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
-    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-    -- print("LSP attached to buffer", bufnr, client.name)
-    -- vim.notify("LSP " .. client.name .. " attached to buffer " .. bufnr)
+
+    -- Enable inlay hints if supported
+    if client.server_capabilities.inlayHintProvider then
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end
+
+    -- Setup code lens refresh if supported
+    if client.server_capabilities.codeLensProvider then
+        -- Initial refresh
+        vim.lsp.codelens.refresh()
+
+        -- Refresh on events
+        vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave" }, {
+            buffer = bufnr,
+            callback = vim.lsp.codelens.refresh,
+        })
+    end
 end
 
 return {
@@ -12,6 +28,13 @@ return {
         lazy = false,
         config = function()
             require("mason").setup()
+        end,
+    },
+    {
+        "VidocqH/lsp-lens.nvim",
+        event = "LspAttach",
+        config = function()
+            require("lsp-lens").setup()
         end,
     },
     {
@@ -189,6 +212,8 @@ return {
                 vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
                 -- vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(bufnr), { bufnr = bufnr })
             end, { desc = "Toggle Inlay Hints" })
+
+            vim.keymap.set("n", "<leader>lsl", vim.lsp.codelens.refresh, { desc = "Refresh CodeLens" })
         end,
     },
 }
