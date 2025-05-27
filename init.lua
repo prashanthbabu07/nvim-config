@@ -44,7 +44,6 @@ require("lazy").setup({
 end, { desc = "Format current buffer" })
 ]]
 
-require("autosave")
 require("vim-config")
 require("custom-colors")
 require("utils.editor")
