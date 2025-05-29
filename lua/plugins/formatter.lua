@@ -15,8 +15,27 @@ return {
                 null_ls.builtins.formatting.csharpier, -- requires csharpier installed
                 null_ls.builtins.formatting.black,
                 null_ls.builtins.formatting.isort,
+                null_ls.builtins.formatting.clang_format.with({
+                    filetypes = { "c", "cpp", "objc", "objcpp" }, -- Ensure these filetypes are included
+                    extra_args = {
+                        "--style={BasedOnStyle: Google, IndentWidth: 4, UseTab: Never, TabWidth: 4}",
+                    },
+                }),
             },
-            filetypes = { "lua", "javascript", "typescript", "html", "css", "csharp", "rust", "python" },
+            filetypes = {
+                "lua",
+                "javascript",
+                "typescript",
+                "html",
+                "css",
+                "csharp",
+                "rust",
+                "python",
+                "c",
+                "cpp",
+                "objc",
+                "objcpp",
+            },
         })
 
         vim.keymap.set("n", "<leader>lsf", vim.lsp.buf.format, {
