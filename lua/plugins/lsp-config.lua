@@ -55,6 +55,8 @@ return {
                     "ruff",
                     "html",
                     "vimls",
+                    -- "codelldb",
+                    "clangd",
                 },
                 automatic_enable = {
                     "vimls",
@@ -151,6 +153,12 @@ return {
                         -- args = {},
                     },
                 },
+            })
+
+            -- C & C++ (LSP)
+            lspconfig.clangd.setup({
+                capabilities = capabilities,
+                on_attach = on_attach,
             })
 
             vim.diagnostic.config({

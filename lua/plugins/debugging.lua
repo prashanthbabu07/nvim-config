@@ -119,6 +119,33 @@ local function python_debugging_config(dap)
     }
 end
 
+local function clang_debugging_config(dap)
+    dap.adapters.codelldb = {
+        type = "server",
+        port = "${port}",
+        executable = {
+            command = vim.fn.stdpath("data") .. "/mason/bin/codelldb",
+            args = { "--port", "${port}" },
+        },
+    }
+
+    dap.configurations.c = {
+        {
+            name = "Launch file",
+            type = "codelldb",
+            request = "launch",
+            program = function()
+                return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/a.out", "file")
+            end,
+            cwd = "${workspaceFolder}",
+            stopOnEntry = true,
+            args = {},
+        },
+    }
+
+    dap.configurations.cpp = dap.configurations.c -- C++ uses the same config
+end
+
 local function js_debugging_config(dap)
     require("mason-nvim-dap").setup({
         ensure_installed = { "js-debug-adapter" }, -- auto-installs js-debug-adapter
@@ -132,7 +159,7 @@ local function js_debugging_config(dap)
             command = "node",
             args = {
                 vim.fs.normalize(vim.fn.stdpath("data"))
-                    .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
+                .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
                 "${port}",
             },
         },
@@ -250,6 +277,7 @@ return {
         rust_debugging_config(dap)
         python_debugging_config(dap)
         js_debugging_config(dap)
+        clang_debugging_config(dap)
 
         vim.keymap.set("n", "<Leader>B", dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
         vim.keymap.set("n", "<F5>", dap.continue, { desc = "Continue" })
