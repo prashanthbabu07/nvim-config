@@ -85,6 +85,17 @@ return {
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
                 on_attach = on_attach,
+                settings = {
+                    Lua = {
+                        runtime = { version = "LuaJIT" },
+                        diagnostics = { globals = { "vim" } },
+                        workspace = {
+                            library = vim.api.nvim_get_runtime_file("", true),
+                            checkThirdParty = false,
+                        },
+                        telemetry = { enable = false },
+                    },
+                },
                 -- on_attach = function(client, bufnr)
                 --     local opts = { buffer = bufnr }
                 --     vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
