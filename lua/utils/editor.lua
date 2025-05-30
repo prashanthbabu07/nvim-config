@@ -1,7 +1,9 @@
 local M = {}
 
 function M.extract_lines_to_file()
-    local filename = vim.fn.input("Save selection to file: ")
+
+    local filename = vim.fn.input("Save selection to file: ", "", "file")
+
     if filename == nil or filename == "" then
         print("No filename provided, aborting.")
         return
