@@ -114,11 +114,15 @@ function M.add_note()
     })
 
     vim.api.nvim_buf_set_lines(input_buf, 0, -1, false, { "-- Write your note below. Press <leader>sns to save it." })
-    -- set cursor to next line
+    -- set cursor to 2nd line
+    -- vim.api.nvim_buf_add_highlight(input_buf, -1, "Comment", 0, 0, -1) this is deprecated. Need to use a different method 
+    -- highlight the first line
+    vim.api.hl.range(input_buf, 0, 0, -1, { bg = "#3c3836", fg = "#fabd2f" }) -- Highlight first line with a custom color
     vim.api.nvim_buf_set_lines(input_buf, 1, -1, false, { "" })
     vim.api.nvim_win_set_cursor(win, { 2, 0 })
 
-    vim.api.nvim_buf_add_highlight(input_buf, -1, "Comment", 0, 0, -1)
+    
+    -- vim.api.nvim_buf_add_highlight(input_buf, -1, "Comment", 0, 0, -1)
 
     -- Mapping: save with <leader>sns inside the floating window
     vim.keymap.set("n", "<leader>sns", function()
