@@ -113,7 +113,11 @@ function M.add_note()
         border = "rounded",
     })
 
-    vim.api.nvim_buf_set_lines(input_buf, 0, -1, false, { "-- Write your note below. Press <leader>ss to save it." })
+    vim.api.nvim_buf_set_lines(input_buf, 0, -1, false, { "-- Write your note below. Press <leader>sns to save it." })
+    -- set cursor to next line
+    vim.api.nvim_buf_set_lines(input_buf, 1, -1, false, { "" })
+    vim.api.nvim_win_set_cursor(win, { 2, 0 })
+
     vim.api.nvim_buf_add_highlight(input_buf, -1, "Comment", 0, 0, -1)
 
     -- Mapping: save with <leader>sns inside the floating window
