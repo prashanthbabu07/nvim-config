@@ -174,14 +174,15 @@ return {
 
             vim.diagnostic.config({
                 virtual_text = {
-                    source = "always",
+                    source = true, -- "always",
                     severity = { min = vim.diagnostic.severity.HINT },
                     format = function(diagnostic)
                         return string.format("%s [%s]", diagnostic.message, diagnostic.source)
                     end,
                 },
                 float = {
-                    source = "always",
+                    source = true, -- "always",
+                    border = "rounded",
                 },
                 signs = true,
                 underline = true,
@@ -197,6 +198,9 @@ return {
             vim.keymap.set("n", "<leader>lsd", vim.lsp.buf.definition, { desc = "Go to definition" })
             vim.keymap.set("n", "<leader>lsD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
             vim.keymap.set({ "n", "v" }, "<leader>lsc", vim.lsp.buf.code_action, { desc = "Code action" })
+            vim.keymap.set("n", "<leader>lsid", vim.diagnostic.open_float, { desc = "Open diagnostic float" })
+            -- vim.keymap.set('n', '<leader>ls', vim.diagnostic.set_loclist, { desc = 'Open diagnostic loclist' })
+
             -- vim.keymap.set({ "n", "v" }, "<leader>ld", function()
             --     vim.diagnostic.open_float({
             --         border = "rounded",
