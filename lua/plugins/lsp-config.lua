@@ -190,15 +190,15 @@ return {
                 severity_sort = true,
             })
 
-            vim.keymap.set("n", "<leader>lsH", function()
+            vim.keymap.set("n", "<leader>lH", function()
                 vim.lsp.buf.hover({
                     border = "rounded",
                 })
             end, { desc = "Hover" })
-            vim.keymap.set("n", "<leader>lsd", vim.lsp.buf.definition, { desc = "Go to definition" })
-            vim.keymap.set("n", "<leader>lsD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
-            vim.keymap.set({ "n", "v" }, "<leader>lsc", vim.lsp.buf.code_action, { desc = "Code action" })
-            vim.keymap.set("n", "<leader>lsid", vim.diagnostic.open_float, { desc = "Open diagnostic float" })
+            vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, { desc = "Go to definition" })
+            vim.keymap.set("n", "<leader>lD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
+            vim.keymap.set({ "n", "v" }, "<leader>lc", vim.lsp.buf.code_action, { desc = "Code action" })
+            vim.keymap.set("n", "<leader>lid", vim.diagnostic.open_float, { desc = "Open diagnostic float" })
             -- vim.keymap.set('n', '<leader>ls', vim.diagnostic.set_loclist, { desc = 'Open diagnostic loclist' })
 
             -- vim.keymap.set({ "n", "v" }, "<leader>ld", function()
@@ -206,7 +206,7 @@ return {
             --         border = "rounded",
             --     })
             -- end, { desc = "Show diagnostics" })
-            vim.keymap.set("n", "<leader>lsh", function()
+            vim.keymap.set("n", "<leader>lh", function()
                 vim.lsp.buf.signature_help({
                     border = "rounded",
                 })
@@ -214,7 +214,7 @@ return {
 
             vim.keymap.set(
                 "n",
-                "<leader>lsr",
+                "<leader>lr",
                 require("telescope.builtin").lsp_references,
                 { desc = "Find references (Telescope)" }
             )
@@ -228,7 +228,7 @@ return {
             --     end,
             -- })
 
-            vim.keymap.set("n", "<leader>lsih", function()
+            vim.keymap.set("n", "<leader>lih", function()
                 local bufnr = vim.api.nvim_get_current_buf()
                 -- vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
                 local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
@@ -236,7 +236,7 @@ return {
                 -- vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(bufnr), { bufnr = bufnr })
             end, { desc = "Toggle Inlay Hints" })
 
-            vim.keymap.set("n", "<leader>lsl", vim.lsp.codelens.refresh, { desc = "Refresh CodeLens" })
+            vim.keymap.set("n", "<leader>ll", vim.lsp.codelens.refresh, { desc = "Refresh CodeLens" })
         end,
     },
 }
