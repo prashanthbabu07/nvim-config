@@ -178,7 +178,7 @@ local function js_debugging_config(dap)
         },
     }
 
-    for _, language in ipairs({ "typescript", "javascript" }) do
+    for _, language in ipairs({ "typescript", "javascript", "javascriptreact", "typescriptreact" }) do
         dap.configurations[language] = {
             {
                 type = "pwa-node",
@@ -198,7 +198,9 @@ local function js_debugging_config(dap)
                 type = "pwa-chrome",
                 request = "launch",
                 name = "Debug Angular (Brave)",
-                url = "http://localhost:4200",
+                url = function()
+                    return "http://localhost:" .. vim.fn.input("Port: ", "4200")
+                end,
                 webRoot = "${workspaceFolder}",
                 runtimeExecutable = "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser",
             },
@@ -217,6 +219,19 @@ local function js_debugging_config(dap)
                     "!**/node_modules/**",
                 },
                 skipFiles = { "<node_internals>/**" },
+            },
+            {
+                type = "pwa-chrome",
+                request = "launch",
+                name = "Debug React (Vite)",
+                url = function()
+                    return "http://localhost:" .. vim.fn.input("Port: ", "5173")
+                end,
+                webRoot = "${workspaceFolder}",
+                sourceMaps = true,
+                skipFiles = { "<node_internals>/**", "**/node_modules/**" },
+                trace = true,
+                runtimeExecutable = "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser",
             },
         }
     end
