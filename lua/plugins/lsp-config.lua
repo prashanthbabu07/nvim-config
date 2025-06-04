@@ -74,6 +74,17 @@ return {
             lspconfig.ts_ls.setup({
                 capabilities = capabilities,
                 on_attach = on_attach,
+                init_options = {
+                    preferences = {
+                        includeInlayParameterNameHints = "all", -- "none" | "literals" | "all"
+                        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                        includeInlayFunctionParameterTypeHints = true,
+                        includeInlayVariableTypeHints = true,
+                        includeInlayPropertyDeclarationTypeHints = true,
+                        includeInlayFunctionLikeReturnTypes = true,
+                        includeInlayEnumMemberValueHints = true,
+                    },
+                },
             })
 
             lspconfig.html.setup({

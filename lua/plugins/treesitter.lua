@@ -15,6 +15,9 @@ return {
                 "go",
                 "html",
                 "razor", -- asp.net
+                "tsx",   -- For TSX files (TypeScript React)
+                -- "jsx",   -- For JSX files (JavaScript React)
+                "json",
             },
             highlight = { enable = true, additional_vim_regex_highlighting = false },
             indent = { enable = true },
