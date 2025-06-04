@@ -19,8 +19,15 @@ return {
                 -- "jsx",   -- For JSX files (JavaScript React)
                 "json",
             },
+            modules = {},         -- required for type checker
+            sync_install = false, -- required for type checker
+            ignore_install = {},  -- required for type checker
+            auto_install = true,
             highlight = { enable = true, additional_vim_regex_highlighting = false },
-            indent = { enable = true },
+            indent = {
+                enable = true,
+                disable = { "lua" },
+            },
         })
     end,
 }
