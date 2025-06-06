@@ -1,3 +1,6 @@
+if vim.fn.has("mac") then
+    return {}
+end
 return {
     "sphamba/smear-cursor.nvim",
     opts = {},
