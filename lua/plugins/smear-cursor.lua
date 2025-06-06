@@ -1,4 +1,4 @@
-if vim.fn.has("mac") then
+if vim.fn.has("mac") == 1 then
     return {}
 end
 return {
