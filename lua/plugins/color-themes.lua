@@ -53,9 +53,9 @@ return {
 
             if vim.fn.has("unix") == 1 then
                 vim.cmd("colorscheme github_dark_dimmed")
+            else
+                vim.cmd("colorscheme github_light_high_contrast")
             end
-
-            vim.cmd("colorscheme github_light_high_contrast")
             -- vim.cmd("colorscheme github_dark_dimmed")
             -- vim.cmd("colorscheme github_light")
         end,
