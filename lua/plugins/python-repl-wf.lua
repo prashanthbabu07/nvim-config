@@ -30,7 +30,11 @@ return -- lazy.nvim
             if vim.fn.getline(end_line - 1):match("^# %%") then
                 end_line = end_line - 1
             end
+
             local lines_to_send = vim.fn.getline(start_line, end_line - 1)
+            if type(lines_to_send) ~= "table" then
+                lines_to_send = { lines_to_send }
+            end
 
             for _, line_content in ipairs(lines_to_send) do
                 if line_content:match("^s*$") then
