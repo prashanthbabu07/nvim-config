@@ -52,7 +52,7 @@ return {
 
         -- normal, visual, visual block
         vim.keymap.set(
-            { "n", "v", "t" },
+            { "n", "v", },
             "<leader>fe",
             "<Esc>:Neotree toggle position=left<CR>",
             { noremap = true, silent = true }
