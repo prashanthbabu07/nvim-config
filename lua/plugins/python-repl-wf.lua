@@ -13,6 +13,7 @@ return -- lazy.nvim
 
         -- Function to send current # %% cell
         function SendCurrentCell()
+            -- search line starting with # %% including the current line
             local start_line = vim.fn.search("^# %%", "bnW") -- Search backward for # %% at line start
             if start_line == 0 then
                 start_line = 1
@@ -23,8 +24,32 @@ return -- lazy.nvim
                 end_line = vim.fn.line("$") + 1
             end
 
-            local lines = vim.fn.getline(start_line, end_line - 1)
-            vim.fn["slime#send"](table.concat(lines, "\n"))
+            if vim.fn.getline(start_line):match("^# %%") then
+                start_line = start_line + 1
+            end
+            if vim.fn.getline(end_line - 1):match("^# %%") then
+                end_line = end_line - 1
+            end
+            local lines_to_send = vim.fn.getline(start_line, end_line - 1)
+
+            for _, line_content in ipairs(lines_to_send) do
+                if line_content:match("^s*$") then
+                else
+                    vim.fn["slime#send"](line_content .. "\n")
+                end
+            end
+
+            -- goto next cell
+            local target_cursor_line = end_line
+            if target_cursor_line > vim.fn.line("$") then
+                target_cursor_line = vim.fn.line("$")
+            end
+            vim.api.nvim_win_set_cursor(0, { target_cursor_line, 0 }) -- 0 for current window, 0 for column 0 (beginning of line)
+            -- Alternatively, using vim.fn.cursor:
+            -- vim.fn.cursor(target_cursor_line, 1) -- 1-indexed column
+
+            -- local lines = vim.fn.getline(start_line, end_line - 1)
+            -- vim.fn["slime#send"](table.concat(lines, "\n"))
         end
 
         -- Map <leader>r to send the current cell
