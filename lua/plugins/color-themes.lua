@@ -52,7 +52,8 @@ return {
             })
 
             if vim.fn.has("mac") == 1 then
-                vim.cmd("colorscheme github_light_high_contrast")
+                -- vim.cmd("colorscheme github_light_high_contrast")
+                vim.cmd("colorscheme github_light")
             else
                 vim.cmd("colorscheme github_dark_dimmed")
             end
