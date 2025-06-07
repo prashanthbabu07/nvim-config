@@ -30,4 +30,4 @@ vim.fn.sign_define("DapBreakpointCondition", { text = "●", texthl = "DapBreakp
 vim.fn.sign_define("DapBreakpointRejected", { text = "x", texthl = "DapBreakpoint", linehl = "", numhl = "" })
 
 -- matching paris
-vim.cmd("highlight MatchParen cterm=bold ctermbg=lightgrey ctermfg=NONE gui=bold guibg=lightgrey guifg=NONE")
+-- vim.cmd("highlight MatchParen cterm=bold ctermbg=lightgrey ctermfg=NONE gui=bold guibg=lightgrey guifg=NONE")
