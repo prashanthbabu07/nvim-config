@@ -84,7 +84,7 @@ return {
                 },
             })
 
-            local theme = "github_light_high_contrast"
+            -- local theme = "github_light_high_contrast"
 
             if vim.fn.has("mac") == 1 and get_macos_theme() == "light" then
                 vim.cmd("colorscheme github_light_high_contrast")
