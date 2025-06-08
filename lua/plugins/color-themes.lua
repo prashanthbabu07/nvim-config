@@ -39,7 +39,7 @@ return {
     {
         "projekt0n/github-nvim-theme",
         name = "github-theme",
-        lazy = false, -- make sure we load this during startup if it is your main colorscheme
+        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
         priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
             require("github-theme").setup({
@@ -49,14 +49,17 @@ return {
                         comments = "italic",
                     },
                 },
-                palettes = {
-                    github_light_high_contrast = {
-                        bg1 = "#fefefe",
-                    },
-                },
+                -- palettes = {
+                --     github_light_high_contrast = {
+                --         bg1 = "#fefefe",
+                --     },
+                -- },
                 groups = {
                     github_light_high_contrast = {
+                        Normal = { bg = "#fefefe" },
                         NormalNC = { bg = "#fefefe" },
+                        NeoTreeNormal = { bg = "#fefefe" },
+                        NeoTreeNormalNC = { bg = "#fefefe" },
                     },
                 },
             })
