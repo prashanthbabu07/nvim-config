@@ -49,6 +49,16 @@ return {
                         comments = "italic",
                     },
                 },
+                palettes = {
+                    github_light_high_contrast = {
+                        bg1 = "#fefefe",
+                    },
+                },
+                groups = {
+                    github_light_high_contrast = {
+                        NormalNC = { bg = "#fefefe" },
+                    },
+                },
             })
 
             if vim.fn.has("mac") == 1 then
