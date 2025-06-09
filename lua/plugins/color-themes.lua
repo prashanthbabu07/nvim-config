@@ -1,6 +1,5 @@
 local function get_macos_theme()
     if vim.fn.has("mac") == 0 then
-        -- Not on macOS, so we can't determine the macOS theme
         return "unknown"
     end
 
@@ -13,6 +12,27 @@ local function get_macos_theme()
     handle:close()
 
     if result:match("Dark") then
+        return "dark"
+    else
+        -- If AppleInterfaceStyle is not set or anything else, it's typically light
+        return "light"
+    end
+end
+
+local function get_linux_theme()
+    if vim.fn.has("unix") == 0 then
+        return "unknown"
+    end
+
+    local handle = io.popen("gsettings get org.gnome.desktop.interface color-scheme 2>/dev/null")
+    if not handle then
+        return "unknown"
+    end
+
+    local result = handle:read("*a")
+    handle:close()
+
+    if result:match("prefer-dark") then
         return "dark"
     else
         -- If AppleInterfaceStyle is not set or anything else, it's typically light
@@ -84,15 +104,17 @@ return {
                 },
             })
 
-            -- local theme = "github_light_high_contrast"
+            local theme = "github_light_high_contrast"
 
-            if vim.fn.has("mac") == 1 and get_macos_theme() == "light" then
-                vim.cmd("colorscheme github_light_high_contrast")
+            if get_macos_theme() == "dark" then
+                theme = "github_dark_dimmed"
+                -- vim.cmd("colorscheme github_light_high_contrast")
                 -- vim.cmd("colorscheme github_light")
-            else
-                vim.cmd("colorscheme github_dark_dimmed")
+            elseif get_linux_theme() == "dark" then
+                theme = "github_dark_dimmed"
+                -- vim.cmd("colorscheme github_dark_dimmed")
             end
-            -- vim.cmd("colorscheme github_dark_dimmed")
+            vim.cmd("colorscheme " .. theme)
             -- vim.cmd("colorscheme github_light")
         end,
     },
