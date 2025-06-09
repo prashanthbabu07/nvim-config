@@ -66,6 +66,9 @@ return {
     },
     {
         "neovim/nvim-lspconfig",
+        dependencies = {
+            "Decodetalkers/csharpls-extended-lsp.nvim",
+        },
         lazy = false,
         config = function()
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -113,6 +116,8 @@ return {
                 -- end,
             })
 
+            local csharpls_extended = require("csharpls_extended")
+
             lspconfig.csharp_ls.setup({
                 cmd = { "csharp-ls" }, -- Ensure csharp-ls is in your PATH
                 on_attach = on_attach,
@@ -121,7 +126,16 @@ return {
                 --     vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
                 -- end,
                 root_dir = lspconfig.util.root_pattern("*.sln", ".git", "*.csproj"),
+                handlers = {
+                    ["textDocument/definition"] = csharpls_extended.handler,
+                    ["textDocument/typeDefinition"] = csharpls_extended.handler,
+                    -- Add any other handlers you might be using from csharpls-extended-lsp if needed
+                    -- For example, for "show signature help" with markdown:
+                    -- ["textDocument/signatureHelp"] = csharpls_extended.handler,
+                    -- Refer to the plugin's documentation for all available handlers.
+                },
             })
+            csharpls_extended.buf_read_cmd_bind()
 
             -- lspconfig.omnisharp.setup({
             --     capabilities = capabilities,
