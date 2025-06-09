@@ -32,7 +32,7 @@ local function get_linux_theme()
     local result = handle:read("*a")
     handle:close()
 
-    if result:match("prefer-dark") then
+    if result:match("dark") then
         return "dark"
     else
         -- If AppleInterfaceStyle is not set or anything else, it's typically light
