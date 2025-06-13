@@ -76,17 +76,8 @@ return {
                         entry_filter = function(entry, ctx)
                             -- Check if the completion came from your custom LSP
                             local kind = entry:get_kind()
-                            if ctx and ctx.client then
-                                if ctx.client.name == "lsp_from_scratch" then
-                                    return true
-                                else
-                                    return kind ~= cmp.lsp.CompletionItemKind.Text
-                                end
-                            else
-                                return kind ~= cmp.lsp.CompletionItemKind.Text
-                            end
                             -- Filter out 'Text' kinds — often irrelevant
-                            -- return entry:get_kind() ~= cmp.lsp.CompletionItemKind.Text
+                            return kind ~= cmp.lsp.CompletionItemKind.Text
                         end,
                     },
                     { name = "luasnip",     priority = 750 }, -- For luasnip users.
