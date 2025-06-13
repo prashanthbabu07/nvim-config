@@ -77,7 +77,8 @@ return {
                             -- Check if the completion came from your custom LSP
                             local kind = entry:get_kind()
                             -- Filter out 'Text' kinds — often irrelevant
-                            return kind ~= cmp.lsp.CompletionItemKind.Text
+                            -- return kind ~= cmp.lsp.CompletionItemKind.Text
+                            return true
                         end,
                     },
                     { name = "luasnip",     priority = 750 }, -- For luasnip users.
