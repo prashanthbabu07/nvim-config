@@ -8,9 +8,9 @@ return {
     config = function()
         local cursor = require("smear_cursor")
         cursor.setup({
-            stiffness = 0.8,
-            trailing_stiffness = 0.5,
-            distance_stop_animating = 0.5,
+            stiffness = 0.9,
+            trailing_stiffness = 0.6,
+            distance_stop_animating = 0.6,
         })
     end,
 }
