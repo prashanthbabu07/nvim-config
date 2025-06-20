@@ -11,12 +11,12 @@ return {
     lazy = false, -- neo-tree will lazily load itself
     opts = {
         default_component_configs = {
-            icon = {
-                folder_closed = "[+]",
-                folder_open = "[-]",
-                folder_empty = "[ ]",
-                default = "•",
-            },
+            -- icon = {
+                -- folder_closed = "[+]",
+                -- folder_open = "[-]",
+                -- folder_empty = "[ ]",
+                -- default = "•",
+            -- },
         },
     },
     config = function()
