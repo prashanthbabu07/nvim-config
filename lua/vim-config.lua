@@ -20,6 +20,8 @@ vim.opt.numberwidth = 1
 vim.o.signcolumn = "yes:2"
 vim.opt.statuscolumn = "%s%1l   "
 
+vim.opt.fillchars:append({ eob = " " })
+
 vim.g.mapleader = " "
 
 vim.opt.cursorline = true
