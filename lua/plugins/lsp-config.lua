@@ -50,6 +50,7 @@ return {
                     "vimls",
                     -- "codelldb",
                     "clangd",
+                    "bashls",
                 },
                 automatic_enable = {
                     "vimls",
@@ -190,6 +191,12 @@ return {
                 on_attach = on_attach,
             })
 
+            -- bash
+            lspconfig.bashls.setup({
+                capabilities = capabilities,
+                on_attach = on_attach,
+            })
+
             vim.diagnostic.config({
                 virtual_text = {
                     source = true, -- "always",
@@ -275,7 +282,7 @@ return {
                 configs.lsp_from_scratch = {
                     default_config = {
                         cmd = { ts_node, server_path },
-                        filetypes = { "text" },    -- change to your target filetypes
+                        filetypes = { "text" }, -- change to your target filetypes
                         root_dir = function()
                             return vim.fn.getcwd() -- or use lspconfig.util.root_pattern()
                         end,
@@ -293,7 +300,7 @@ return {
                 end,
             })
         end,
-        ft = { "text" },            -- or your actual target filetypes
-        lazy = true,               -- set to true if you want it to load on demand
+        ft = { "text" }, -- or your actual target filetypes
+        lazy = true, -- set to true if you want it to load on demand
     },
 }
