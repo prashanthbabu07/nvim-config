@@ -94,12 +94,12 @@ return {
                 --     },
                 -- },
                 groups = {
-                    github_light_high_contrast = {
-                        Normal = { bg = "#eeeeee" },
-                        NormalNC = { bg = "#eeeeee" },
-                        NeoTreeNormal = { bg = "#eeeeee" },
-                        NeoTreeNormalNC = { bg = "#eeeeee" },
-                    },
+                    -- github_light_high_contrast = {
+                    --     Normal = { bg = "#eeeeee" },
+                    --     NormalNC = { bg = "#eeeeee" },
+                    --     NeoTreeNormal = { bg = "#eeeeee" },
+                    --     NeoTreeNormalNC = { bg = "#eeeeee" },
+                    -- },
                 },
             })
 
