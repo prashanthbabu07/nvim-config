@@ -103,7 +103,7 @@ return {
                 },
             })
 
-            local theme = "github_light_high_contrast"
+            local theme = "github_light_default"
 
             if get_macos_theme() == "dark" then
                 theme = "github_dark_dimmed"
