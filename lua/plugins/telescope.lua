@@ -34,6 +34,25 @@ return {
             end, { desc = "Find files" })
 
             vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "File grep" })
+            vim.keymap.set("n", "<leader>fn", function()
+                builtin.find_files({
+                    prompt_title = "Find Notes",
+                    cwd = "~/notes",
+                    find_command = {
+                        "fd",
+                        "--type",
+                        "f", --[["--hidden",]]
+                        "--glob",
+                    },
+                })
+            end, { desc = "Find notes" })
+            vim.keymap.set("n", "<leader>gn", function()
+                builtin.live_grep({
+                    prompt_title = "Grep Notes",
+                    cwd = "~/notes",
+                })
+            end, { desc = "Find grep notes" })
+
             -- vim.keymap.set("n", "<leader>gd", builtin.lsp_definitions, {})
         end,
     },
