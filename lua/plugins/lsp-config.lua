@@ -51,9 +51,11 @@ return {
                     -- "codelldb",
                     "clangd",
                     "bashls",
+                    "bicep"
                 },
                 automatic_enable = {
                     "vimls",
+                    "bicep"
                 },
             })
         end,
