@@ -51,11 +51,11 @@ return {
                     -- "codelldb",
                     "clangd",
                     "bashls",
-                    "bicep"
+                    "bicep",
                 },
                 automatic_enable = {
                     "vimls",
-                    "bicep"
+                    "bicep",
                 },
             })
         end,
@@ -100,7 +100,10 @@ return {
                         runtime = { version = "LuaJIT" },
                         diagnostics = { globals = { "vim" } },
                         workspace = {
-                            library = vim.api.nvim_get_runtime_file("", true),
+                            library = {
+                                vim.api.nvim_get_runtime_file("", true),
+                                vim.fn.stdpath("data") .. "/lazy",
+                            },
                             checkThirdParty = false,
                         },
                         telemetry = { enable = false },
