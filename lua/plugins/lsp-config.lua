@@ -56,6 +56,7 @@ return {
                 automatic_enable = {
                     "vimls",
                     "bicep",
+                    "bashls"
                 },
             })
         end,
