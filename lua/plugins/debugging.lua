@@ -87,7 +87,11 @@ local function rust_debugging_config(dap)
             type = "codelldb",
             request = "launch",
             program = function()
-                return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
+                return vim.fn.input({
+                    prompt = "Path to executable: ",
+                    default = vim.fn.getcwd() .. "/target/debug/",
+                    completion = "file",
+                })
             end,
             cwd = "${workspaceFolder}",
             stopOnEntry = false,
@@ -98,6 +102,7 @@ end
 
 local function python_debugging_config(dap)
     require("mason-nvim-dap").setup({
+        automatic_installation = true,
         ensure_installed = { "python" }, -- auto-installs debugpy
     })
 
@@ -135,7 +140,11 @@ local function clang_debugging_config(dap)
             type = "codelldb",
             request = "launch",
             program = function()
-                return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/a.out", "file")
+                return vim.fn.input({
+                    prompt = "Path to executable: ",
+                    default = vim.fn.getcwd() .. "/a.out",
+                    completion = "file",
+                })
             end,
             cwd = "${workspaceFolder}",
             stopOnEntry = true,
@@ -148,6 +157,7 @@ end
 
 local function js_debugging_config(dap)
     require("mason-nvim-dap").setup({
+        automatic_installation = true,
         ensure_installed = { "js-debug-adapter" }, -- auto-installs js-debug-adapter
     })
 
@@ -199,7 +209,11 @@ local function js_debugging_config(dap)
                 request = "launch",
                 name = "Debug Angular (Brave)",
                 url = function()
-                    return "http://localhost:" .. vim.fn.input("Port: ", "4200")
+                    return "http://localhost:"
+                        .. vim.fn.input({
+                            prompt = "Port: ",
+                            default = "4200",
+                        })
                 end,
                 webRoot = "${workspaceFolder}",
                 runtimeExecutable = "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser",
@@ -225,7 +239,7 @@ local function js_debugging_config(dap)
                 request = "launch",
                 name = "Debug React (Vite)",
                 url = function()
-                    return "http://localhost:" .. vim.fn.input("Port: ", "5173")
+                    return "http://localhost:" .. vim.fn.input({ prompt = "Port: ", default = "5173" })
                 end,
                 webRoot = "${workspaceFolder}",
                 sourceMaps = true,
