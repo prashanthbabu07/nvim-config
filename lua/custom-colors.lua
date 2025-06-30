@@ -4,13 +4,13 @@ local colors = {
 }
 
 vim.api.nvim_set_hl(0, "DapStoppedLine", {
-    bg = colors.yellow,
-    underline = false,
+    -- bg = colors.yellow,
+    -- underline = false,
 })
 
 vim.api.nvim_set_hl(0, "DapStopped", {
     fg = colors.red,
-    bg = colors.yellow,
+    -- bg = colors.yellow,
 })
 
 vim.fn.sign_define("DapStopped", {
