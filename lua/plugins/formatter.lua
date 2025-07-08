@@ -12,6 +12,7 @@ return {
                     null_ls.builtins.completion.spell,
                     null_ls.builtins.formatting.prettier.with({
                         extra_args = { "--use-tabs=false", "--tab-width=4" },
+                        filetypes = { "json", "jsonc", "markdown", "markdown.mdx" },
                     }),
                     null_ls.builtins.formatting.csharpier, -- requires csharpier installed
                     null_ls.builtins.formatting.black,
