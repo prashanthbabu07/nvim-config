@@ -41,3 +41,16 @@ vim.cmd("set wildmode=list:longest")
 --         cshtml = "cshtml",
 --     },
 -- })
+
+-- map tabnext to cycle through tabs
+vim.keymap.set("n", "<leader>tn", ":tabnext<CR>", { silent = true, desc = "Next tab" })
+
+-- create a new tab
+vim.keymap.set("n", "<leader>tt", ":tabnew<CR>", { silent = true, desc = "New tab" })
+
+-- map gotot table number to open tab 1-9
+for i = 1, 9 do
+    vim.keymap.set("n", "<leader>t" .. i, ":tabnext " .. i .. "<CR>", { silent = true, desc = "Tab " .. i })
+end
+
+
