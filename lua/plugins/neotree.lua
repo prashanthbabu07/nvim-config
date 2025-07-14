@@ -32,6 +32,8 @@ return {
                     mappings = {
                         -- Make the mapping anything you want
                         ["E"] = "easy",
+                        ["<space>"] = "none", -- disable default space mapping
+
                     },
                 },
                 follow_current_file = {
