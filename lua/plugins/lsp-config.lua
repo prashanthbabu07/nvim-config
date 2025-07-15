@@ -56,7 +56,7 @@ return {
                 automatic_enable = {
                     "vimls",
                     "bicep",
-                    "bashls"
+                    "bashls",
                 },
             })
         end,
@@ -226,6 +226,38 @@ return {
                     border = "rounded",
                 })
             end, { desc = "Hover" })
+            -- Autocommand to trigger hover with the mouse
+            vim.o.updatetime = 400 -- in milliseconds
+            vim.api.nvim_create_autocmd("CursorHold", {
+                callback = function()
+                    local mode = vim.api.nvim_get_mode().mode
+                    local clients = vim.lsp.get_clients({ bufnr = 0 })
+
+                    if (mode == "n" or mode == "i") and #clients > 0 then
+                        for _, client in pairs(clients) do
+                            if client.supports_method("textDocument/hover") then
+                                vim.lsp.buf.hover({ border = "rounded" })
+                                break
+                            end
+                        end
+                        -- vim.lsp.buf.hover({ border = "rounded" })
+                    end
+                end,
+                desc = "Show hover on mouse stop",
+            })
+            -- vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI", "InsertLeave" }, {
+            --     callback = function()
+            --         -- Close floating windows that are hover docs
+            --         for _, win in ipairs(vim.api.nvim_list_wins()) do
+            --             local config = vim.api.nvim_win_get_config(win)
+            --             if config.relative ~= "" then
+            --                 vim.api.nvim_win_close(win, true)
+            --             end
+            --         end
+            --     end,
+            --     desc = "Close LSP hover when moving cursor",
+            -- })
+
             vim.keymap.set("n", "<leader>lsd", vim.lsp.buf.definition, { desc = "Go to definition" })
             vim.keymap.set("n", "<leader>lsD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
             vim.keymap.set({ "n", "v" }, "<leader>lsc", vim.lsp.buf.code_action, { desc = "Code action" })
@@ -308,5 +340,17 @@ return {
         end,
         ft = { "text" }, -- or your actual target filetypes
         lazy = true, -- set to true if you want it to load on demand
+    },
+    {
+        "ray-x/lsp_signature.nvim",
+        event = "InsertEnter",
+        opts = {
+            bind = true,
+            handler_opts = {
+                border = "rounded",
+            },
+        },
+        -- or use config
+        -- config = function(_, opts) require'lsp_signature'.setup({you options}) end
     },
 }
