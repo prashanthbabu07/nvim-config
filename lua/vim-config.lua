@@ -48,9 +48,12 @@ vim.keymap.set("n", "<leader>tn", ":tabnext<CR>", { silent = true, desc = "Next 
 -- create a new tab
 vim.keymap.set("n", "<leader>tt", ":tabnew<CR>", { silent = true, desc = "New tab" })
 
--- map gotot table number to open tab 1-9
+-- map goto tab number to open tab 1-9
 for i = 1, 9 do
     vim.keymap.set("n", "<leader>t" .. i, ":tabnext " .. i .. "<CR>", { silent = true, desc = "Tab " .. i })
 end
+
+-- map close tab 
+vim.keymap.set("n", "<leader>tc", ":tabclose<CR>", { silent = true, desc = "Close tab" })
 
 
