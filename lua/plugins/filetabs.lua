@@ -13,6 +13,7 @@ return {
             options = {
                 mode = "buffers", -- Display tab pages instead of buffers
                 close_command = "bdelete! %d",
+                numbers = "both", -- Show both buffer number and name
                 -- style_preset = bufferline.style_preset.no_italic,
                 offsets = {
                     {

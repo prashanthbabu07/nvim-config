@@ -221,30 +221,35 @@ return {
                 severity_sort = true,
             })
 
-            vim.keymap.set("n", "<leader>lsH", function()
+            -- vim.keymap.set("n", "<leader>lsH", function()
+            --     vim.lsp.buf.hover({
+            --         border = "rounded",
+            --     })
+            -- end, { desc = "Hover" })
+            vim.keymap.set({ "i", "n" }, "<C-h>", function()
                 vim.lsp.buf.hover({
                     border = "rounded",
                 })
             end, { desc = "Hover" })
             -- Autocommand to trigger hover with the mouse
-            vim.o.updatetime = 400 -- in milliseconds
-            vim.api.nvim_create_autocmd("CursorHold", {
-                callback = function()
-                    local mode = vim.api.nvim_get_mode().mode
-                    local clients = vim.lsp.get_clients({ bufnr = 0 })
-
-                    if (mode == "n" or mode == "i") and #clients > 0 then
-                        for _, client in pairs(clients) do
-                            if client.supports_method("textDocument/hover") then
-                                vim.lsp.buf.hover({ border = "rounded" })
-                                break
-                            end
-                        end
-                        -- vim.lsp.buf.hover({ border = "rounded" })
-                    end
-                end,
-                desc = "Show hover on mouse stop",
-            })
+            -- vim.o.updatetime = 500 -- in milliseconds
+            -- vim.api.nvim_create_autocmd("CursorHold", {
+            --     callback = function()
+            --         local mode = vim.api.nvim_get_mode().mode
+            --         local clients = vim.lsp.get_clients({ bufnr = 0 })
+            --
+            --         if mode == "n" and #clients > 0 then
+            --             for _, client in pairs(clients) do
+            --                 if client.supports_method("textDocument/hover") then
+            --                     vim.lsp.buf.hover({ border = "rounded" })
+            --                     break
+            --                 end
+            --             end
+            --             -- vim.lsp.buf.hover({ border = "rounded" })
+            --         end
+            --     end,
+            --     desc = "Show hover on mouse stop",
+            -- })
             -- vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI", "InsertLeave" }, {
             --     callback = function()
             --         -- Close floating windows that are hover docs
@@ -320,7 +325,7 @@ return {
                 configs.lsp_from_scratch = {
                     default_config = {
                         cmd = { ts_node, server_path },
-                        filetypes = { "text" }, -- change to your target filetypes
+                        filetypes = { "text" },    -- change to your target filetypes
                         root_dir = function()
                             return vim.fn.getcwd() -- or use lspconfig.util.root_pattern()
                         end,
@@ -339,7 +344,7 @@ return {
             })
         end,
         ft = { "text" }, -- or your actual target filetypes
-        lazy = true, -- set to true if you want it to load on demand
+        lazy = true,     -- set to true if you want it to load on demand
     },
     {
         "ray-x/lsp_signature.nvim",
