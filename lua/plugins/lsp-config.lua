@@ -52,11 +52,13 @@ return {
                     "clangd",
                     "bashls",
                     "bicep",
+                    "yamlls",
                 },
                 automatic_enable = {
                     "vimls",
                     "bicep",
                     "bashls",
+                    "yamlls",
                 },
             })
         end,
