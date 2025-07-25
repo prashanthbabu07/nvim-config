@@ -6,10 +6,10 @@ return {
     config = function()
         local auto_theme = require("lualine.themes.auto")
 
-        local modes = { "normal", "insert", "visual", "replace", "command", "terminal", "inactive" }
-        for _, mode in ipairs(modes) do
-            auto_theme[mode].c.bg = "None" -- Or ''
-        end
+        -- local modes = { "normal", "insert", "visual", "replace", "command", "terminal", "inactive" }
+        -- for _, mode in ipairs(modes) do
+        --     auto_theme[mode].c.bg = "None" -- Or ''
+        -- end
         require("lualine").setup({
             options = {
                 theme = auto_theme,

@@ -53,12 +53,14 @@ return {
                     "bashls",
                     "bicep",
                     "yamlls",
+                    "angularls",
                 },
                 automatic_enable = {
                     "vimls",
                     "bicep",
                     "bashls",
                     "yamlls",
+                    "angularls",
                 },
             })
         end,
@@ -121,7 +123,11 @@ return {
             local csharpls_extended = require("csharpls_extended")
 
             lspconfig.csharp_ls.setup({
-                cmd = { "csharp-ls" }, -- Ensure csharp-ls is in your PATH
+                -- cmd = { "csharp-ls" }, -- Ensure csharp-ls is in your PATH
+                cmd = {
+                    "dotnet",
+                    "/Volumes/Sandisk/Projects/neovim-projects/csharp-language-server/src/CSharpLanguageServer/bin/Release/net9.0/CSharpLanguageServer.dll",
+                },
                 on_attach = on_attach,
                 -- on_attach = function(client, bufnr)
                 --     local opts = { buffer = bufnr }
@@ -203,6 +209,14 @@ return {
             lspconfig.bashls.setup({
                 capabilities = capabilities,
                 on_attach = on_attach,
+            })
+
+            -- angulre (LSP)
+            lspconfig.angularls.setup({
+                capabilities = capabilities,
+                on_attach = on_attach,
+                filetypes = { "typescript", "html", "htmlangular" },
+                root_dir = lspconfig.util.root_pattern("angular.json"), -- Detect Angular projects based on angular.json
             })
 
             vim.diagnostic.config({
