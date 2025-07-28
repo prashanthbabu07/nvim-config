@@ -22,7 +22,12 @@ vim.opt.statuscolumn = "%s%1l   "
 
 -- typewriter like scrolling
 vim.opt.scrolloff = 999
-
+-- vim.api.
+-- vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+--     callback = function()
+--         vim.cmd("normal! zz")
+--     end,
+-- })
 
 vim.opt.fillchars:append({ eob = " " })
 
@@ -57,7 +62,5 @@ for i = 1, 9 do
     vim.keymap.set("n", "<leader>t" .. i, ":tabnext " .. i .. "<CR>", { silent = true, desc = "Tab " .. i })
 end
 
--- map close tab 
+-- map close tab
 vim.keymap.set("n", "<leader>tc", ":tabclose<CR>", { silent = true, desc = "Close tab" })
-
-
