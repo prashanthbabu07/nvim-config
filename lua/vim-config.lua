@@ -21,7 +21,7 @@ vim.o.signcolumn = "yes:2"
 vim.opt.statuscolumn = "%s%1l   "
 
 -- typewriter like scrolling
-vim.opt.scrolloff = 999
+-- vim.opt.scrolloff = 999
 -- vim.api.
 -- vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
 --     callback = function()

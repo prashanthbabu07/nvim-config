@@ -54,6 +54,7 @@ return {
                     "bicep",
                     "yamlls",
                     "angularls",
+                    "vacuum",
                 },
                 automatic_enable = {
                     "vimls",
@@ -61,6 +62,7 @@ return {
                     "bashls",
                     "yamlls",
                     "angularls",
+                    "vacuum",
                 },
             })
         end,
@@ -219,13 +221,21 @@ return {
                 root_dir = lspconfig.util.root_pattern("angular.json"), -- Detect Angular projects based on angular.json
             })
 
+            -- openapi spec (LSP)
+            lspconfig.vacuum.setup({
+                capabilities = capabilities,
+                on_attach = on_attach,
+                filetypes = { "yaml", "json" }, -- Adjust filetypes as needed
+                root_dir = lspconfig.util.root_pattern(".git"), -- Detect Vacuum projects based
+            })
+
             vim.diagnostic.config({
                 virtual_text = {
                     source = true, -- "always",
                     severity = { min = vim.diagnostic.severity.HINT },
-                    format = function(diagnostic)
-                        return string.format("%s [%s]", diagnostic.message, diagnostic.source)
-                    end,
+                    -- format = function(diagnostic)
+                    --     return string.format("%s [%s]", diagnostic.message, diagnostic.source)
+                    -- end,
                 },
                 float = {
                     source = true, -- "always",
