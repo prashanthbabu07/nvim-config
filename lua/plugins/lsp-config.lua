@@ -1,4 +1,5 @@
 local function on_attach(client, bufnr)
+    print("C# LSP root dir: " .. client.config.root_dir)
     local opts = { buffer = bufnr, silent = true, noremap = true }
 
     -- Example keymap: rename with <F2>
@@ -132,10 +133,22 @@ return {
                 },
                 on_attach = on_attach,
                 -- on_attach = function(client, bufnr)
-                --     local opts = { buffer = bufnr }
-                --     vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
+                -- --     local opts = { buffer = bufnr }
+                -- --     vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
                 -- end,
-                root_dir = lspconfig.util.root_pattern("*.sln", ".git", "*.csproj"),
+                -- root_dir = lspconfig.util.root_pattern(".git", "*.sln", ".git", "*.csproj"),
+                -- root_dir = lspconfig.util.root_pattern(".root"),
+                root_dir = function(fname)
+                    --root pattern to check from the directory nivm was opened from
+                    local cwd = vim.fn.getcwd(-1, -1)
+                    local root_marker = cwd .. "/.root"
+                    if vim.uv.fs_stat(root_marker) then
+                        return cwd
+                    end
+
+                    return lspconfig.util.root_pattern(".git", "*.sln", ".csproj")(fname)
+                end,
+
                 handlers = {
                     ["textDocument/definition"] = csharpls_extended.handler,
                     ["textDocument/typeDefinition"] = csharpls_extended.handler,
@@ -351,7 +364,7 @@ return {
                 configs.lsp_from_scratch = {
                     default_config = {
                         cmd = { ts_node, server_path },
-                        filetypes = { "text" },    -- change to your target filetypes
+                        filetypes = { "text" }, -- change to your target filetypes
                         root_dir = function()
                             return vim.fn.getcwd() -- or use lspconfig.util.root_pattern()
                         end,
@@ -370,7 +383,7 @@ return {
             })
         end,
         ft = { "text" }, -- or your actual target filetypes
-        lazy = true,     -- set to true if you want it to load on demand
+        lazy = true, -- set to true if you want it to load on demand
     },
     {
         "ray-x/lsp_signature.nvim",
