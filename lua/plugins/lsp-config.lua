@@ -1,5 +1,5 @@
 local function on_attach(client, bufnr)
-    print("C# LSP root dir: " .. client.config.root_dir)
+    print("LSP root dir: " .. client.config.root_dir)
     local opts = { buffer = bufnr, silent = true, noremap = true }
 
     -- Example keymap: rename with <F2>
