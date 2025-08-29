@@ -58,7 +58,7 @@ return {
                     "vacuum",
                 },
                 automatic_enable = {
-                    "vimls",
+                    -- "vimls",
                     "bicep",
                     "bashls",
                     "yamlls",
@@ -240,6 +240,13 @@ return {
                 on_attach = on_attach,
                 filetypes = { "yaml", "json" }, -- Adjust filetypes as needed
                 root_dir = lspconfig.util.root_pattern(".git"), -- Detect Vacuum projects based
+            })
+
+            -- vimls (LSP)
+            lspconfig.vimls.setup({
+                capabilities = capabilities,
+                on_attach = on_attach,
+                root_dir = lspconfig.util.root_pattern(".git"),
             })
 
             vim.diagnostic.config({

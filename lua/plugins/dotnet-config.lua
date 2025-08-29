@@ -30,38 +30,41 @@ return {
                 --- Optional table of extra args e.g "--blame crash"
                 additional_args = {},
             },
+            -- server = {
+            --     log_level = "Verbose",
+            -- },
         })
 
         -- key bindings pairs
         local dotnet_functions = {
             -- Testing
-            { key = "<leader>dtt", func = dotnet.testrunner, desc = "Toggle test runner" },
-            { key = "<leader>dtr", func = dotnet.testrunner_refresh, desc = "Refresh test runner" },
-            { key = "<leader>dtb", func = dotnet.testrunner_refresh_build, desc = "Refresh test runner with build" },
-            { key = "<leader>dts", func = dotnet.test_solution, desc = "Test solution" },
+            { key = "<leader>dtt",  func = dotnet.testrunner,               desc = "Toggle test runner" },
+            { key = "<leader>dtr",  func = dotnet.testrunner_refresh,       desc = "Refresh test runner" },
+            { key = "<leader>dtb",  func = dotnet.testrunner_refresh_build, desc = "Refresh test runner with build" },
+            { key = "<leader>dts",  func = dotnet.test_solution,            desc = "Test solution" },
 
             -- Project
-            { key = "<leader>dpv", func = dotnet.project_view, desc = "Project view" },
-            { key = "<leader>dpd", func = dotnet.project_view_default, desc = "Project view default" },
-            { key = "<leader>dpa", func = dotnet.add_package, desc = "Add package" },
-            { key = "<leader>dna", func = dotnet.add_package, desc = "Add package" },
-            { key = "<leader>dnr", func = dotnet.remove_package, desc = "Remove package" },
+            { key = "<leader>dpv",  func = dotnet.project_view,             desc = "Project view" },
+            { key = "<leader>dpd",  func = dotnet.project_view_default,     desc = "Project view default" },
+            { key = "<leader>dpa",  func = dotnet.add_package,              desc = "Add package" },
+            { key = "<leader>dna",  func = dotnet.add_package,              desc = "Add package" },
+            { key = "<leader>dnr",  func = dotnet.remove_package,           desc = "Remove package" },
 
             -- Solution
-            { key = "<leader>dss", func = dotnet.solution_select, desc = "Solution select" },
-            { key = "<leader>dsa", func = dotnet.solution_add, desc = "Solution add" },
-            { key = "<leader>dsr", func = dotnet.solution_remove, desc = "Solution remove" },
+            { key = "<leader>dss",  func = dotnet.solution_select,          desc = "Solution select" },
+            { key = "<leader>dsa",  func = dotnet.solution_add,             desc = "Solution add" },
+            { key = "<leader>dsr",  func = dotnet.solution_remove,          desc = "Solution remove" },
 
             -- Build
-            { key = "<leader>dbp", func = dotnet.build, desc = "Build project" },
-            { key = "<leader>dbs", func = dotnet.build_solution, desc = "Build solution" },
-            { key = "<leader>dbqp", func = dotnet.build_quickfix, desc = "Build project quick fix" },
-            { key = "<leader>dbqs", func = dotnet.build_solution_quickfix, desc = "Build solution quick fix" },
-            { key = "<leader>dpc", func = dotnet.clean, desc = "Clean project" },
-            { key = "<leader>dpr", func = dotnet.restore, desc = "Restore project" },
+            { key = "<leader>dbp",  func = dotnet.build,                    desc = "Build project" },
+            { key = "<leader>dbs",  func = dotnet.build_solution,           desc = "Build solution" },
+            { key = "<leader>dbqp", func = dotnet.build_quickfix,           desc = "Build project quick fix" },
+            { key = "<leader>dbqs", func = dotnet.build_solution_quickfix,  desc = "Build solution quick fix" },
+            { key = "<leader>dpc",  func = dotnet.clean,                    desc = "Clean project" },
+            { key = "<leader>dpr",  func = dotnet.restore,                  desc = "Restore project" },
 
             -- Reset
-            { key = "<leader>dr", func = dotnet.reset, desc = "Reset easy-dotnet" },
+            { key = "<leader>dr",   func = dotnet.reset,                    desc = "Reset easy-dotnet" },
         }
 
         for _, mapping in ipairs(dotnet_functions) do
