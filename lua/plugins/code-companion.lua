@@ -3,7 +3,6 @@ Running model locally for code companion support
 brew install ollama
 ollama serve or  brew services start ollama
 ollama run codellama:7b
-
 --]]
 
 return {
