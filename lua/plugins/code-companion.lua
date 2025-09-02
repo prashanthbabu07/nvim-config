@@ -14,9 +14,11 @@ return {
         require("codecompanion").setup({
             adapter = "ollama", -- or "openai" if using their API
             adapters = {
-                ollama = {
-                    endpoint = "http://localhost:11434",
-                    model = "codellama:7b", -- Or any other pulled model
+                http = {
+                    ollama = {
+                        endpoint = "http://localhost:11434",
+                        model = "codellama:7b", -- Or any other pulled model
+                    },
                 },
             },
         })
