@@ -12,10 +12,10 @@ return {
     opts = {
         default_component_configs = {
             -- icon = {
-                -- folder_closed = "[+]",
-                -- folder_open = "[-]",
-                -- folder_empty = "[ ]",
-                -- default = "•",
+            -- folder_closed = "[+]",
+            -- folder_open = "[-]",
+            -- folder_empty = "[ ]",
+            -- default = "•",
             -- },
         },
     },
@@ -33,8 +33,8 @@ return {
                         -- Make the mapping anything you want
                         ["E"] = "easy",
                         ["<space>"] = "none", -- disable default space mapping
-
                     },
+                    width = 60,
                 },
                 follow_current_file = {
                     enabled = true,
