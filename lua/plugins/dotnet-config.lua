@@ -30,9 +30,9 @@ return {
                 --- Optional table of extra args e.g "--blame crash"
                 additional_args = {},
             },
-            -- server = {
-            --     log_level = "Verbose",
-            -- },
+            server = {
+                log_level = "Verbose",
+            },
         })
 
         -- key bindings pairs
