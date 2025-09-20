@@ -11,6 +11,7 @@ return {
 
             telescope.setup({
                 defaults = {
+                    -- cwd_only = true,
                     -- Use fd as the finder with basic flags
                     find_command = {
                         "fd",
@@ -52,6 +53,10 @@ return {
                     cwd = "~/notes",
                 })
             end, { desc = "Find grep notes" })
+
+            vim.keymap.set("n", "<leader>fr", function()
+                builtin.oldfiles({ cwd_only = true })
+            end, { desc = "Recent files" })
 
             -- vim.keymap.set("n", "<leader>gd", builtin.lsp_definitions, {})
         end,
