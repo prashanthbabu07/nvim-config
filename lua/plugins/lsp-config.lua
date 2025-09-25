@@ -100,7 +100,7 @@ return {
                 filetypes = { "cshtml", "html" },
             })
 
-            lspconfig.lua_ls.setup({
+            vim.lsp.config.lua_ls = {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 settings = {
@@ -121,7 +121,8 @@ return {
                 --     local opts = { buffer = bufnr }
                 --     vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
                 -- end,
-            })
+            }
+            vim.lsp.enable({ "lua_ls" })
 
             local csharpls_extended = require("csharpls_extended")
 
