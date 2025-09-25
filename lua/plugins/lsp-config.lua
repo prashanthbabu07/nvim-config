@@ -215,10 +215,13 @@ return {
             })
 
             -- C & C++ (LSP)
-            lspconfig.clangd.setup({
+            vim.lsp.config.clangd = {
+                cmd = { "clangd", "--background-index" },
                 capabilities = capabilities,
                 on_attach = on_attach,
-            })
+                filetypes = { "c", "cpp" },
+            }
+            vim.lsp.enable({ "clangd" })
 
             -- bash
             lspconfig.bashls.setup({
@@ -238,7 +241,7 @@ return {
             lspconfig.vacuum.setup({
                 capabilities = capabilities,
                 on_attach = on_attach,
-                filetypes = { "yaml", "json" }, -- Adjust filetypes as needed
+                filetypes = { "yaml", "json" },                 -- Adjust filetypes as needed
                 root_dir = lspconfig.util.root_pattern(".git"), -- Detect Vacuum projects based
             })
 
@@ -371,7 +374,7 @@ return {
                 configs.lsp_from_scratch = {
                     default_config = {
                         cmd = { ts_node, server_path },
-                        filetypes = { "text" }, -- change to your target filetypes
+                        filetypes = { "text" },    -- change to your target filetypes
                         root_dir = function()
                             return vim.fn.getcwd() -- or use lspconfig.util.root_pattern()
                         end,
@@ -390,7 +393,7 @@ return {
             })
         end,
         ft = { "text" }, -- or your actual target filetypes
-        lazy = true, -- set to true if you want it to load on demand
+        lazy = true,     -- set to true if you want it to load on demand
     },
     {
         "ray-x/lsp_signature.nvim",
