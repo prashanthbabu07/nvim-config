@@ -225,10 +225,11 @@ return {
             vim.lsp.enable({ "clangd" })
 
             -- bash
-            lspconfig.bashls.setup({
+            vim.lsp.config.bashls = {
                 capabilities = capabilities,
                 on_attach = on_attach,
-            })
+            }
+            vim.lsp.enable({ "bashls" })
 
             -- angulre (LSP)
             lspconfig.angularls.setup({
