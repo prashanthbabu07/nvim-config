@@ -197,16 +197,17 @@ return {
             vim.lsp.enable({ "rust_analyzer" })
 
             -- PYRIGHT: LSP
-            lspconfig.pyright.setup({
+            vim.lsp.config.pyright = {
                 capabilities = capabilities,
                 on_attach = function(client, bufnr)
                     -- disable pyright formatting
                     client.server_capabilities.documentFormattingProvider = false
                 end,
-            })
+            }
+            vim.lsp.enable({ "pyright" })
 
             -- RUFF (the new LSP)
-            lspconfig.ruff.setup({
+            vim.lsp.config.ruff = {
                 capabilities = capabilities,
                 on_attach = function(client, bufnr)
                     -- optional: disable hover to let pyright handle it
@@ -218,7 +219,8 @@ return {
                         -- args = {},
                     },
                 },
-            })
+            }
+            vim.lsp.enable({ "ruff" })
 
             -- C & C++ (LSP)
             vim.lsp.config.clangd = {
@@ -237,20 +239,22 @@ return {
             vim.lsp.enable({ "bashls" })
 
             -- angulre (LSP)
-            lspconfig.angularls.setup({
+            vim.lsp.config.angularls = {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 filetypes = { "typescript", "html", "htmlangular" },
                 root_dir = lspconfig.util.root_pattern("angular.json"), -- Detect Angular projects based on angular.json
-            })
+            }
+            vim.lsp.enable({ "angularls" })
 
             -- openapi spec (LSP)
-            lspconfig.vacuum.setup({
+            vim.lsp.config.vacuum = {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 filetypes = { "yaml", "json" }, -- Adjust filetypes as needed
                 root_dir = lspconfig.util.root_pattern(".git"), -- Detect Vacuum projects based
-            })
+            }
+            vim.lsp.enable({ "vacuum" })
 
             -- vimls (LSP)
             vim.lsp.config.vimls = {
@@ -392,13 +396,14 @@ return {
             end
 
             -- Setup the LSP
-            lspconfig.lsp_from_scratch.setup({
+            vim.lsp.config.lsp_from_scratch = {
                 capabilities = capabilities,
                 on_attach = function(client, bufnr)
                     print("✅ lsp-from-scratch attached")
                     -- Optional: set keymaps here
                 end,
-            })
+            }
+            vim.lsp.enable({ "lsp_from_scratch" })
         end,
         ft = { "text" }, -- or your actual target filetypes
         lazy = true, -- set to true if you want it to load on demand
