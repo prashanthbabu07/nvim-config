@@ -126,29 +126,30 @@ return {
 
             local csharpls_extended = require("csharpls_extended")
 
-            lspconfig.csharp_ls.setup({
+            vim.lsp.config.csharp_ls = {
                 cmd = { "csharp-ls" }, -- Ensure csharp-ls is in your PATH
                 -- cmd = {
                 --     "dotnet",
                 --     "/Volumes/Sandisk/Projects/neovim-projects/csharp-language-server/src/CSharpLanguageServer/bin/Release/net9.0/CSharpLanguageServer.dll",
                 -- },
                 on_attach = on_attach,
+                capabilities = capabilities,
                 -- on_attach = function(client, bufnr)
                 -- --     local opts = { buffer = bufnr }
                 -- --     vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
                 -- end,
                 -- root_dir = lspconfig.util.root_pattern(".git", "*.sln", ".git", "*.csproj"),
                 -- root_dir = lspconfig.util.root_pattern(".root"),
-                root_dir = function(fname)
-                    --root pattern to check from the directory nivm was opened from
-                    local cwd = vim.fn.getcwd(-1, -1)
-                    local root_marker = cwd .. "/.root"
-                    if vim.uv.fs_stat(root_marker) then
-                        return cwd
-                    end
-
-                    return lspconfig.util.root_pattern(".git", "*.sln", ".csproj")(fname)
-                end,
+                -- root_dir = function(fname)
+                --     --root pattern to check from the directory nivm was opened from
+                --     local cwd = vim.fn.getcwd(-1, -1)
+                --     local root_marker = cwd .. "/.root"
+                --     if vim.uv.fs_stat(root_marker) then
+                --         return cwd
+                --     end
+                --
+                --     return lspconfig.util.root_pattern(".git", "*.sln", ".csproj")(fname)
+                -- end,
 
                 handlers = {
                     ["textDocument/definition"] = csharpls_extended.handler,
@@ -158,7 +159,8 @@ return {
                     -- ["textDocument/signatureHelp"] = csharpls_extended.handler,
                     -- Refer to the plugin's documentation for all available handlers.
                 },
-            })
+            }
+            vim.lsp.enable({ "csharp_ls" })
             csharpls_extended.buf_read_cmd_bind()
 
             -- lspconfig.omnisharp.setup({
@@ -172,7 +174,7 @@ return {
             --     root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", ".git"),
             -- })
 
-            lspconfig.rust_analyzer.setup({
+            vim.lsp.config.rust_analyzer = {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 settings = {
@@ -189,7 +191,8 @@ return {
                         },
                     },
                 },
-            })
+            }
+            vim.lsp.enable({ "rust_analyzer" })
 
             -- PYRIGHT: LSP
             lspconfig.pyright.setup({
