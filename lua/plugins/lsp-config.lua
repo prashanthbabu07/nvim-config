@@ -78,7 +78,7 @@ return {
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             local lspconfig = require("lspconfig")
 
-            lspconfig.ts_ls.setup({
+            vim.lsp.config.ts_ls = {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 init_options = {
@@ -92,13 +92,15 @@ return {
                         includeInlayEnumMemberValueHints = true,
                     },
                 },
-            })
+            }
+            vim.lsp.enable({ "ts_ls" })
 
-            lspconfig.html.setup({
+            vim.lsp.config.html = {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 filetypes = { "cshtml", "html" },
-            })
+            }
+            vim.lsp.enable({ "html" })
 
             vim.lsp.config.lua_ls = {
                 capabilities = capabilities,
