@@ -396,14 +396,14 @@ return {
             end
 
             -- Setup the LSP
-            vim.lsp.config.lsp_from_scratch = {
+            lspconfig.lsp_from_scratch.setup({
                 capabilities = capabilities,
                 on_attach = function(client, bufnr)
                     print("✅ lsp-from-scratch attached")
                     -- Optional: set keymaps here
                 end,
-            }
-            vim.lsp.enable({ "lsp_from_scratch" })
+            })
+            -- vim.lsp.enable({ "lsp_from_scratch" })
         end,
         ft = { "text" }, -- or your actual target filetypes
         lazy = true, -- set to true if you want it to load on demand
