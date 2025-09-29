@@ -8,7 +8,8 @@ return {
         dotnet.setup({
             test_runner = {
                 ---@type "split" | "float" | "buf"
-                viewmode = "float",
+                -- viewmode = "float",
+                viewmode = "buf",
                 enable_buffer_test_execution = true, --Experimental, run tests directly from buffer
                 noBuild = true,
                 noRestore = true,
