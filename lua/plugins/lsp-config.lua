@@ -1,27 +1,27 @@
-local function on_attach(client, bufnr)
-    -- print("LSP root dir: " .. client.config.root_dir)
-    local opts = { buffer = bufnr, silent = true, noremap = true }
-
-    -- Example keymap: rename with <F2>
-    vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
-
-    -- Enable inlay hints if supported
-    if client.server_capabilities.inlayHintProvider then
-        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-    end
-
-    -- Setup code lens refresh if supported
-    if client.server_capabilities.codeLensProvider then
-        -- Initial refresh
-        vim.lsp.codelens.refresh()
-
-        -- Refresh on events
-        vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave" }, {
-            buffer = bufnr,
-            callback = vim.lsp.codelens.refresh,
-        })
-    end
-end
+-- local function on_attach(client, bufnr)
+--     -- print("LSP root dir: " .. client.config.root_dir)
+--     -- local opts = { buffer = bufnr, silent = true, noremap = true }
+--
+--     -- Example keymap: rename with <F2>
+--     -- vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
+--
+--     -- Enable inlay hints if supported
+--     -- if client.server_capabilities.inlayHintProvider then
+--     --     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+--     -- end
+--
+--     -- Setup code lens refresh if supported
+--     if client.server_capabilities.codeLensProvider then
+--         -- Initial refresh
+--         vim.lsp.codelens.refresh()
+--
+--         -- Refresh on events
+--         -- vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave" }, {
+--         --     buffer = bufnr,
+--         --     callback = vim.lsp.codelens.refresh,
+--         -- })
+--     end
+-- end
 
 return {
     {
@@ -80,7 +80,7 @@ return {
 
             vim.lsp.config.ts_ls = {
                 capabilities = capabilities,
-                on_attach = on_attach,
+                -- on_attach = on_attach,
                 init_options = {
                     preferences = {
                         includeInlayParameterNameHints = "all", -- "none" | "literals" | "all"
@@ -97,14 +97,14 @@ return {
 
             vim.lsp.config.html = {
                 capabilities = capabilities,
-                on_attach = on_attach,
+                -- on_attach = on_attach,
                 filetypes = { "cshtml", "html" },
             }
             vim.lsp.enable({ "html" })
 
             vim.lsp.config.lua_ls = {
                 capabilities = capabilities,
-                on_attach = on_attach,
+                -- on_attach = on_attach,
                 settings = {
                     Lua = {
                         runtime = { version = "LuaJIT" },
@@ -134,7 +134,7 @@ return {
                 --     "dotnet",
                 --     "/Volumes/Sandisk/Projects/neovim-projects/csharp-language-server/src/CSharpLanguageServer/bin/Release/net9.0/CSharpLanguageServer.dll",
                 -- },
-                on_attach = on_attach,
+                -- on_attach = on_attach,
                 capabilities = capabilities,
                 -- on_attach = function(client, bufnr)
                 -- --     local opts = { buffer = bufnr }
@@ -162,12 +162,12 @@ return {
                     -- Refer to the plugin's documentation for all available handlers.
                 },
             }
-            vim.lsp.enable({ "csharp_ls" })
+            -- vim.lsp.enable({ "csharp_ls" })
             csharpls_extended.buf_read_cmd_bind()
 
             -- lspconfig.omnisharp.setup({
             --     capabilities = capabilities,
-            --     on_attach = on_attach,
+            --     -- on_attach = on_attach,
             --     cmd = {
             --         vim.fn.stdpath("data") .. "/mason/bin/omnisharp",
             --         "--languageserver",
@@ -178,7 +178,7 @@ return {
 
             vim.lsp.config.rust_analyzer = {
                 capabilities = capabilities,
-                on_attach = on_attach,
+                -- on_attach = on_attach,
                 settings = {
                     ["rust-analyzer"] = {
                         checkOnSave = {
@@ -226,7 +226,7 @@ return {
             vim.lsp.config.clangd = {
                 cmd = { "clangd", "--background-index" },
                 capabilities = capabilities,
-                on_attach = on_attach,
+                -- on_attach = on_attach,
                 filetypes = { "c", "cpp" },
             }
             vim.lsp.enable({ "clangd" })
@@ -234,14 +234,14 @@ return {
             -- bash
             vim.lsp.config.bashls = {
                 capabilities = capabilities,
-                on_attach = on_attach,
+                -- on_attach = on_attach,
             }
             vim.lsp.enable({ "bashls" })
 
             -- angulre (LSP)
             vim.lsp.config.angularls = {
                 capabilities = capabilities,
-                on_attach = on_attach,
+                -- on_attach = on_attach,
                 filetypes = { "typescript", "html", "htmlangular" },
                 root_dir = lspconfig.util.root_pattern("angular.json"), -- Detect Angular projects based on angular.json
             }
@@ -250,7 +250,7 @@ return {
             -- openapi spec (LSP)
             vim.lsp.config.vacuum = {
                 capabilities = capabilities,
-                on_attach = on_attach,
+                -- on_attach = on_attach,
                 filetypes = { "yaml", "json" }, -- Adjust filetypes as needed
                 root_dir = lspconfig.util.root_pattern(".git"), -- Detect Vacuum projects based
             }
@@ -259,7 +259,7 @@ return {
             -- vimls (LSP)
             vim.lsp.config.vimls = {
                 capabilities = capabilities,
-                on_attach = on_attach,
+                -- on_attach = on_attach,
                 root_dir = lspconfig.util.root_pattern(".git"),
             }
             vim.lsp.enable({ "vimls" })
@@ -324,6 +324,8 @@ return {
             --     desc = "Close LSP hover when moving cursor",
             -- })
 
+            vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, { desc = "Rename" })
+            vim.lsp.inlay_hint.enable(true)
             vim.keymap.set("n", "<leader>lsd", vim.lsp.buf.definition, { desc = "Go to definition" })
             vim.keymap.set("n", "<leader>lsD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
             vim.keymap.set({ "n", "v" }, "<leader>lsc", vim.lsp.buf.code_action, { desc = "Code action" })
@@ -348,6 +350,9 @@ return {
                 { desc = "Find references (Telescope)" }
             )
 
+            vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave" }, {
+                callback = vim.lsp.codelens.refresh,
+            })
             -- vim.api.nvim_create_autocmd("LspAttach", {
             --     group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
             --     callback = function(args)

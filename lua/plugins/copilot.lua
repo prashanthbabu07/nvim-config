@@ -40,7 +40,7 @@ return {
             { "github/copilot.vim" },
             { "nvim-lua/plenary.nvim" }, -- for curl, log and async functions
         },
-        build = "make tiktoken",         -- Only on MacOS or Linux
+        build = "make tiktoken", -- Only on MacOS or Linux
         opts = {
             options = {
                 prompts = {
@@ -52,20 +52,28 @@ return {
                             -- return copilot_select.visual(source)
                         end,
                     },
+                    Typos = {
+                        prompt = "Please fix the typos in the given selection",
+                        selection = function(source)
+                            local copilot_select = require("CopilotChat.select")
+                            return copilot_select.get_visual(source)
+                        end,
+                    },
                 },
             },
         },
         keys = {
-            { "<leader>cpn", ":CopilotChat Rename<CR>",  mode = "v", desc = "Rename the variable" },
-            { "<leader>cpc", ":CopilotChat<CR>",         mode = "n", desc = "Chat with Copilot" },
-            { "<leader>cpe", ":CopilotChatExplain<CR>",  mode = "v", desc = "Explain Code" },
-            { "<leader>cpr", ":CopilotChatReview<CR>",   mode = "v", desc = "Review Code" },
-            { "<leader>cpf", ":CopilotChatFix<CR>",      mode = "v", desc = "Fix Code Issues" },
+            { "<leader>cpn", ":CopilotChat Rename<CR>", mode = "v", desc = "Rename the variable" },
+            { "<leader>cpx", ":CopilotChat Typos<CR>", mode = "v", desc = "Fix Typos" },
+            { "<leader>cpc", ":CopilotChat<CR>", mode = "n", desc = "Chat with Copilot" },
+            { "<leader>cpe", ":CopilotChatExplain<CR>", mode = "v", desc = "Explain Code" },
+            { "<leader>cpr", ":CopilotChatReview<CR>", mode = "v", desc = "Review Code" },
+            { "<leader>cpf", ":CopilotChatFix<CR>", mode = "v", desc = "Fix Code Issues" },
             { "<leader>cpo", ":CopilotChatOptimize<CR>", mode = "v", desc = "Optimize Code" },
-            { "<leader>cpd", ":CopilotChatDocs<CR>",     mode = "v", desc = "Generate Docs" },
-            { "<leader>cpt", ":CopilotChatTests<CR>",    mode = "v", desc = "Generate Tests" },
-            { "<leader>cpm", ":CopilotChatCommit<CR>",   mode = "n", desc = "Generate Commit Message" },
-            { "<leader>cps", ":CopilotChatCommit<CR>",   mode = "v", desc = "Generate Commit for Selection" },
+            { "<leader>cpd", ":CopilotChatDocs<CR>", mode = "v", desc = "Generate Docs" },
+            { "<leader>cpt", ":CopilotChatTests<CR>", mode = "v", desc = "Generate Tests" },
+            { "<leader>cpm", ":CopilotChatCommit<CR>", mode = "n", desc = "Generate Commit Message" },
+            { "<leader>cps", ":CopilotChatCommit<CR>", mode = "v", desc = "Generate Commit for Selection" },
         },
         config = function()
             require("CopilotChat").setup({})
