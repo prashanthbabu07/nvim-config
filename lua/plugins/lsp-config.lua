@@ -163,7 +163,7 @@ return {
                 },
             }
             -- vim.lsp.enable({ "csharp_ls" })
-            csharpls_extended.buf_read_cmd_bind()
+            -- csharpls_extended.buf_read_cmd_bind()
 
             -- lspconfig.omnisharp.setup({
             --     capabilities = capabilities,
