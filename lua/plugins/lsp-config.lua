@@ -38,6 +38,12 @@ return {
             auto_install = true,
         },
         config = function()
+            require("mason").setup({
+                registries = {
+                    "github:mason-org/mason-registry",
+                    "github:Crashdummyy/mason-registry",
+                },
+            })
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "lua_ls",
@@ -235,6 +241,7 @@ return {
             vim.lsp.config.bashls = {
                 capabilities = capabilities,
                 -- on_attach = on_attach,
+                filetypes = { "sh", "bash", "zsh" },
             }
             vim.lsp.enable({ "bashls" })
 
@@ -380,5 +387,12 @@ return {
 
             vim.keymap.set("n", "<leader>lsl", vim.lsp.codelens.refresh, { desc = "Refresh CodeLens" })
         end,
+    },
+    {
+        "seblyng/roslyn.nvim",
+        opts = {
+            -- your configuration goes here; leave empty for defaults
+        },
+        ft = { "cs", "vb" }, -- optional: load only for C#/VB files
     },
 }
