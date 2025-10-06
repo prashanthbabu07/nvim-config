@@ -7,7 +7,7 @@ return {
         local dotnet = require("easy-dotnet") -- .setup()
         dotnet.setup({
             lsp = {
-                enabled = true,
+                enabled = false,
                 roslynator_enabled = true, -- Automatically enable roslynator analyzer
                 analyzer_assemblies = {},
             },

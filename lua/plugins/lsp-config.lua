@@ -258,7 +258,7 @@ return {
             vim.lsp.config.vacuum = {
                 capabilities = capabilities,
                 -- on_attach = on_attach,
-                filetypes = { "yaml", "json" }, -- Adjust filetypes as needed
+                filetypes = { "yaml", "json" },                 -- Adjust filetypes as needed
                 root_dir = lspconfig.util.root_pattern(".git"), -- Detect Vacuum projects based
             }
             vim.lsp.enable({ "vacuum" })
@@ -388,11 +388,11 @@ return {
             vim.keymap.set("n", "<leader>lsl", vim.lsp.codelens.refresh, { desc = "Refresh CodeLens" })
         end,
     },
-    -- {
-    --     "seblyng/roslyn.nvim",
-    --     opts = {
-    --         -- your configuration goes here; leave empty for defaults
-    --     },
-    --     ft = { "cs", "vb" }, -- optional: load only for C#/VB files
-    -- },
+    {
+        "seblyng/roslyn.nvim",
+        opts = {
+            -- your configuration goes here; leave empty for defaults
+        },
+        ft = { "cs", "vb" }, -- optional: load only for C#/VB files
+    },
 }
