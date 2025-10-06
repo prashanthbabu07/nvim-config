@@ -14,6 +14,10 @@ return {
                         extra_args = { "--use-tabs=false", "--tab-width=4" },
                         -- filetypes = { "json", "jsonc", "markdown", "markdown.mdx", "css",  },
                     }),
+                    null_ls.builtins.formatting.prettier.with({
+                        filetypes = { "json", "jsonc" },
+                        extra_args = { "--tab-width=2" },
+                    }),
                     null_ls.builtins.formatting.csharpier, -- requires csharpier installed
                     null_ls.builtins.formatting.black,
                     null_ls.builtins.formatting.isort,
