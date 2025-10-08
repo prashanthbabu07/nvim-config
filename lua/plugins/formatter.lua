@@ -49,7 +49,7 @@ return {
                 },
             })
 
-            vim.keymap.set("n", "<leader>lsf", vim.lsp.buf.format, {
+            vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, {
                 desc = "LSP format",
             })
         end,

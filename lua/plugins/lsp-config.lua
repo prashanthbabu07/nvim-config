@@ -181,6 +181,23 @@ return {
             --     filetypes = { "cshtml" },
             --     root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", ".git"),
             -- })
+            -- local cmd = {
+            --     "roslyn",
+            --     "--stdio",
+            --     "--logLevel=Information",
+            --     "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
+            -- }
+            -- vim.lsp.config("roslyn", {
+            --     cmd = cmd,
+            --     filetypes = { "cs", "vb" },
+            --     capabilities = capabilities,
+            --     settings = {
+            --         ["csharp|code_lens"] = {
+            --             dotnet_enable_references_code_lens = true,
+            --         },
+            --     },
+            -- })
+            -- vim.lsp.enable({ "roslyn" })
 
             vim.lsp.config.rust_analyzer = {
                 capabilities = capabilities,
@@ -258,7 +275,7 @@ return {
             vim.lsp.config.vacuum = {
                 capabilities = capabilities,
                 -- on_attach = on_attach,
-                filetypes = { "yaml", "json" },                 -- Adjust filetypes as needed
+                filetypes = { "yaml", "json" }, -- Adjust filetypes as needed
                 root_dir = lspconfig.util.root_pattern(".git"), -- Detect Vacuum projects based
             }
             vim.lsp.enable({ "vacuum" })
@@ -289,7 +306,7 @@ return {
                 severity_sort = true,
             })
 
-            -- vim.keymap.set("n", "<leader>lsH", function()
+            -- vim.keymap.set("n", "<leader>lH", function()
             --     vim.lsp.buf.hover({
             --         border = "rounded",
             --     })
@@ -333,18 +350,18 @@ return {
 
             vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, { desc = "Rename" })
             vim.lsp.inlay_hint.enable(true)
-            vim.keymap.set("n", "<leader>lsd", vim.lsp.buf.definition, { desc = "Go to definition" })
-            vim.keymap.set("n", "<leader>lsD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
-            vim.keymap.set({ "n", "v" }, "<leader>lsc", vim.lsp.buf.code_action, { desc = "Code action" })
-            vim.keymap.set("n", "<leader>lsid", vim.diagnostic.open_float, { desc = "Open diagnostic float" })
-            -- vim.keymap.set('n', '<leader>lss', vim.diagnostic.set_loclist, { desc = 'Open diagnostic loclist' })
+            vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, { desc = "Go to definition" })
+            vim.keymap.set("n", "<leader>lD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
+            vim.keymap.set({ "n", "v" }, "<leader>lc", vim.lsp.buf.code_action, { desc = "Code action" })
+            vim.keymap.set("n", "<leader>lid", vim.diagnostic.open_float, { desc = "Open diagnostic float" })
+            -- vim.keymap.set('n', '<leader>ls', vim.diagnostic.set_loclist, { desc = 'Open diagnostic loclist' })
 
             -- vim.keymap.set({ "n", "v" }, "<leader>ld", function()
             --     vim.diagnostic.open_float({
             --         border = "rounded",
             --     })
             -- end, { desc = "Show diagnostics" })
-            vim.keymap.set("n", "<leader>lsh", function()
+            vim.keymap.set("n", "<leader>lh", function()
                 vim.lsp.buf.signature_help({
                     border = "rounded",
                 })
@@ -352,7 +369,7 @@ return {
 
             vim.keymap.set(
                 "n",
-                "<leader>lsr",
+                "<leader>lr",
                 require("telescope.builtin").lsp_references,
                 { desc = "Find references (Telescope)" }
             )
@@ -360,7 +377,7 @@ return {
             -- telescope diagnostics
             vim.keymap.set(
                 "n",
-                "<leader>lsx",
+                "<leader>lx",
                 require("telescope.builtin").diagnostics,
                 { desc = "Telescope diagnostics" }
             )
@@ -377,7 +394,7 @@ return {
             --     end,
             -- })
 
-            vim.keymap.set("n", "<leader>lsih", function()
+            vim.keymap.set("n", "<leader>lih", function()
                 local bufnr = vim.api.nvim_get_current_buf()
                 -- vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
                 local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
@@ -385,7 +402,7 @@ return {
                 -- vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(bufnr), { bufnr = bufnr })
             end, { desc = "Toggle Inlay Hints" })
 
-            vim.keymap.set("n", "<leader>lsl", vim.lsp.codelens.refresh, { desc = "Refresh CodeLens" })
+            vim.keymap.set("n", "<leader>ll", vim.lsp.codelens.refresh, { desc = "Refresh CodeLens" })
         end,
     },
     -- {
