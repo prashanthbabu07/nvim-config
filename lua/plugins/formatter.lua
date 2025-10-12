@@ -4,6 +4,18 @@ return {
         config = function()
             local null_ls = require("null-ls")
 
+            -- local xmllint = {
+            --     name = "xmllint",
+            --     method = null_ls.methods.FORMATTING,
+            --     filetypes = { "xml" },
+            --     generator = null_ls.generator({
+            --         command = "xmllint",
+            --         args = { "--format", "-" },
+            --         to_stdin = true,
+            --         from_stderr = false,
+            --     }),
+            -- }
+
             null_ls.setup({
                 sources = {
                     null_ls.builtins.formatting.stylua.with({
@@ -27,6 +39,7 @@ return {
                             "--style={BasedOnStyle: Google, IndentWidth: 4, UseTab: Never, TabWidth: 4}",
                         },
                     }),
+                    null_ls.builtins.formatting.xmllint,
                 },
                 filetypes = {
                     "lua",
@@ -46,8 +59,22 @@ return {
                     "markdown",
                     "markdown.mdx",
                     "yaml",
+                    "xml",
                 },
             })
+
+            -- vim.filetype.add({
+            --     extension = {
+            --         csproj = "xml",
+            --     },
+            -- })
+
+            -- vim.api.nvim_create_autocmd("BufWritePre", {
+            --     pattern = "*.csproj,*.xml",
+            --     callback = function()
+            --         vim.lsp.buf.format({ async = false })
+            --     end,
+            -- })
 
             vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, {
                 desc = "LSP format",

@@ -275,7 +275,7 @@ return {
             vim.lsp.config.vacuum = {
                 capabilities = capabilities,
                 -- on_attach = on_attach,
-                filetypes = { "yaml", "json" }, -- Adjust filetypes as needed
+                filetypes = { "yaml", "json" },                 -- Adjust filetypes as needed
                 root_dir = lspconfig.util.root_pattern(".git"), -- Detect Vacuum projects based
             }
             vim.lsp.enable({ "vacuum" })
@@ -405,11 +405,28 @@ return {
             vim.keymap.set("n", "<leader>ll", vim.lsp.codelens.refresh, { desc = "Refresh CodeLens" })
         end,
     },
-    -- {
-    --     "seblyng/roslyn.nvim",
-    --     opts = {
-    --         -- your configuration goes here; leave empty for defaults
-    --     },
-    --     ft = { "cs", "vb" }, -- optional: load only for C#/VB files
-    -- },
+    {
+        "seblyng/roslyn.nvim",
+        opts = {
+            -- your configuration goes here; leave empty for defaults
+        },
+        ft = { "cs", "vb" }, -- optional: load only for C#/VB files
+        config = function()
+            vim.lsp.config("roslyn", {
+                on_attach = function()
+                    print("This will run when the server attaches!")
+                end,
+                settings = {
+                    ["csharp|inlay_hints"] = {
+                        csharp_enable_inlay_hints_for_implicit_object_creation = true,
+                        csharp_enable_inlay_hints_for_implicit_variable_types = true,
+                    },
+                    ["csharp|code_lens"] = {
+                        dotnet_enable_references_code_lens = true,
+                    },
+                },
+            })
+            vim.lsp.enable({ "roslyn" })
+        end,
+    },
 }
