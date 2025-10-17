@@ -64,3 +64,6 @@ end
 
 -- map close tab
 vim.keymap.set("n", "<leader>tc", ":tabclose<CR>", { silent = true, desc = "Close tab" })
+
+-- disable lsp logging 
+vim.lsp.set_log_level("off")
