@@ -405,35 +405,35 @@ return {
             vim.keymap.set("n", "<leader>ll", vim.lsp.codelens.refresh, { desc = "Refresh CodeLens" })
         end,
     },
-    {
-        "seblyng/roslyn.nvim",
-        opts = {
-            -- your configuration goes here; leave empty for defaults
-        },
-        ft = { "cs", "vb" }, -- optional: load only for C#/VB files
-        config = function()
-            vim.lsp.config("roslyn", {
-                -- on_attach = function()
-                --     print("This will run when the server attaches!")
-                -- end,
-                settings = {
-                    ["csharp|inlay_hints"] = {
-                        csharp_enable_inlay_hints_for_implicit_object_creation = true,
-                        csharp_enable_inlay_hints_for_implicit_variable_types = true,
-                        csharp_enable_inlay_hints_for_types = true,
-                        dotnet_enable_inlay_hints_for_parameters = true,
-                    },
-                    ["csharp|code_lens"] = {
-                        dotnet_enable_references_code_lens = true,
-                    },
-                    ["csharp|background_analysis"] = {
-                        dotnet_analyzer_diagnostics_scope = "fullSolution",
-                        dotnet_compiler_diagnostics_scope = "fullSolution",
-                    },
-                },
-            })
-            vim.lsp.enable({ "roslyn" })
-            -- vim.lsp.inlay_hint.enable()
-        end,
-    },
+    -- {
+    --     "seblyng/roslyn.nvim",
+    --     opts = {
+    --         -- your configuration goes here; leave empty for defaults
+    --     },
+    --     ft = { "cs", "vb" }, -- optional: load only for C#/VB files
+    --     config = function()
+    --         vim.lsp.config("roslyn", {
+    --             -- on_attach = function()
+    --             --     print("This will run when the server attaches!")
+    --             -- end,
+    --             settings = {
+    --                 ["csharp|inlay_hints"] = {
+    --                     csharp_enable_inlay_hints_for_implicit_object_creation = true,
+    --                     csharp_enable_inlay_hints_for_implicit_variable_types = true,
+    --                     csharp_enable_inlay_hints_for_types = true,
+    --                     dotnet_enable_inlay_hints_for_parameters = true,
+    --                 },
+    --                 ["csharp|code_lens"] = {
+    --                     dotnet_enable_references_code_lens = true,
+    --                 },
+    --                 ["csharp|background_analysis"] = {
+    --                     dotnet_analyzer_diagnostics_scope = "fullSolution",
+    --                     dotnet_compiler_diagnostics_scope = "fullSolution",
+    --                 },
+    --             },
+    --         })
+    --         vim.lsp.enable({ "roslyn" })
+    --         -- vim.lsp.inlay_hint.enable()
+    --     end,
+    -- },
 }
