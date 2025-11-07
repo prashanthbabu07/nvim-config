@@ -24,6 +24,7 @@ return {
 
             vim.keymap.set("n", "<leader>ff", function()
                 builtin.find_files({
+                    cwd_only = true,
                     prompt_title = "Find Files (glob supported)",
                     find_command = {
                         "fd",

@@ -32,15 +32,16 @@ return {
             "",
             "Asato mā sad-gamaya, tamaso mā jyotir-gamaya, mrtyor mā amrutam gamaya",
             "",
-            "Knowledge is superior to any actiona/practice. Action without understanding is inferior to knowledge.",
+            -- "Knowledge is superior to any actiona/practice. Action without understanding is inferior to knowledge.",
+            "Jñānaṁ karmaṇaḥ śreṣṭham. Ajñāna-pūrvakaṁ karma jñānāt hīnam"
         }
         dashboard.section.buttons.val = {
-            dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
-            dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-            dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
-            dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
+            dashboard.button("f", "[Find file]", ":Telescope find_files cwd=./<CR>"),
+            dashboard.button("e", "[New file]", ":ene <BAR> startinsert <CR>"),
+            dashboard.button("r", "[Recently used files]", ":Telescope oldfiles cwd=./<CR>"),
+            dashboard.button("t", "[Find text]", ":Telescope live_grep <CR>"),
             -- dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.vim<CR>"),
-            dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
+            dashboard.button("q", "[Quit Neovim]", ":qa<CR>"),
         }
         -- dashboard.section.footer.opts.hl = "Type"
         -- dashboard.section.header.opts.hl = "Include"
