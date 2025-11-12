@@ -7,12 +7,16 @@ return {
             vim.g.copilot_tab_fallback = ""
             vim.g.copilot_enabled = true -- Enable Copilot by default
 
-            -- vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { expr = true, silent = true })
+            vim.api.nvim_set_keymap("i", "<C-;>", 'copilot#Accept("<CR>")', { expr = true, silent = true })
             vim.api.nvim_set_keymap("i", "<C-J>", "<Plug>(copilot-accept-line)", {})
             vim.api.nvim_set_keymap("i", "<C-L>", "<Plug>(copilot-accept-word)", {})
 
+            -- vim.api.nvim_set_keymap("i", "<C-;>", "copilog#Acc")
+
             vim.api.nvim_set_keymap("i", "<C-K>", "copilot#Next()", { expr = true, silent = true })
             vim.api.nvim_set_keymap("i", "<C-H>", "copilot#Previous()", { expr = true, silent = true })
+
+
 
             vim.api.nvim_set_keymap("n", "<leader>cpt", ":CopilotToggle<CR>", { silent = true })
             vim.api.nvim_create_user_command("CopilotToggle", function()
