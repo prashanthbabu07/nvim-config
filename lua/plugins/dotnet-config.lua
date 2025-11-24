@@ -39,7 +39,7 @@ return {
                 additional_args = {},
             },
             server = {
-                log_level = "Verbose",
+                -- log_level = "Verbose",
             },
         })
 
