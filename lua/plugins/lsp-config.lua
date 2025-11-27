@@ -275,7 +275,7 @@ return {
             vim.lsp.config.vacuum = {
                 capabilities = capabilities,
                 -- on_attach = on_attach,
-                filetypes = { "yaml", "json" },                 -- Adjust filetypes as needed
+                filetypes = { "yaml", "json" }, -- Adjust filetypes as needed
                 root_dir = lspconfig.util.root_pattern(".git"), -- Detect Vacuum projects based
             }
             vim.lsp.enable({ "vacuum" })
@@ -377,10 +377,15 @@ return {
             -- telescope diagnostics
             vim.keymap.set(
                 "n",
-                "<leader>lx",
+                "<leader>lX",
                 require("telescope.builtin").diagnostics,
                 { desc = "Telescope diagnostics" }
             )
+
+            -- telescope diagnostics for current buffer
+            vim.keymap.set("n", "<leader>lx", function()
+                require("telescope.builtin").diagnostics({ bufnr = 0 })
+            end, { desc = "Telescope diagnostics (current buffer)" })
 
             vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave" }, {
                 callback = vim.lsp.codelens.refresh,
