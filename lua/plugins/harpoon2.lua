@@ -35,6 +35,7 @@ return {
                     require("harpoon"):list():select(i)
                 end,
                 desc = "Harpoon to File " .. i,
+                mode = { "n", "i" },
             })
         end
         return keys
