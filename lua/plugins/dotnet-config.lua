@@ -39,7 +39,8 @@ return {
                 additional_args = {},
             },
             server = {
-                -- log_level = "Verbose",
+                ---@type nil | "Off" | "Critical" | "Error" | "Warning" | "Information" | "Verbose" | "All"
+                log_level = "Off",
             },
         })
 
