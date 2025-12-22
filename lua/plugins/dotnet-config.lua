@@ -18,7 +18,7 @@ return {
             test_runner = {
                 ---@type "split" | "float" | "buf"
                 -- viewmode = "float",
-                viewmode = "buf",
+                viewmode = "float",
                 enable_buffer_test_execution = true, --Experimental, run tests directly from buffer
                 noBuild = true,
                 noRestore = true,
