@@ -349,7 +349,7 @@ return {
             -- })
 
             vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, { desc = "Rename" })
-            vim.lsp.inlay_hint.enable(true)
+            vim.lsp.inlay_hint.enable(false)
             vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, { desc = "Go to definition" })
             vim.keymap.set("n", "<leader>lD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
             vim.keymap.set({ "n", "v" }, "<leader>lc", vim.lsp.buf.code_action, { desc = "Code action" })
