@@ -13,6 +13,7 @@ return {
         require("lualine").setup({
             options = {
                 theme = auto_theme,
+                globalstatus = true,
             },
         })
         -- require("lualine").setup({
