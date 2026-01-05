@@ -66,7 +66,7 @@ end
 vim.keymap.set("n", "<leader>tc", ":tabclose<CR>", { silent = true, desc = "Close tab" })
 
 -- disable lsp logging
--- vim.lsp.set_log_level("off")
+vim.lsp.set_log_level("off")
 
 -- Copy filename and line number to clipboard
 local function copy_filename_line()
