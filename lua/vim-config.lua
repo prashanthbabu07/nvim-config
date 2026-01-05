@@ -1,7 +1,7 @@
 vim.opt.expandtab = true -- Tabs become spaces
-vim.opt.shiftwidth = 4 -- Auto-indent uses 4 spaces
-vim.opt.tabstop = 4 -- A tab is 4 spaces
-vim.opt.softtabstop = 4 -- <Tab> inserts 4 spaces
+vim.opt.shiftwidth = 4   -- Auto-indent uses 4 spaces
+vim.opt.tabstop = 4      -- A tab is 4 spaces
+vim.opt.softtabstop = 4  -- <Tab> inserts 4 spaces
 
 -- Set indentation for specific file types
 vim.api.nvim_create_autocmd("FileType", {
@@ -66,15 +66,15 @@ end
 vim.keymap.set("n", "<leader>tc", ":tabclose<CR>", { silent = true, desc = "Close tab" })
 
 -- disable lsp logging
-vim.lsp.set_log_level("off")
+-- vim.lsp.set_log_level("off")
 
 -- Copy filename and line number to clipboard
 local function copy_filename_line()
-    local filename = vim.fn.expand("%:t") -- Get the current file name
-    local line = vim.fn.line(".") -- Get the current line number
-    local text = filename .. ":" .. line -- Format as "filename:line"
+    local filename = vim.fn.expand("%:t")  -- Get the current file name
+    local line = vim.fn.line(".")          -- Get the current line number
+    local text = filename .. ":" .. line   -- Format as "filename:line"
 
-    vim.fn.setreg("+", text) -- Copy to system clipboard
+    vim.fn.setreg("+", text)               -- Copy to system clipboard
     print("Copied to clipboard: " .. text) -- Optional: Notify the user
 end
 
@@ -141,3 +141,8 @@ end, {
     complete = "dir",
     desc = "Scan for typos and open in Telescope",
 })
+
+-- For init.lua
+-- vim.opt.background = "light"
+-- vim.cmd("colorscheme default")
+-- vim.cmd("hi Normal guibg=#FFFFFF ctermbg=White")

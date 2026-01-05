@@ -129,4 +129,26 @@ return {
         priority = 1000,
         opts = {},
     },
+    -- Add this to your lazy.nvim plugin spec list
+    {
+        "kdheepak/monochrome.nvim",
+        lazy = false, -- Set to false if you want the colorscheme to load at startup
+        priority = 1000, -- Ensures it loads before other UI plugins
+        config = function()
+            -- vim.cmd.colorscheme("monochrome")
+        end,
+    },
+    {
+        "idr4n/github-monochrome.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+        config = function()
+            -- if get_macos_theme() == "dark" then
+            --     vim.cmd.colorscheme("github-monochrome-dark")
+            --     return
+            -- end
+            -- vim.cmd.colorscheme("github-monochrome-light")
+        end,
+    },
 }
