@@ -27,6 +27,7 @@ return {
                     hide_dotfiles = false,
                     hide_gitignored = true,
                     never_show = { ".DS_Store", "thumbs.db" },
+                    always_show = { "host.json", "local.settings.json" },
                 },
                 window = {
                     mappings = {
