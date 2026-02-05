@@ -59,3 +59,6 @@ C-y : Accept suggestion from copilot chat
 
 # format all file in a project
 stylua .
+
+
+Added

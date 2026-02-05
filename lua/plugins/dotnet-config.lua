@@ -9,7 +9,9 @@ return {
         dotnet.setup({
             lsp = {
                 enabled = true,
-                roslynator_enabled = true, -- Automatically enable roslynator analyzer
+                roslynator_enabled = true, -- Automatically enable roslynator analyzer,
+                easy_dotnet_analyzer_enabled = true, -- Enable roslyn analyzer from easy-dotnet-server,
+                auto_refresh_codelens = false,
                 analyzer_assemblies = {
                     vim.fn.expand("~/.config/nvim/analyzers/SonarAnalyzer.CSharp.dll"),
                 },
