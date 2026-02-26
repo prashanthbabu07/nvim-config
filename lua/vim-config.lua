@@ -118,7 +118,7 @@ vim.api.nvim_create_user_command("TypoScan", function(opts)
     print("Scanning " .. dir .. " for ." .. ext .. " typos...")
 
     -- Run cspell
-    local cmd = string.format('cspell "%s/**/*.%s" --no-progress --no-summary', dir, ext)
+    local cmd = string.format('cspell "%s/**/*.%s" --exclude "**/*.Sdk/**" --no-progress --no-summary', dir, ext)
     local output = vim.fn.system(cmd)
 
     if output == "" or output == nil then
@@ -154,6 +154,11 @@ local function file_class_name_scan(opts)
     local function scan_dir(dir)
         local handle = vim.loop.fs_scandir(dir)
         if not handle then
+            return
+        end
+
+        --if dir contains .Sdk then skip it
+        if dir:find("%.Sdk") then
             return
         end
 
