@@ -8,10 +8,11 @@ return {
         local dotnet = require("easy-dotnet") -- .setup()
         dotnet.setup({
             lsp = {
-                enabled = true,
-                roslynator_enabled = true, -- Automatically enable roslynator analyzer,
-                easy_dotnet_analyzer_enabled = true, -- Enable roslyn analyzer from easy-dotnet-server,
-                auto_refresh_codelens = false,
+                enabled = true, -- Enable builtin roslyn lsp
+                preload_roslyn = true, -- Start loading roslyn before any buffer is opened
+                roslynator_enabled = true, -- Automatically enable roslynator analyzer
+                easy_dotnet_analyzer_enabled = true, -- Enable roslyn analyzer from easy-dotnet-server
+                auto_refresh_codelens = true,
                 analyzer_assemblies = {
                     vim.fn.expand("~/.config/nvim/analyzers/SonarAnalyzer.CSharp.dll"),
                 },
