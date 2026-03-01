@@ -15,6 +15,7 @@ return {
                 auto_refresh_codelens = true,
                 analyzer_assemblies = {
                     vim.fn.expand("~/.config/nvim/analyzers/SonarAnalyzer.CSharp.dll"),
+                    vim.fn.expand("~/.config/nvim/analyzers/IDisposableAnalyzers.dll"),
                 },
                 config = {},
             },
