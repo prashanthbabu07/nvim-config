@@ -27,7 +27,7 @@ return {
                         -- filetypes = { "json", "jsonc", "markdown", "markdown.mdx", "css",  },
                     }),
                     null_ls.builtins.formatting.prettier.with({
-                        filetypes = { "json", "jsonc" },
+                        filetypes = { "json", "jsonc", "json5" },
                         extra_args = { "--tab-width=2" },
                     }),
                     null_ls.builtins.formatting.csharpier, -- requires csharpier installed
@@ -56,6 +56,7 @@ return {
                     "objcpp",
                     "json",
                     "jsonc",
+                    "json5",
                     "markdown",
                     "markdown.mdx",
                     "yaml",
