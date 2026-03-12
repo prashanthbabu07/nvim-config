@@ -30,10 +30,26 @@ return {
                         "fd",
                         "--type",
                         "f", --[["--hidden",]]
+                        "--case-sensitive",
                         "--glob",
                     },
                 })
             end, { desc = "Find files" })
+
+            vim.keymap.set("n", "<leader>fx", function()
+                require("telescope.builtin").find_files({
+                    prompt_title = "Find Files (Literal Sequence)",
+                    -- 1. Remove find_command to use default Telescope/Vim logic
+                    find_command = nil,
+
+                    -- 2. THIS IS THE KEY: Use the substring matcher instead of fuzzy
+                    -- It only matches if the characters are in the exact order (sequence)
+                    sorter = require("telescope.sorters").get_substr_matcher(),
+
+                    -- 3. Force case sensitivity
+                    case_mode = "respect_case",
+                })
+            end, { desc = "Find files (Exact Sequence)" })
 
             vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "File grep" })
             vim.keymap.set("n", "<leader>fnf", function()
