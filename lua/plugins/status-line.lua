@@ -10,10 +10,15 @@ return {
         -- for _, mode in ipairs(modes) do
         --     auto_theme[mode].c.bg = "None" -- Or ''
         -- end
+        local job_indicator = { require("easy-dotnet.ui-modules.jobs").lualine }
+
         require("lualine").setup({
             options = {
                 theme = auto_theme,
                 globalstatus = true,
+            },
+            sections = {
+                lualine_a = { "mode", job_indicator },
             },
         })
         -- require("lualine").setup({
