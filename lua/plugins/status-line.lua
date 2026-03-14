@@ -17,9 +17,9 @@ return {
                 theme = auto_theme,
                 globalstatus = true,
             },
-            sections = {
-                lualine_a = { "mode", job_indicator },
-            },
+            -- sections = {
+            --     -- lualine_a = { "mode", job_indicator },
+            -- },
         })
         -- require("lualine").setup({
         --     options = {
