@@ -16,8 +16,6 @@ return {
             vim.api.nvim_set_keymap("i", "<C-K>", "copilot#Next()", { expr = true, silent = true })
             vim.api.nvim_set_keymap("i", "<C-H>", "copilot#Previous()", { expr = true, silent = true })
 
-
-
             vim.api.nvim_set_keymap("n", "<leader>cpt", ":CopilotToggle<CR>", { silent = true })
             vim.api.nvim_create_user_command("CopilotToggle", function()
                 if vim.g.copilot_enabled then
@@ -44,7 +42,7 @@ return {
             { "github/copilot.vim" },
             { "nvim-lua/plenary.nvim" }, -- for curl, log and async functions
         },
-        build = "make tiktoken", -- Only on MacOS or Linux
+        build = "make tiktoken",         -- Only on MacOS or Linux
         opts = {
             options = {
                 prompts = {
@@ -63,21 +61,46 @@ return {
                             return copilot_select.get_visual(source)
                         end,
                     },
+                    generate_csharp_xml_doc = {
+                        prompt = [[
+                COPILOT_REVIEW Review #buffer to "Generate C# XML documentation".
+
+                CRITERIA:
+                1. Analyze the code to identify classes, methods, properties, and other relevant code constructs that require documentation.
+                2. Generate XML documentation comments for each identified construct, including summaries, parameter descriptions, and return value descriptions where applicable.
+                3. Ensure that the generated documentation is clear, concise, and accurately reflects the functionality of the code.
+
+                OUTPUT:
+                - Provide ONLY the generated XML documentation comments for each relevant code construct.
+                - Do NOT include any additional explanations, summaries, or suggestions; only provide the XML documentation.
+        ]],
+
+                        selection = function(source)
+                            local copilot_select = require("CopilotChat.select")
+                            return copilot_select.get_visual(source)
+                        end,
+                    },
                 },
             },
         },
         keys = {
-            { "<leader>cpn", ":CopilotChat Rename<CR>", mode = "v", desc = "Rename the variable" },
-            { "<leader>cpx", ":CopilotChat Typos<CR>", mode = "v", desc = "Fix Typos" },
-            { "<leader>cpc", ":CopilotChat<CR>", mode = "n", desc = "Chat with Copilot" },
-            { "<leader>cpe", ":CopilotChatExplain<CR>", mode = "v", desc = "Explain Code" },
-            { "<leader>cpr", ":CopilotChatReview<CR>", mode = "v", desc = "Review Code" },
-            { "<leader>cpf", ":CopilotChatFix<CR>", mode = "v", desc = "Fix Code Issues" },
+            { "<leader>cpn", ":CopilotChat Rename<CR>",  mode = "v", desc = "Rename the variable" },
+            { "<leader>cpx", ":CopilotChat Typos<CR>",   mode = "v", desc = "Fix Typos" },
+            { "<leader>cpc", ":CopilotChat<CR>",         mode = "n", desc = "Chat with Copilot" },
+            { "<leader>cpe", ":CopilotChatExplain<CR>",  mode = "v", desc = "Explain Code" },
+            { "<leader>cpr", ":CopilotChatReview<CR>",   mode = "v", desc = "Review Code" },
+            { "<leader>cpf", ":CopilotChatFix<CR>",      mode = "v", desc = "Fix Code Issues" },
             { "<leader>cpo", ":CopilotChatOptimize<CR>", mode = "v", desc = "Optimize Code" },
-            { "<leader>cpd", ":CopilotChatDocs<CR>", mode = "v", desc = "Generate Docs" },
-            { "<leader>cpt", ":CopilotChatTests<CR>", mode = "v", desc = "Generate Tests" },
-            { "<leader>cpm", ":CopilotChatCommit<CR>", mode = "n", desc = "Generate Commit Message" },
-            { "<leader>cps", ":CopilotChatCommit<CR>", mode = "v", desc = "Generate Commit for Selection" },
+            { "<leader>cpd", ":CopilotChatDocs<CR>",     mode = "v", desc = "Generate Docs" },
+            { "<leader>cpt", ":CopilotChatTests<CR>",    mode = "v", desc = "Generate Tests" },
+            { "<leader>cpm", ":CopilotChatCommit<CR>",   mode = "n", desc = "Generate Commit Message" },
+            { "<leader>cps", ":CopilotChatCommit<CR>",   mode = "v", desc = "Generate Commit for Selection" },
+            {
+                "<leader>cpg",
+                ":CopilotChat generate_csharp_xml_doc<CR>",
+                mode = "v",
+                desc = "Generate C# XML documentation for the selected code",
+            },
         },
         config = function()
             require("CopilotChat").setup({})
