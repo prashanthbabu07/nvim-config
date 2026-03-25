@@ -39,7 +39,7 @@ return {
                     expand_all = { lhs = "-", desc = "expand all" },
                     collapse_all = { lhs = "W", desc = "collapse all" },
                     close = { lhs = "q", desc = "close testrunner" },
-                    refresh_testrunner = { lhs = "<C-r>", desc = "refresh testrunner" },
+                    refresh_testrunner = { lhs = "<leader>drr", desc = "refresh testrunner" },
                 },
                 --- Optional table of extra args e.g "--blame crash"
                 additional_args = {},
