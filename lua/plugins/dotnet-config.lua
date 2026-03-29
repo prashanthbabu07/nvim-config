@@ -7,6 +7,11 @@ return {
     config = function()
         local dotnet = require("easy-dotnet") -- .setup()
         dotnet.setup({
+            managed_terminal = {
+                auto_hide = false, -- auto hides terminal if exit code is 0
+                auto_hide_delay = nil, -- delay before auto hiding, 0 = instant
+                -- videmode = "vsplit", -- "float" | "vsplit" | "split"
+            },
             lsp = {
                 enabled = true, -- Enable builtin roslyn lsp
                 preload_roslyn = true, -- Start loading roslyn before any buffer is opened
@@ -20,16 +25,26 @@ return {
                 config = {},
             },
             test_runner = {
-                ---@type "split" | "float" | "buf"
+                -- ---@type "split" | "float" | "buf"
+                -- -- viewmode = "float",
                 -- viewmode = "float",
-                viewmode = "float",
-                enable_buffer_test_execution = false, --Experimental, run tests directly from buffer
-                noBuild = true,
-                noRestore = true,
+                -- enable_buffer_test_execution = false, --Experimental, run tests directly from buffer
+                -- noBuild = true,
+                -- noRestore = true,
+
+                auto_start_testrunner = true,
+                hide_legend = false,
+                ---@type "split" | "vsplit" | "float" | "buf"
+                viewmode = "vsplit",
+                ---@type number|nil
+                vsplit_width = nil,
+                ---@type string|nil "topleft" | "topright"
+                vsplit_pos = nil,
+
                 mappings = {
                     run_test_from_buffer = { lhs = "<leader>r", desc = "run test from buffer" },
                     filter_failed_tests = { lhs = "<leader>fe", desc = "filter failed tests" },
-                    debug_test = { lhs = "<leader>d", desc = "debug test" },
+                    debug_test = { lhs = "<leader>ddt", desc = "debug test" },
                     go_to_file = { lhs = "g", desc = "got to file" },
                     run_all = { lhs = "<leader>R", desc = "run all tests" },
                     run = { lhs = "<leader>r", desc = "run test" },
@@ -43,6 +58,10 @@ return {
                 },
                 --- Optional table of extra args e.g "--blame crash"
                 additional_args = {},
+            },
+            auto_bootstrap_namespace = {
+                --block_scoped, file_scoped
+                type = "block_scoped",
             },
             server = {
                 ---@type nil | "Off" | "Critical" | "Error" | "Warning" | "Information" | "Verbose" | "All"
