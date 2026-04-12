@@ -21,8 +21,12 @@ return {
                 analyzer_assemblies = {
                     vim.fn.expand("~/.config/nvim/analyzers/cs/SonarAnalyzer.CSharp.dll"),
                     vim.fn.expand("~/.config/nvim/analyzers/cs/IDisposableAnalyzers.dll"),
-                    vim.fn.expand("~/.config/nvim/analyzers/cs/CheckedExceptions.dll"),
-                    vim.fn.expand("~/.config/nvim/analyzers/cs/CheckedExceptions.CodeFixes.dll"),
+                    vim.fn.expand("~/.config/nvim/analyzers/cs/Microsoft.VisualStudio.Threading.Analyzers.CSharp.dll"),
+                    vim.fn.expand(
+                        "~/.config/nvim/analyzers/cs/Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.dll"
+                    ),
+                    -- vim.fn.expand("~/.config/nvim/analyzers/cs/CheckedExceptions.dll"),
+                    -- vim.fn.expand("~/.config/nvim/analyzers/cs/CheckedExceptions.CodeFixes.dll"),
                     -- vim.fn.expand("~/.config/nvim/analyzers/cs/Tetractic.CodeAnalysis.ExceptionAnalyzers.Analyzers.dll"),
                     -- vim.fn.expand("~/.config/nvim/analyzers/cs/Tetractic.CodeAnalysis.ExceptionAnalyzers.Analyzers.CodeFixes.dll"),
                 },
