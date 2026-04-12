@@ -19,8 +19,12 @@ return {
                 easy_dotnet_analyzer_enabled = true, -- Enable roslyn analyzer from easy-dotnet-server
                 auto_refresh_codelens = true,
                 analyzer_assemblies = {
-                    vim.fn.expand("~/.config/nvim/analyzers/SonarAnalyzer.CSharp.dll"),
-                    vim.fn.expand("~/.config/nvim/analyzers/IDisposableAnalyzers.dll"),
+                    vim.fn.expand("~/.config/nvim/analyzers/cs/SonarAnalyzer.CSharp.dll"),
+                    vim.fn.expand("~/.config/nvim/analyzers/cs/IDisposableAnalyzers.dll"),
+                    vim.fn.expand("~/.config/nvim/analyzers/cs/CheckedExceptions.dll"),
+                    vim.fn.expand("~/.config/nvim/analyzers/cs/CheckedExceptions.CodeFixes.dll"),
+                    -- vim.fn.expand("~/.config/nvim/analyzers/cs/Tetractic.CodeAnalysis.ExceptionAnalyzers.Analyzers.dll"),
+                    -- vim.fn.expand("~/.config/nvim/analyzers/cs/Tetractic.CodeAnalysis.ExceptionAnalyzers.Analyzers.CodeFixes.dll"),
                 },
                 config = {},
             },
