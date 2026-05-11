@@ -16,9 +16,10 @@ return {
                     name = "default",
                     style = {
                         placement = "inline", -- This keeps it on the same line!
-                        prefix = " // ",      -- Subtle separator
+                        prefix = "", -- Subtle separator
                     },
                     providers = {
+                        -- { name = "usages", enabled = true, include = { "refs", "defs", "impls" }, breakdown = true },
                         {
                             name = "references",
                             enabled = true,
