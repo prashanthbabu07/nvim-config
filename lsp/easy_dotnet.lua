@@ -10,5 +10,12 @@ return {
         ["csharp|formatting"] = {
             dotnet_organize_imports_on_format = true,
         },
+        ["csharp|metadata"] = {
+            enable_decompilation = true,
+        },
+        ["csharp|navigation"] = {
+            -- This ensures it tries to find the best source
+            enable_navigation_to_source_generated_files = true,
+        },
     },
 }
