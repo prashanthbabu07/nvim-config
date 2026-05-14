@@ -22,6 +22,11 @@ return {
     config = function()
         local neotree = require("neo-tree")
         neotree.setup({
+            default_component_configs = {
+                indent = {
+                    with_markers = false,
+                },
+            },
             filesystem = {
                 filtered_items = {
                     hide_dotfiles = false,
