@@ -62,11 +62,18 @@ return {
         })
 
         -- normal, visual, visual block
+        -- vim.keymap.set(
+        --     { "n", "v" },
+        --     "<leader>fe",
+        --     "<Esc>:Neotree toggle position=left<CR>",
+        --     { noremap = true, silent = true }
+        -- )
+
         vim.keymap.set(
             { "n", "v" },
             "<leader>fe",
-            "<Esc>:Neotree toggle position=left<CR>",
-            { noremap = true, silent = true }
+            "<cmd>Neotree float toggle<cr>",
+            { noremap = true, silent = true, desc = "Floating File Explorer" }
         )
     end,
 }

@@ -53,6 +53,7 @@ return {
                     run_test_from_buffer = { lhs = "<leader>r", desc = "run test from buffer" },
                     filter_failed_tests = { lhs = "<leader>fe", desc = "filter failed tests" },
                     debug_test = { lhs = "<leader>ddt", desc = "debug test" },
+                    debug_test_from_buffer = { lhs = "<leader>ddt", desc = "run test from buffer" },
                     go_to_file = { lhs = "g", desc = "got to file" },
                     run_all = { lhs = "<leader>R", desc = "run all tests" },
                     run = { lhs = "<leader>r", desc = "run test" },
