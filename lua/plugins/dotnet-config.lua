@@ -88,8 +88,8 @@ return {
             { key = "<leader>dts", func = dotnet.test_solution, desc = "Test solution" },
 
             -- Project
-            { key = "<leader>dpv", func = dotnet.project_view, desc = "Project view" },
-            { key = "<leader>dpd", func = dotnet.project_view_default, desc = "Project view default" },
+            -- { key = "<leader>dpv", func = dotnet.project_view, desc = "Project view" },
+            -- { key = "<leader>dpd", func = dotnet.project_view_default, desc = "Project view default" },
             { key = "<leader>dpa", func = dotnet.add_package, desc = "Add package" },
             { key = "<leader>dna", func = dotnet.add_package, desc = "Add package" },
             { key = "<leader>dnr", func = dotnet.remove_package, desc = "Remove package" },
