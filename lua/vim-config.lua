@@ -88,3 +88,7 @@ vim.keymap.set("n", "<leader>cf", copy_filename_line, { desc = "Copy filename an
 
 -- Disable folding by default
 vim.opt.foldenable = false
+
+-- vim.opt.foldmethod = 'marker'
+-- vim.opt.foldmarker = '#region,#endregion'
+
