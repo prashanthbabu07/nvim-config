@@ -33,7 +33,7 @@ return {
                             name = "references",
                             -- name = "usages",
                             enabled = true,
-                            -- include = { "refs", "defs", "impls" },
+                            include = { "refs", "defs", "impls" },
                             -- Optional: only show if there are more than 0 references
                             filter = function(count)
                                 return count > 0
