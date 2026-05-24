@@ -387,9 +387,9 @@ return {
                 require("telescope.builtin").diagnostics({ bufnr = 0 })
             end, { desc = "Telescope diagnostics (current buffer)" })
 
-            vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave" }, {
-                callback = vim.lsp.codelens.refresh,
-            })
+            -- vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave" }, {
+            --     callback = vim.lsp.codelens.refresh,
+            -- })
             -- vim.api.nvim_create_autocmd("LspAttach", {
             --     group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
             --     callback = function(args)
@@ -407,7 +407,6 @@ return {
                 -- vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(bufnr), { bufnr = bufnr })
             end, { desc = "Toggle Inlay Hints" })
 
-            vim.keymap.set("n", "<leader>ll", vim.lsp.codelens.refresh, { desc = "Refresh CodeLens" })
         end,
     },
     -- {
