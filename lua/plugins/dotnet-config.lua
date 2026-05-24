@@ -18,6 +18,7 @@ return {
                 preload_roslyn = true,               -- Start loading roslyn before any buffer is opened
                 roslynator_enabled = true,           -- Automatically enable roslynator analyzer
                 easy_dotnet_analyzer_enabled = true, -- Enable roslyn analyzer from easy-dotnet-server
+                suggest_updates = true,              -- Suggest updates for roslyn and roslynator analyzers
                 auto_refresh_codelens = true,
                 analyzer_assemblies = {
                     vim.fn.expand("~/.config/nvim/analyzers/cs/SonarAnalyzer.CSharp.dll"),
