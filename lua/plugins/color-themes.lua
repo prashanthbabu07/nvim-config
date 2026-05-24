@@ -78,7 +78,7 @@ return {
     {
         "projekt0n/github-nvim-theme",
         name = "github-theme",
-        lazy = false, -- make sure we load this during startup if it is your main colorscheme
+        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
         priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
             require("github-theme").setup({
@@ -132,7 +132,7 @@ return {
     -- Add this to your lazy.nvim plugin spec list
     {
         "kdheepak/monochrome.nvim",
-        lazy = false, -- Set to false if you want the colorscheme to load at startup
+        lazy = false,    -- Set to false if you want the colorscheme to load at startup
         priority = 1000, -- Ensures it loads before other UI plugins
         config = function()
             -- vim.cmd.colorscheme("monochrome")
@@ -150,5 +150,11 @@ return {
             -- end
             -- vim.cmd.colorscheme("github-monochrome-light")
         end,
+    },
+    {
+        "thesimonho/kanagawa-paper.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
     },
 }

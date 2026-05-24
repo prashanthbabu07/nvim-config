@@ -92,3 +92,17 @@ vim.opt.foldenable = false
 -- vim.opt.foldmethod = 'marker'
 -- vim.opt.foldmarker = '#region,#endregion'
 
+-- vim.opt.fillchars:append({ fold = " " })
+-- replace --- with a space in the fold text
+-- vim.opt.foldtext = "%f %l %s"
+
+_G.minimal_foldtext = function()
+    local line_text = vim.fn.getline(vim.v.foldstart)
+    local hidden_lines = vim.v.foldend - vim.v.foldstart + 1
+    local count_text = string.format(" %d lines: ", hidden_lines)
+
+    return count_text .. line_text
+end
+
+-- vim.opt.foldtext = "v:lua.minimal_foldtext()"
+vim.opt.fillchars:append({ fold = " " })
