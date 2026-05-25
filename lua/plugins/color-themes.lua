@@ -165,7 +165,7 @@ return {
         config = function()
             -- Set to 'light' or 'dark' before loading
             vim.o.background = "dark"
-            vim.cmd([[colorscheme zenwritten]])
+            -- vim.cmd([[colorscheme zenwritten]])
         end,
     },
 }
