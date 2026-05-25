@@ -106,3 +106,6 @@ end
 
 -- vim.opt.foldtext = "v:lua.minimal_foldtext()"
 vim.opt.fillchars:append({ fold = " " })
+
+local my_theme = require("theme.light")
+-- my_theme.load()
