@@ -205,5 +205,5 @@ function _G.get_custom_statusline()
     table.insert(parts, file_str .. " ")
 
     -- Join string segments together with a thin vertical divider
-    return table.concat(parts, " │ ")
+    return table.concat(parts, " - ")
 end

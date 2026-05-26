@@ -16,9 +16,9 @@ function M.load()
         comment = "#6a737d",  -- Comments (Muted Gray)
         keyword = "#d73a49",  -- Keywords like public, async, return (Red)
         type = "#24292e",     -- Classes, Interfaces, Structs (Purple)
-        func = "#24292e",     -- Methods and Functions (Blue)
-        string = "#032f62",   -- Strings (Dark Blue)
-        ident = "#e36209",    -- Variables and Parameters (Orange)
+        func = "#6639bb",     -- Methods and Functions (Blue)
+        string = "#093069",   -- Strings (Dark Blue)
+        ident = "#6639bb",    -- Variables and Parameters (Orange)
         gutter = "#ffffff",   -- Line number column background
         line_num = "#959da5", -- Line numbers color
         cursor = "#fafbfc",   -- Active line background highlighting
@@ -41,7 +41,7 @@ function M.load()
     hl("CursorLine", { bg = p.cursor })
     hl("LineNr", { fg = p.line_num, bg = p.gutter })
     hl("SignColumn", { bg = p.gutter })
-    hl("Comment", { fg = p.comment, italic = true })
+    hl("Comment", { fg = p.comment })
     hl("CursorLineNr", { fg = p.fg, bg = p.gutter, bold = false })
 
     -- 5. Core Native Syntax
@@ -59,6 +59,7 @@ function M.load()
     hl("@keyword", { fg = p.keyword, bold = false })
     hl("@function", { fg = p.func })
     hl("@method", { fg = p.func })
+    hl("@lsp.type.extensionMethod.cs", { fg = p.ident, bold = false })
     hl("@type", { fg = p.type })
     hl("@type.interface", { fg = p.type, bold = false }) -- Your C# interfaces!
     hl("@type.builtin", { fg = p.type })                 -- int, string, var
@@ -66,7 +67,7 @@ function M.load()
     hl("@parameter", { fg = p.ident })                   -- Input parameters
     hl("@property", { fg = p.fg })                       -- Object fields/properties
     hl("@string", { fg = p.string })
-    hl("@comment", { fg = p.comment, italic = true })
+    hl("@comment", { fg = p.comment })
 
     -- 7. Your customized minimalist folds from earlier
     hl("Folded", { fg = p.line_num, bg = "NONE", ctermbg = "NONE" })
@@ -101,7 +102,7 @@ function M.load()
     -- Optional clean adjustments for file states inside the Neo-tree sidebar
     hl("NeoTreeDirectoryName", { fg = p.fg, bold = false })
     hl("NeoTreeDirectoryIcon", { fg = p.fg })
-    hl("NeoTreeRootName", { fg = p.keyword, bold = false })
+    hl("NeoTreeRootName", { fg = p.fg, bold = false })
 
     -- header background
     hl("NeoTreeTitleBar", { fg = p.float_bg, bg = p.float_title_bg, bold = true })
@@ -126,7 +127,7 @@ function M.load()
     hl("TelescopePreviewBorder", { fg = p.float_border, bg = p.bg })
 
     -- Panel Titles (Prompt, Results, Preview)
-    hl("TelescopePromptTitle", { fg = p.keyword, bold = false })
+    hl("TelescopePromptTitle", { fg = p.fg, bold = false })
     hl("TelescopeResultsTitle", { fg = p.comment, bold = false })
     hl("TelescopePreviewTitle", { fg = p.func, bold = false })
 
@@ -134,6 +135,12 @@ function M.load()
     hl("TelescopeSelection", { bg = p.float_select })      -- Active list selection
     hl("TelescopeSelectionCaret", { fg = p.keyword })      -- The small indicator arrow
     hl("TelescopeMatching", { fg = p.func, bold = false }) -- Character matches while typing
+
+    -- Inline Diagnostics Ghost Text (Crisp contrast against white background)
+    hl("DiagnosticVirtualTextError", { fg = "#d73a49", bg = "NONE" }) -- Deep Crimson Red
+    hl("DiagnosticVirtualTextWarn", { fg = "#e36209", bg = "NONE" })  -- Dark Amber Orange
+    hl("DiagnosticVirtualTextInfo", { fg = "#6a737d", bg = "NONE" })
+    hl("DiagnosticVirtualTextHint", { fg = "#6a737d", bg = "NONE" })
 end
 
 return M

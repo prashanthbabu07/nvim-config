@@ -16,9 +16,9 @@ function M.load()
         comment = "#768390",  -- Perfect ash-gray for comments
         keyword = "#f47067",  -- Dimmed coral/terracotta for keywords
         type = "#adbac7",     -- Types match normal text for structured reading
-        func = "#adbac7",     -- Muted lilac/lavender for methods
+        func = "#ddbcfb",     -- Muted lilac/lavender for methods
         string = "#96d0ff",   -- Soft sky blue for strings
-        ident = "#f69d50",    -- Muted clay/amber for parameters
+        ident = "#ddbcfb",    -- Muted clay/amber for parameters
         gutter = "#22272e",   -- Gutter matches your canvas seamless look
         line_num = "#545d68", -- Muted gray line numbers
         cursor = "#2d333b",   -- Active line highlighting (slightly lighter gray-blue)
@@ -41,7 +41,7 @@ function M.load()
     hl("CursorLine", { bg = p.cursor })
     hl("LineNr", { fg = p.line_num, bg = p.gutter })
     hl("SignColumn", { bg = p.gutter })
-    hl("Comment", { fg = p.comment, italic = true })
+    hl("Comment", { fg = p.comment })
     hl("CursorLineNr", { fg = p.fg, bg = p.gutter, bold = false })
 
     -- 5. Core Native Syntax
@@ -59,6 +59,7 @@ function M.load()
     hl("@keyword", { fg = p.keyword, bold = false })
     hl("@function", { fg = p.func })
     hl("@method", { fg = p.func })
+    hl("@lsp.type.extensionMethod.cs", { fg = p.ident, bold = false })
     hl("@type", { fg = p.type })
     hl("@type.interface", { fg = p.type, bold = false })
     hl("@type.builtin", { fg = p.type })
@@ -66,7 +67,7 @@ function M.load()
     hl("@parameter", { fg = p.ident })
     hl("@property", { fg = p.fg })
     hl("@string", { fg = p.string })
-    hl("@comment", { fg = p.comment, italic = true })
+    hl("@comment", { fg = p.comment })
 
     -- 7. Customized minimalist folds
     hl("Folded", { fg = p.line_num, bg = "NONE", ctermbg = "NONE" })
@@ -126,6 +127,12 @@ function M.load()
     hl("TelescopeSelection", { bg = p.float_select })
     hl("TelescopeSelectionCaret", { fg = p.keyword })
     hl("TelescopeMatching", { fg = p.func, bold = false })
+
+    -- Inline Diagnostics Ghost Text (Muted colors so they don't screen-glare)
+    hl("DiagnosticVirtualTextError", { fg = "#f47067", bg = "NONE" }) -- Muted Red
+    hl("DiagnosticVirtualTextWarn", { fg = "#f69d50", bg = "NONE" })  -- Muted Orange/Yellow
+    hl("DiagnosticVirtualTextInfo", { fg = "#768390", bg = "NONE" })
+    hl("DiagnosticVirtualTextHint", { fg = "#768390", bg = "NONE" })
 end
 
 return M
