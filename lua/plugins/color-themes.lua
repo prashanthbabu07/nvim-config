@@ -113,7 +113,7 @@ return {
                 theme = "github_dark_dimmed"
                 -- vim.cmd("colorscheme github_dark_dimmed")
             end
-            -- vim.cmd("colorscheme " .. theme)
+            vim.cmd("colorscheme " .. theme)
             -- vim.cmd("colorscheme github_light")
         end,
     },
