@@ -99,7 +99,7 @@ function M.load()
     -- File states inside the Neo-tree sidebar
     hl("NeoTreeDirectoryName", { fg = p.fg, bold = false })
     hl("NeoTreeDirectoryIcon", { fg = p.fg })
-    hl("NeoTreeRootName", { fg = p.keyword, bold = false })
+    hl("NeoTreeRootName", { fg = p.fg, bold = false })
 
     -- Header background
     hl("NeoTreeTitleBar", { fg = p.bg, bg = p.float_title_bg, bold = true })
