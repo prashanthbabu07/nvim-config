@@ -42,6 +42,7 @@ function M.load()
     hl("LineNr", { fg = p.line_num, bg = p.gutter })
     hl("SignColumn", { bg = p.gutter })
     hl("Comment", { fg = p.comment, italic = true })
+    hl("CursorLineNr", { fg = p.fg, bg = p.gutter, bold = false })
 
     -- 5. Core Native Syntax
     hl("Constant", { fg = p.string })
