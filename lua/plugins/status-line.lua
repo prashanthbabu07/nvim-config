@@ -14,7 +14,7 @@ return {
 
         require("lualine").setup({
             options = {
-                theme = auto_theme,
+                theme = "auto",
                 globalstatus = true,
             },
             -- sections = {

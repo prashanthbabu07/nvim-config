@@ -1,7 +1,7 @@
 vim.opt.expandtab = true -- Tabs become spaces
-vim.opt.shiftwidth = 4 -- Auto-indent uses 4 spaces
-vim.opt.tabstop = 4 -- A tab is 4 spaces
-vim.opt.softtabstop = 4 -- <Tab> inserts 4 spaces
+vim.opt.shiftwidth = 4   -- Auto-indent uses 4 spaces
+vim.opt.tabstop = 4      -- A tab is 4 spaces
+vim.opt.softtabstop = 4  -- <Tab> inserts 4 spaces
 
 -- Set indentation for specific file types
 vim.api.nvim_create_autocmd("FileType", {
@@ -70,11 +70,11 @@ vim.keymap.set("n", "<leader>tc", ":tabclose<CR>", { silent = true, desc = "Clos
 
 -- Copy filename and line number to clipboard
 local function copy_filename_line()
-    local filename = vim.fn.expand("%:t") -- Get the current file name
-    local line = vim.fn.line(".") -- Get the current line number
-    local text = filename .. ":" .. line -- Format as "filename:line"
+    local filename = vim.fn.expand("%:t")  -- Get the current file name
+    local line = vim.fn.line(".")          -- Get the current line number
+    local text = filename .. ":" .. line   -- Format as "filename:line"
 
-    vim.fn.setreg("+", text) -- Copy to system clipboard
+    vim.fn.setreg("+", text)               -- Copy to system clipboard
     print("Copied to clipboard: " .. text) -- Optional: Notify the user
 end
 
@@ -108,4 +108,14 @@ end
 vim.opt.fillchars:append({ fold = " " })
 
 local my_theme = require("theme.light")
--- my_theme.load()
+my_theme.load()
+
+local theme_manager = require("theme.theme")
+
+-- Initialize on startup based on system theme
+theme_manager.init_system_theme()
+
+-- Map the toggle to <leader>th (or any key combination you prefer)
+vim.keymap.set("n", "<leader>th", function()
+    theme_manager.toggle()
+end, { desc = "Toggle light/dark theme profiles" })
