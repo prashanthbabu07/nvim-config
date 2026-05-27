@@ -51,7 +51,7 @@ function M.set_theme(mode)
         theme.load()
     else
         vim.o.background = mode
-        vim.cmd("colorscheme default")
+        -- vim.cmd("colorscheme default")
     end
 end
 
