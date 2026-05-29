@@ -62,6 +62,7 @@ return {
                     "yamlls",
                     "angularls",
                     "vacuum",
+                    "zls",
                 },
                 automatic_enable = {
                     -- "vimls",
@@ -288,6 +289,15 @@ return {
             }
             vim.lsp.enable({ "vimls" })
 
+            -- zig (LSP)
+            vim.lsp.config.zls = {
+                capabilities = capabilities,
+                -- on_attach = on_attach,
+                filetypes = { "zig" },
+                root_dir = lspconfig.util.root_pattern(".git"),
+            }
+            vim.lsp.enable({ "zls" })
+
             vim.diagnostic.config({
                 virtual_text = {
                     source = true, -- "always",
@@ -406,7 +416,6 @@ return {
                 vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
                 -- vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(bufnr), { bufnr = bufnr })
             end, { desc = "Toggle Inlay Hints" })
-
         end,
     },
     -- {
