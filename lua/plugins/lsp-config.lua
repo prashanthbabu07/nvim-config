@@ -17,7 +17,7 @@ return {
                     "lua_ls",
                     "ts_ls",
                     "rust_analyzer",
-                    "csharp_ls",
+                    -- "csharp_ls",
                     -- "omnisharp",
                     "pyright",
                     "pyrefly",
