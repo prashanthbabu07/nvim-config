@@ -188,6 +188,14 @@ return {
             }
             vim.lsp.enable({ "zls" })
 
+            vim.lsp.config.mojo = {
+                cmd = { "mojo-lsp-server" },
+                filetypes = { "mojo", "python" },
+                root_markers = { "mojo.toml", "pyproject.toml", ".git" },
+                capabilities = capabilities,
+            }
+            vim.lsp.enable({ "mojo" })
+
             -- Diagnostics Configuration
             vim.diagnostic.config({
                 virtual_text = {
