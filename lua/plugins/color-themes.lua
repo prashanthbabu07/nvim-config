@@ -164,7 +164,7 @@ return {
         priority = 1000,
         config = function()
             -- Set to 'light' or 'dark' before loading
-            vim.o.background = "dark"
+            -- vim.o.background = "dark"
             -- vim.cmd([[colorscheme zenwritten]])
         end,
     },
