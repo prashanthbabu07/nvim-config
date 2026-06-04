@@ -44,6 +44,7 @@ return {
         },
         build = "make tiktoken", -- Only on MacOS or Linux
         opts = {
+            -- model = "copilot",
             options = {
                 prompts = {
                     Rename = {
@@ -116,7 +117,9 @@ return {
             },
         },
         config = function()
-            require("CopilotChat").setup({})
+            require("CopilotChat").setup({
+                model = "gpt-5.3-codex",
+            })
         end,
     },
 }
