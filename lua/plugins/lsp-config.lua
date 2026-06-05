@@ -188,10 +188,12 @@ return {
             }
             vim.lsp.enable({ "zls" })
 
+            local cwd = vim.fn.getcwd()
+            local local_pixi_bin = cwd .. "/.pixi/envs/default/bin/mojo-lsp-server"
             vim.lsp.config.mojo = {
-                cmd = { "mojo-lsp-server" },
+                cmd = { vim.fn.executable(local_pixi_bin) == 1 and local_pixi_bin or "mojo-lsp-server" },
                 filetypes = { "mojo", "python" },
-                root_markers = { "mojo.toml", "pyproject.toml", ".git" },
+                root_markers = { "mojo.toml", "pyproject.toml", ".git", "pixi.toml" },
                 capabilities = capabilities,
             }
             vim.lsp.enable({ "mojo" })
