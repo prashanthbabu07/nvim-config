@@ -31,6 +31,7 @@ return {
                     "angularls",
                     "vacuum",
                     "zls",
+                    "stylua"
                 },
             })
         end,
