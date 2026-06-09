@@ -298,6 +298,24 @@ Here is the file content to evaluate:
 						},
 					},
 				},
+				["Write Unit Tests MsTests"] = {
+					strategy = "chat",
+					description = "Write unit tests in MsTests for the given selection",
+					opts = { is_default = false },
+					prompts = {
+						{
+							role = "user",
+							content = function(context)
+								local selection = table.concat(context.lines, "\n")
+								return "Please write unit tests in MsTests for the following code selection, covering critical paths and edge cases:\n\n```"
+									.. context.filetype
+									.. "\n"
+									.. selection
+									.. "\n```"
+							end,
+						},
+					},
+				},
 			},
 		})
 	end,
