@@ -123,11 +123,12 @@ return {
                         return require("codecompanion.adapters").extend("ollama", {
                             env = {
                                 -- Directs all traffic straight to your Arch machine
-                                url = "http://192.168.29.219:11434",
+                                url = "http://192.168.29.219:11435",
                             },
                             schema = {
                                 model = {
-                                    default = "qwen3.5:4b",
+                                    -- default = "qwen3.5:4b",
+                                    default = "gemma4:e4b",
                                 },
                             },
                         })
