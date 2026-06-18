@@ -1,5 +1,6 @@
 return {
     "olimorris/codecompanion.nvim",
+    commit = "7cc35b7f7f08d093469fa9ae67d3af716bd729c3",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "ravitemer/codecompanion-history.nvim",
@@ -15,6 +16,7 @@ return {
         vim.keymap.set("v", "<leader>cce", "<cmd>CodeCompanionChat Add<CR>", { desc = "Add Selection to Chat Panel" })
 
         require("codecompanion").setup({
+            log_level = "DEBUG", -- or "TRACE",
             completion = {
                 provider = "copilot",
             },
