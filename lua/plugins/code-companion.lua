@@ -1,6 +1,6 @@
 return {
     "olimorris/codecompanion.nvim",
-    commit = "7cc35b7f7f08d093469fa9ae67d3af716bd729c3",
+    -- commit = "7cc35b7f7f08d093469fa9ae67d3af716bd729c3",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "ravitemer/codecompanion-history.nvim",
@@ -151,7 +151,7 @@ return {
             -- },
 
             strategies = {
-                chat = { adapter = "copilot" },
+                chat = { adapter = { name = "copilot", model = "gpt-5.3-codex" } },
                 inline = { adapter = "copilot" },
                 cmd = { adapter = "copilot" },
                 -- chat = { adapter = "ollama" },
