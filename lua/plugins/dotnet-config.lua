@@ -45,7 +45,7 @@ return {
                 auto_start_testrunner = true,
                 hide_legend = false,
                 ---@type "split" | "vsplit" | "float" | "buf"
-                viewmode = "vsplit",
+                viewmode = "float",
                 ---@type number|nil
                 vsplit_width = nil,
                 ---@type string|nil "topleft" | "topright"

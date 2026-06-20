@@ -150,9 +150,10 @@ return {
             --     end,
             -- },
 
-            strategies = {
+            interactions = {
                 chat = { adapter = { name = "copilot", model = "gpt-5.3-codex" } },
-                inline = { adapter = "copilot" },
+                -- inline = { adapter = "copilot" },
+                inline = { adapter = { name = "copilot", model = "gpt-5.3-codex" } },
                 cmd = { adapter = "copilot" },
                 -- chat = { adapter = "ollama" },
                 -- chat = {
