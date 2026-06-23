@@ -172,7 +172,7 @@ return {
             -- Custom Prompt Library integrating all of your custom actions safely
             prompt_library = {
                 ["Contextual Inconsistency"] = {
-                    strategy = "chat",
+                    interaction = "chat",
                     description = "Review buffer for Contextual Inconsistency",
                     opts = { is_default = false, is_slash_cmd = true },
                     prompts = {
@@ -200,7 +200,7 @@ Here is the code:
                 },
 
                 ["Logging Inconsistency"] = {
-                    strategy = "chat",
+                    interaction = "chat",
                     description = "Review buffer for Logging Inconsistency",
                     opts = { is_default = false, is_slash_cmd = true },
                     prompts = {
@@ -230,9 +230,9 @@ Here is the code:
                 },
 
                 ["Generate C# XML Doc"] = {
-                    strategy = "inline",
+                    interaction = "inline",
                     description = "Generate C# XML documentation for the given selection",
-                    opts = { is_default = false },
+                    opts = { is_default = false, placement = "before" },
                     prompts = {
                         {
                             role = "user",
@@ -258,7 +258,7 @@ Code selection:
                 },
 
                 ["Project Standards Review"] = {
-                    strategy = "chat",
+                    interaction = "chat",
                     description = "Review buffer against internal C# .NET architecture standards",
                     opts = { is_default = false, is_slash_cmd = true },
                     prompts = {
@@ -364,7 +364,7 @@ Here is the file content to evaluate:
                 },
 
                 ["Rename Variable"] = {
-                    strategy = "inline",
+                    interaction = "inline",
                     description = "Rename the variable correctly in given selection based on context",
                     opts = { is_default = false },
                     prompts = {
@@ -383,7 +383,7 @@ Here is the file content to evaluate:
                 },
 
                 ["Fix Typos"] = {
-                    strategy = "inline",
+                    interaction = "inline",
                     description = "Fix typos in the given code selection",
                     opts = { is_default = false },
                     prompts = {
@@ -402,7 +402,7 @@ Here is the file content to evaluate:
                 },
 
                 ["Suggest Method Names"] = {
-                    strategy = "chat",
+                    interaction = "chat",
                     description = "Suggest method names for the given selection based on functionality",
                     opts = { is_default = false },
                     prompts = {
@@ -420,7 +420,7 @@ Here is the file content to evaluate:
                     },
                 },
                 ["Write Unit Tests MsTests"] = {
-                    strategy = "chat",
+                    interaction = "chat",
                     description = "Write unit tests in MsTests for the given selection",
                     opts = { is_default = false },
                     prompts = {
