@@ -32,6 +32,14 @@ return {
                     -- vim.fn.expand("~/.config/nvim/analyzers/cs/Tetractic.CodeAnalysis.ExceptionAnalyzers.Analyzers.dll"),
                     -- vim.fn.expand("~/.config/nvim/analyzers/cs/Tetractic.CodeAnalysis.ExceptionAnalyzers.Analyzers.CodeFixes.dll"),
                 },
+                razor = {
+                    enabled = true,
+                    html = {
+                        enabled = true,
+                        cmd = nil, -- Auto-detect project node_modules/.bin/vscode-html-language-server, then PATH
+                        request_timeout = 5000,
+                    },
+                },
                 config = {},
             },
             test_runner = {
