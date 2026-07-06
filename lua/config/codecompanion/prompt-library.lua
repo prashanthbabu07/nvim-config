@@ -90,7 +90,8 @@ return {
                 role = "user",
                 content = function(context)
                     local selection = table.concat(context.lines, "\n")
-                    return "Please suggest meaningful, clean method names for the following code selection based on its strict functional operations:\n\n```"
+                    return
+                        "Please suggest meaningful, clean method names for the following code selection based on its strict functional operations:\n\n```"
                         .. context.filetype
                         .. "\n"
                         .. selection
@@ -108,7 +109,27 @@ return {
                 role = "user",
                 content = function(context)
                     local selection = table.concat(context.lines, "\n")
-                    return "Please write unit tests in MsTests for the following code selection, covering critical paths and edge cases:\n\n```"
+                    return
+                        "Please write unit tests in MsTests for the following code selection, covering critical paths and edge cases:\n\n```"
+                        .. context.filetype
+                        .. "\n"
+                        .. selection
+                        .. "\n```"
+                end,
+            },
+        },
+    },
+    ["Write integration Tests"] = {
+        interaction = "chat",
+        description = "Write integration tests for the given selection",
+        opts = { is_default = false },
+        prompts = {
+            {
+                role = "user",
+                content = function(context)
+                    local selection = table.concat(context.lines, "\n")
+                    return
+                        "Please write integration tests for the following code selection, ensuring proper interaction between components:\n\n```"
                         .. context.filetype
                         .. "\n"
                         .. selection

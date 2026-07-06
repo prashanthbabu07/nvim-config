@@ -171,6 +171,17 @@ return {
 
 			-- Custom Prompt Library integrating all of your custom actions safely
 			prompt_library = require("config.codecompanion.prompt-library"),
+			mcp = {
+				servers = {
+					filesystem = {
+						cmd = { "npx", "-y", "@modelcontextprotocol/server-filesystem" },
+						roots = function()
+							-- Return a list of names and directories as per:
+							-- https://modelcontextprotocol.io/specification/2025-11-25/client/roots#listing-roots
+						end,
+					},
+				},
+			},
 		})
 	end,
 }
