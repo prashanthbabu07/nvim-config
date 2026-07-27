@@ -61,6 +61,7 @@ return {
                     "markdown.mdx",
                     "yaml",
                     "xml",
+                    "sql",
                 },
             })
 

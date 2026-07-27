@@ -31,7 +31,8 @@ return {
                     "angularls",
                     "vacuum",
                     "zls",
-                    "stylua"
+                    "stylua",
+                    "postgres_lsp",
                 },
             })
         end,

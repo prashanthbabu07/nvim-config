@@ -4,6 +4,7 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"ravitemer/codecompanion-history.nvim",
+		"franco-ruggeri/codecompanion-spinner.nvim",
 	},
 	event = "VeryLazy",
 	config = function()
@@ -22,6 +23,7 @@ return {
 			},
 
 			extensions = {
+				spinner = {},
 				history = {
 					enabled = true,
 					opts = {
