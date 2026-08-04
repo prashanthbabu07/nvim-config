@@ -33,6 +33,7 @@ return {
                     "zls",
                     "stylua",
                     "postgres_lsp",
+                    "tailwindcss",
                 },
             })
         end,
@@ -67,7 +68,7 @@ return {
             -- HTML
             vim.lsp.config.html = {
                 capabilities = capabilities,
-                filetypes = { "cshtml", "html" },
+                filetypes = { "cshtml", "html", "razor" },
             }
             vim.lsp.enable({ "html" })
 
@@ -189,6 +190,37 @@ return {
                 root_markers = { ".git" },
             }
             vim.lsp.enable({ "zls" })
+
+            -- Tailwind CSS
+            vim.lsp.config.tailwindcss = {
+                capabilities = capabilities,
+                filetypes = {
+                    "html",
+                    "css",
+                    "scss",
+                    "javascript",
+                    "javascriptreact",
+                    "typescript",
+                    "typescriptreact",
+                    "razor",
+                    "cshtml",
+                },
+                settings = {
+                    tailwindCSS = {
+                        includeLanguages = {
+                            cshtml = "html",
+                            razor = "html",
+                        },
+                        experimental = {
+                            classRegex = {
+                                { 'class="([^"]*)"', "1" },
+                                { "class='([^']*)'", "1" },
+                            },
+                        },
+                    },
+                },
+            }
+            vim.lsp.enable({ "tailwindcss" })
 
             local cwd = vim.fn.getcwd()
             local local_pixi_bin = cwd .. "/.pixi/envs/default/bin/mojo-lsp-server"

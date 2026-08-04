@@ -113,3 +113,22 @@ vim.opt.fillchars:append({ fold = " " })
 -- vim.keymap.set("n", "<leader>wse", "<C-w>=", { desc = "Equalize splits" })
 -- vim.keymap.set("n", "<leader>wsx", ":close<CR>", { desc = "Close split" })
 
+-- 1. Ensure .cshtml maps to 'razor' filetype
+vim.filetype.add({
+    extension = {
+        cshtml = "razor",
+        razor = "razor",
+    },
+})
+
+-- 2. Tell native Treesitter to use the 'html' parser for 'razor' filetypes
+vim.treesitter.language.register("html", "razor")
+
+-- 3. Automatically start Treesitter highlighting on razor buffers
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "razor",
+    callback = function(args)
+        -- Start native Treesitter engine on this buffer
+        vim.treesitter.start(args.buf, "html")
+    end,
+})
