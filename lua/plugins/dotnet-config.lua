@@ -35,8 +35,9 @@ return {
                 razor = {
                     enabled = true,
                     html = {
-                        enabled = true,
-                        cmd = nil, -- Auto-detect project node_modules/.bin/vscode-html-language-server, then PATH
+                        enabled = false,
+                        cmd = "vscode-html-language-server",
+                        -- cmd = nil, -- Auto-detect project node_modules/.bin/vscode-html-language-server, then PATH
                         request_timeout = 5000,
                     },
                 },
