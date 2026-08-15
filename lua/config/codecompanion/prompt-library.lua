@@ -100,25 +100,25 @@ return {
             },
         },
     },
-    ["Write Unit Tests MsTests"] = {
-        interaction = "chat",
-        description = "Write unit tests in MsTests for the given selection",
-        opts = { is_default = false },
-        prompts = {
-            {
-                role = "user",
-                content = function(context)
-                    local selection = table.concat(context.lines, "\n")
-                    return
-                        "Please write unit tests in MsTests for the following code selection, covering critical paths and edge cases:\n\n```"
-                        .. context.filetype
-                        .. "\n"
-                        .. selection
-                        .. "\n```"
-                end,
-            },
-        },
-    },
+    -- ["Write Unit Tests MsTests"] = {
+    --     interaction = "chat",
+    --     description = "Write unit tests in MsTests for the given selection",
+    --     opts = { is_default = false },
+    --     prompts = {
+    --         {
+    --             role = "user",
+    --             content = function(context)
+    --                 local selection = table.concat(context.lines, "\n")
+    --                 return
+    --                     "Please write unit tests in MsTests for the following code selection, covering critical paths and edge cases:\n\n```"
+    --                     .. context.filetype
+    --                     .. "\n"
+    --                     .. selection
+    --                     .. "\n```"
+    --             end,
+    --         },
+    --     },
+    -- },
     ["Write integration Tests"] = {
         interaction = "chat",
         description = "Write integration tests for the given selection",
@@ -137,5 +137,33 @@ return {
                 end,
             },
         },
+    },
+    ["Write unit tests MsTest"] = {
+        interaction = "chat",
+        description = "Write unit tests in MsTest for the given selection",
+        opts = { is_default = false },
+        prompts = {
+            {
+                role = "user",
+                content = function(context)
+                    local selection = table.concat(context.lines, "\n")
+                    return require("config.codecompanion.cs-test-instruction")(selection)
+                end,
+            },
+        },
+        -- prompts = {
+        --     {
+        --         role = "user",
+        --         content = function(context)
+        --             local selection = table.concat(context.lines, "\n")
+        --             return
+        --                 "Please write unit tests in MsTest for the following code selection, covering critical paths and edge cases:\n\n```"
+        --                 .. context.filetype
+        --                 .. "\n"
+        --                 .. selection
+        --                 .. "\n```"
+        --         end,
+        --     },
+        -- },
     },
 }
